@@ -1,0 +1,13 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/modules.xml
+/projectSettingsUpdater.xml
+/.idea.nautic_v2.iml
+/contentModel.xml
+# Datasource local storage ignored files
+/../../../../../../:\proj\nautic_v2\.idea\.idea.nautic_v2.dir\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
