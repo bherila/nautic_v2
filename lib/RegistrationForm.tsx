@@ -457,7 +457,7 @@ export default class RegistrationForm extends React.Component<
           <input
             type="checkbox"
             checked={this.state.agreed || false}
-            onClick={(e) => this.setState({ agreed: e.currentTarget.checked })}
+            onChange={(e) => this.setState({ agreed: e.currentTarget.checked })}
           />
           &nbsp;I agree to the Terms of Service
         </label>
