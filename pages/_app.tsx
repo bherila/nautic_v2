@@ -1,4 +1,6 @@
-import '../styles/globals.css'
+import '../styles/normalize.css'
+import '../styles/components.css'
+import '../styles/nearshorenetworks.css'
 import type { AppProps } from 'next/app'
 
 function MyApp({ Component, pageProps }: AppProps) {

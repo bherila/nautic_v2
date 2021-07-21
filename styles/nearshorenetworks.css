@@ -469,7 +469,7 @@ blockquote {
   margin-left: 2.5px;
   border-radius: 100%;
   background-color: #121212;
-  background-image: url('../images/font-awesome_4-7-0_facebook_100_0_ffffff_none.png');
+  background-image: url('/img/font-awesome_4-7-0_facebook_100_0_ffffff_none.png');
   background-position: 50% 50%;
   background-size: 14px;
   background-repeat: no-repeat;
@@ -482,17 +482,17 @@ blockquote {
 }
 
 .social-icon.twitter {
-  background-image: url('../images/font-awesome_4-7-0_twitter_100_0_ffffff_none.png');
+  background-image: url('/img/font-awesome_4-7-0_twitter_100_0_ffffff_none.png');
   background-size: 14px;
 }
 
 .social-icon.insta {
-  background-image: url('../images/font-awesome_4-7-0_instagram_100_0_ffffff_none.png');
+  background-image: url('/img/font-awesome_4-7-0_instagram_100_0_ffffff_none.png');
   background-size: 18px;
 }
 
 .social-icon.google {
-  background-image: url('../images/font-awesome_4-7-0_google-plus_100_0_ffffff_none.png');
+  background-image: url('/img/font-awesome_4-7-0_google-plus_100_0_ffffff_none.png');
   background-size: 18px;
 }
 
@@ -555,7 +555,7 @@ blockquote {
   padding: 16px 20px 15px 42px;
   border-radius: 15px;
   background-color: #ffc527;
-  background-image: url('../images/font-awesome_4-7-0_phone_100_0_ffffff_none.png');
+  background-image: url('/img/font-awesome_4-7-0_phone_100_0_ffffff_none.png');
   background-position: 17px 50%;
   background-size: 16px;
   background-repeat: no-repeat;
@@ -592,7 +592,7 @@ blockquote {
 }
 
 .button-icon.envelope {
-  background-image: url('../images/font-awesome_4-7-0_envelope-open_100_0_ffffff_none.png');
+  background-image: url('/img/font-awesome_4-7-0_envelope-open_100_0_ffffff_none.png');
   background-position: 17px 45%;
   background-size: 16px;
 }
@@ -600,7 +600,7 @@ blockquote {
 .button-icon.form-button {
   display: inline-block;
   background-color: #f0542d;
-  background-image: url('../images/font-awesome_4-7-0_paper-plane_100_0_ffffff_none.png');
+  background-image: url('/img/font-awesome_4-7-0_paper-plane_100_0_ffffff_none.png');
   background-size: 16px;
   text-align: center;
 }
@@ -622,7 +622,7 @@ blockquote {
   display: inline-block;
   margin-top: 0px;
   float: none;
-  background-image: url('../images/font-awesome_4-7-0_arrow-circle-o-right_100_0_ffffff_none.png');
+  background-image: url('/img/font-awesome_4-7-0_arrow-circle-o-right_100_0_ffffff_none.png');
   background-size: 16px;
   text-align: left;
 }
@@ -659,14 +659,14 @@ blockquote {
 }
 
 .button-icon.previous {
-  background-image: url('../images/left-arrow.png');
+  background-image: url('/img/left-arrow.png');
   background-size: 18px;
 }
 
 .button-icon.next-project {
   padding-right: 42px;
   padding-left: 20px;
-  background-image: url('../images/right-arrow.png');
+  background-image: url('/img/right-arrow.png');
   background-position: 88% 50%;
   background-size: 18px;
 }
@@ -740,14 +740,14 @@ blockquote {
   width: 75px;
   height: 75px;
   float: left;
-  background-image: url('../images/clock-1.svg');
+  background-image: url('/img/clock-1.svg');
   background-position: 50% 50%;
   background-size: 40px;
   background-repeat: no-repeat;
 }
 
 .top-icon.icon-2 {
-  background-image: url('../images/envelope-1.svg');
+  background-image: url('/img/envelope-1.svg');
   background-size: 40px;
 }
 
@@ -960,24 +960,24 @@ blockquote {
   margin-bottom: 15px;
   padding-top: 2px;
   padding-left: 35px;
-  background-image: url('../images/location-pin.svg');
+  background-image: url('/img/location-pin.svg');
   background-position: 0px 4px;
   background-size: 24px;
   background-repeat: no-repeat;
 }
 
 .contact-list.phone {
-  background-image: url('../images/phone-call-1.svg');
+  background-image: url('/img/phone-call-1.svg');
   background-size: 21px;
 }
 
 .contact-list.phone.white-phone {
-  background-image: url('../images/phone-call-3.svg');
+  background-image: url('/img/phone-call-3.svg');
   background-size: 21px;
 }
 
 .contact-list.mail {
-  background-image: url('../images/envelope.svg');
+  background-image: url('/img/envelope.svg');
   background-position: 0px 5px;
   background-size: 20px;
 }
@@ -987,12 +987,12 @@ blockquote {
 }
 
 .contact-list.mail.white-mail {
-  background-image: url('../images/envelope-3.svg');
+  background-image: url('/img/envelope-3.svg');
   background-size: 20px;
 }
 
 .contact-list.white-icon {
-  background-image: url('../images/location-marker.svg');
+  background-image: url('/img/location-marker.svg');
   background-size: 24px;
 }
 
@@ -1047,7 +1047,7 @@ blockquote {
   padding-top: 80px;
   padding-bottom: 150px;
   background-color: #fff;
-  background-image: url('../images/footer-bn.png');
+  background-image: url('/img/footer-bn.png');
   background-position: 100% 50%;
   background-size: contain;
   background-repeat: no-repeat;
@@ -1066,7 +1066,7 @@ blockquote {
 .border-top {
   width: 100%;
   height: 17px;
-  background-image: url('../images/border-2_top.png');
+  background-image: url('/img/border-2_top.png');
   background-repeat: repeat-x;
   opacity: 0.5;
 }
@@ -1147,7 +1147,7 @@ blockquote {
   padding-top: 60px;
   padding-bottom: 162px;
   background-color: #fff;
-  background-image: url('../images/1.jpg');
+  background-image: url('/img/1.jpg');
   background-position: 50% 136%;
   background-size: contain;
   background-repeat: no-repeat;
@@ -1163,7 +1163,7 @@ blockquote {
   height: 600px;
   padding-top: 0px;
   background-color: #002e5b;
-  background-image: url('../images/boat.png');
+  background-image: url('/img/boat.png');
   background-position: 0px 0px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1211,7 +1211,7 @@ blockquote {
 
 .section.with-image-1 {
   background-color: #fafafa;
-  background-image: url('../images/sub-banner-1.jpg');
+  background-image: url('/img/sub-banner-1.jpg');
   background-position: 0px 50%;
   background-size: contain;
   background-repeat: no-repeat;
@@ -1219,7 +1219,7 @@ blockquote {
 
 .section.blue {
   background-color: #002e5b;
-  background-image: url('../images/2_map.png');
+  background-image: url('/img/2_map.png');
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1228,7 +1228,7 @@ blockquote {
 
 .section.blue.with-triangle {
   padding-bottom: 140px;
-  background-image: url('../images/form-gray.png'), url('../images/2_map.png');
+  background-image: url('/img/form-gray.png'), url('/img/2_map.png');
   background-position: 50% 100%, 50% 50%;
   background-size: contain, cover;
   background-repeat: no-repeat, no-repeat;
@@ -1238,7 +1238,7 @@ blockquote {
 .section.blue.with-triangle.navigation {
   padding-top: 0px;
   padding-bottom: 200px;
-  background-image: url('../images/form.png'), url('../images/2_map.png');
+  background-image: url('/img/form.png'), url('/img/2_map.png');
 }
 
 .section.with-image-6 {
@@ -1249,7 +1249,7 @@ blockquote {
 }
 
 .section.triangle-blue {
-  background-image: url('../images/form-blue.png');
+  background-image: url('/img/form-blue.png');
   background-position: 50% 100%;
   background-size: contain;
   background-repeat: no-repeat;
@@ -1435,19 +1435,19 @@ blockquote {
   float: left;
   border: 2px solid #ffc527;
   border-radius: 100%;
-  background-image: url('../images/medal-1.svg');
+  background-image: url('/img/medal-1.svg');
   background-position: 50% 50%;
   background-size: 50px;
   background-repeat: no-repeat;
 }
 
 .features-icon.icon-2 {
-  background-image: url('../images/paint-roller-1.svg');
+  background-image: url('/img/paint-roller-1.svg');
   background-size: 50px;
 }
 
 .features-icon.icon-3 {
-  background-image: url('../images/startup.svg');
+  background-image: url('/img/startup.svg');
   background-size: 50px;
 }
 
@@ -1507,7 +1507,7 @@ blockquote {
   margin-left: auto;
   border: 1px solid #fff;
   border-radius: 100%;
-  background-image: url('../images/icon.svg');
+  background-image: url('/img/icon.svg');
   background-position: 50% 50%;
   background-size: 22px;
   background-repeat: no-repeat;
@@ -1628,14 +1628,14 @@ blockquote {
   margin-bottom: 20px;
   margin-left: auto;
   border-radius: 100%;
-  background-image: url('../images/member-4.jpg');
+  background-image: url('/img/member-4.jpg');
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .testimonials-photo.photo-2 {
-  background-image: url('../images/member-2.jpg');
+  background-image: url('/img/member-2.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -1644,7 +1644,7 @@ blockquote {
   width: 240px;
   height: 240px;
   margin-bottom: 10px;
-  background-image: url('../images/400dpiLogo-2.jpg');
+  background-image: url('/img/400dpiLogo-2.jpg');
   background-size: cover;
 }
 
@@ -1680,7 +1680,7 @@ blockquote {
 .social-icon-team {
   width: 40px;
   height: 40px;
-  background-image: url('../images/font-awesome_4-7-0_facebook_100_0_313131_none.png');
+  background-image: url('/img/font-awesome_4-7-0_facebook_100_0_313131_none.png');
   background-position: 50% 50%;
   background-size: 18px;
   background-repeat: no-repeat;
@@ -1694,12 +1694,12 @@ blockquote {
 }
 
 .social-icon-team.twitter {
-  background-image: url('../images/font-awesome_4-7-0_twitter_100_0_313131_none.png');
+  background-image: url('/img/font-awesome_4-7-0_twitter_100_0_313131_none.png');
   background-size: 18px;
 }
 
 .social-icon-team.linkd {
-  background-image: url('../images/font-awesome_4-7-0_linkedin_100_0_313131_none.png');
+  background-image: url('/img/font-awesome_4-7-0_linkedin_100_0_313131_none.png');
   background-size: 18px;
 }
 
@@ -1787,7 +1787,7 @@ blockquote {
   width: 100px;
   height: 100px;
   background-color: #ffc527;
-  background-image: url('../images/logo-small.png');
+  background-image: url('/img/logo-small.png');
   background-position: 50% 50%;
   background-size: 50px;
   background-repeat: no-repeat;
@@ -1802,7 +1802,7 @@ blockquote {
   right: 30px;
   width: 60px;
   height: 60px;
-  background-image: url('../images/remove.svg');
+  background-image: url('/img/remove.svg');
   background-position: 50% 50%;
   background-size: 30px;
   background-repeat: no-repeat;
@@ -1823,8 +1823,8 @@ blockquote {
 
 .sub-banner.style-1 {
   background-color: #002e5b;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.3)), to(rgba(0, 0, 0, 0.3))), url('../images/Screen-Shot-2017-04-24-at-6.40.31-PM.png');
-  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../images/Screen-Shot-2017-04-24-at-6.40.31-PM.png');
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.3)), to(rgba(0, 0, 0, 0.3))), url('/img/Screen-Shot-2017-04-24-at-6.40.31-PM.png');
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/img/Screen-Shot-2017-04-24-at-6.40.31-PM.png');
   background-position: 0px 0px, 100% 50%;
   background-size: auto, cover;
   background-repeat: repeat, no-repeat;
@@ -1833,7 +1833,7 @@ blockquote {
 .sub-banner.contact-style-4 {
   height: auto;
   min-height: auto;
-  background-image: url('../images/water-header.png');
+  background-image: url('/img/water-header.png');
   background-position: 0px 0px;
   background-size: cover;
   background-repeat: repeat;
@@ -1842,8 +1842,8 @@ blockquote {
 .sub-banner.contact-style-4.sub2 {
   height: 30%;
   min-height: 30%;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 46, 91, 0.76)), to(rgba(0, 46, 91, 0.76))), url('../images/Technical-Drawing-vsat--4g-x2.jpg');
-  background-image: linear-gradient(180deg, rgba(0, 46, 91, 0.76), rgba(0, 46, 91, 0.76)), url('../images/Technical-Drawing-vsat--4g-x2.jpg');
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 46, 91, 0.76)), to(rgba(0, 46, 91, 0.76))), url('/img/Technical-Drawing-vsat--4g-x2.jpg');
+  background-image: linear-gradient(180deg, rgba(0, 46, 91, 0.76), rgba(0, 46, 91, 0.76)), url('/img/Technical-Drawing-vsat--4g-x2.jpg');
   background-position: 0px 0px, 0px -226px;
   background-size: auto, cover;
   background-attachment: scroll, fixed;
@@ -1852,7 +1852,7 @@ blockquote {
 .sub-banner.about-style-3 {
   height: 360px;
   background-color: #ffc527;
-  background-image: url('../images/nearshorenetworks-logo-big.png'), url('../images/page-heading-bg.png');
+  background-image: url('/img/nearshorenetworks-logo-big.png'), url('/img/page-heading-bg.png');
   background-position: 50% 76%, 0px 0px;
   background-size: 300px, auto;
   background-repeat: no-repeat, repeat;
@@ -1861,15 +1861,15 @@ blockquote {
 
 .sub-banner._404 {
   height: 700px;
-  background-image: url('../images/page-heading-bg.png');
+  background-image: url('/img/page-heading-bg.png');
   background-position: 0px 0px;
   background-attachment: fixed;
 }
 
 .sub-banner.faq {
   height: 550px;
-  background-image: url('../images/form.png'), -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url('../images/man-woman-ipad.jpg');
-  background-image: url('../images/form.png'), linear-gradient(180deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/man-woman-ipad.jpg');
+  background-image: url('/img/form.png'), -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url('/img/man-woman-ipad.jpg');
+  background-image: url('/img/form.png'), linear-gradient(180deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/img/man-woman-ipad.jpg');
   background-position: 50% 100%, 0px 0px, 0px 0px;
   background-size: cover, auto, cover;
   background-repeat: no-repeat, repeat, no-repeat;
@@ -1924,7 +1924,7 @@ blockquote {
 }
 
 .with-triangle {
-  background-image: url('../images/form-blue.png');
+  background-image: url('/img/form-blue.png');
   background-position: 50% 100%;
   background-size: contain;
   background-repeat: no-repeat;
@@ -1989,7 +1989,7 @@ blockquote {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   background-color: #ffc527;
-  background-image: url('../images/long-arrow-pointing-up.svg');
+  background-image: url('/img/long-arrow-pointing-up.svg');
   background-position: 50% 50%;
   background-size: 26px;
   background-repeat: no-repeat;
@@ -2310,7 +2310,7 @@ blockquote {
 }
 
 .section-4 {
-  background-image: url('../images/pexels-photo-270376.jpeg');
+  background-image: url('/img/pexels-photo-270376.jpeg');
   background-position: 0px 0px;
   background-size: cover;
   background-attachment: fixed;
@@ -2675,7 +2675,7 @@ blockquote {
 }
 
 .buy-button.button-icon {
-  background-image: url('../images/font-awesome_4-7-0_paper-plane_100_0_ffffff_none.png');
+  background-image: url('/img/font-awesome_4-7-0_paper-plane_100_0_ffffff_none.png');
   background-position: 15px 50%;
   background-size: 20px;
   background-repeat: no-repeat;
@@ -3796,7 +3796,7 @@ blockquote {
 
 .div-block-24 {
   width: 100%;
-  background-image: url('../images/shipping-communications.jpg');
+  background-image: url('/img/shipping-communications.jpg');
   background-position: 50% 50%;
   background-size: cover;
 }
@@ -4261,7 +4261,7 @@ blockquote {
   padding-top: 100px;
   padding-bottom: 100px;
   background-color: rgba(0, 0, 0, 0.56);
-  background-image: url('../images/pexels-photo-3278012.jpeg');
+  background-image: url('/img/pexels-photo-3278012.jpeg');
   background-position: 50% 100%;
   background-size: auto;
   box-shadow: 1px 1px 3px 0 #000;
@@ -4409,7 +4409,7 @@ blockquote {
 .section-16 {
   padding-top: 60px;
   padding-bottom: 60px;
-  background-image: url('../images/passenger-vessel.jpg'), url('https://d3e54v103j8qbb.cloudfront.net/img/background-image.svg');
+  background-image: url('/img/passenger-vessel.jpg'), url('https://d3e54v103j8qbb.cloudfront.net/img/background-image.svg');
   background-position: 50% 100%, 0px 0px;
   background-size: auto, auto;
 }
@@ -4945,7 +4945,7 @@ blockquote {
 .section-20 {
   padding-top: 60px;
   padding-bottom: 60px;
-  background-image: url('../images/water-header.png');
+  background-image: url('/img/water-header.png');
   background-position: 0px 0px;
   background-size: auto;
 }
@@ -4994,7 +4994,7 @@ blockquote {
 }
 
 .section-21 {
-  background-image: url('../images/water-header.png');
+  background-image: url('/img/water-header.png');
   background-position: 0px 0px;
   background-size: auto;
 }
@@ -6475,7 +6475,7 @@ html.w-mod-js *[data-ix="move-project-text-on-apper-2"] {
   }
 
   .section.blue.with-triangle {
-    background-image: url('../images/2_map.png');
+    background-image: url('/img/2_map.png');
     background-position: 50% 50%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -6483,7 +6483,7 @@ html.w-mod-js *[data-ix="move-project-text-on-apper-2"] {
   }
 
   .section.blue.with-triangle.navigation {
-    background-image: url('../images/2_map.png');
+    background-image: url('/img/2_map.png');
     background-position: 50% 50%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -6589,21 +6589,21 @@ html.w-mod-js *[data-ix="move-project-text-on-apper-2"] {
 
   .sub-banner.contact-style-4 {
     height: auto;
-    background-image: url('../images/Screen-Shot-2017-04-24-at-6.40.31-PM.png');
+    background-image: url('/img/Screen-Shot-2017-04-24-at-6.40.31-PM.png');
     background-position: 0px 0px;
     background-size: cover;
   }
 
   .sub-banner.about-style-3 {
-    background-image: url('../images/nearshorenetworks-logo-big.png'), url('../images/page-heading-bg.png');
+    background-image: url('/img/nearshorenetworks-logo-big.png'), url('/img/page-heading-bg.png');
     background-position: 50% 76%, 0px 0px;
     background-size: 400px, auto;
     background-repeat: no-repeat, repeat;
   }
 
   .sub-banner.faq {
-    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url('../images/man-woman-ipad.jpg');
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/man-woman-ipad.jpg');
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url('/img/man-woman-ipad.jpg');
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/img/man-woman-ipad.jpg');
     background-position: 0px 0px, 0px 0px;
     background-size: auto, cover;
     background-repeat: repeat, no-repeat;
@@ -7585,7 +7585,7 @@ html.w-mod-js *[data-ix="move-project-text-on-apper-2"] {
 
   .sub-banner.about-style-3 {
     height: 290px;
-    background-image: url('../images/nearshorenetworks-logo-big.png'), url('../images/page-heading-bg.png');
+    background-image: url('/img/nearshorenetworks-logo-big.png'), url('/img/page-heading-bg.png');
     background-position: 50% 50%, 0px 0px;
     background-size: 90%, auto;
     background-repeat: no-repeat, repeat;
@@ -7706,8 +7706,8 @@ html.w-mod-js *[data-ix="move-project-text-on-apper-2"] {
     height: auto;
     max-height: 480px;
     padding-bottom: 20px;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 46, 91, 0.77)), to(rgba(0, 46, 91, 0.77))), url('../images/boat_image.png');
-    background-image: linear-gradient(180deg, rgba(0, 46, 91, 0.77), rgba(0, 46, 91, 0.77)), url('../images/boat_image.png');
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 46, 91, 0.77)), to(rgba(0, 46, 91, 0.77))), url('/img/boat_image.png');
+    background-image: linear-gradient(180deg, rgba(0, 46, 91, 0.77), rgba(0, 46, 91, 0.77)), url('/img/boat_image.png');
     background-position: 0px 0px, 0px 0px;
     background-size: auto, cover;
   }
