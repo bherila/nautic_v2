@@ -29,7 +29,7 @@ export default function Header() {
             className="link-block-11 w-inline-block"
           >
             <img
-              src="../../images/nearshorenetworks-logo.png"
+              src="/img/nearshorenetworks-logo.png"
               width="170"
               id="header-logo"
               alt=""

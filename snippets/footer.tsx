@@ -101,7 +101,7 @@ export default function Footer() {
         <div className="row-5 w-row">
           <div className="column-40 w-col w-col-3">
             <img
-              src="../../images/nearshorenetworks-logo-light.png"
+              src="/img/nearshorenetworks-logo-light.png"
               width="145"
               id="footer-logo"
               alt=""
