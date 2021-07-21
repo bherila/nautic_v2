@@ -1,7 +1,9 @@
 ﻿import * as React from "react";
 import { PlanOption } from "./PlanOptions";
 import isIMEIValid from "../lib/luhn";
-import RegistrationState from "../lib/RegistrationState";
+import RegistrationState, {
+  defaultRegistrationState,
+} from "../lib/RegistrationState";
 import { saveToLocalStorage } from "./localStorage";
 import { FormEvent } from "react";
 import { CoverageMapTerm } from "../snippets/tMobileCoverageMap";
@@ -34,23 +36,7 @@ export default class RegistrationForm extends React.Component<
 > {
   constructor(props: Props, context: any) {
     super(props, context);
-    this.state = {
-      selectedPlan: [""],
-      broadbandVideo: false,
-      installDate: "",
-      imei: "",
-      ownerFname: "",
-      ownerLname: "",
-      ownerMi: "",
-      vesselName: "",
-      cellNumber: "",
-      vesselType: "",
-      dealerName: "",
-      dealerCompany: "",
-      showImeiModal: false,
-      agreed: false,
-      iccId: "",
-    };
+    this.state = { ...defaultRegistrationState };
   }
 
   renderPlanOptions(

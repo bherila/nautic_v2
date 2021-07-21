@@ -15,3 +15,21 @@
   agreed: boolean;
   iccId: string;
 }
+
+export const defaultRegistrationState: RegistrationState = {
+  selectedPlan: [""],
+  broadbandVideo: false,
+  installDate: "",
+  imei: "",
+  ownerFname: "",
+  ownerLname: "",
+  ownerMi: "",
+  vesselName: "",
+  cellNumber: "",
+  vesselType: "",
+  dealerName: "",
+  dealerCompany: "",
+  showImeiModal: false,
+  agreed: false,
+  iccId: "",
+};
