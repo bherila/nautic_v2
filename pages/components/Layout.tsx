@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 
 
-export default function Layout() {
+export default function Layout({ children }) {
   return (
     <div>
       <Head>
@@ -14,7 +14,7 @@ export default function Layout() {
       </Head>
 
 
-      
+      <main>{children}</main>
       
 
       <footer className="custom-footer">

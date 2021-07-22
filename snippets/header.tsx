@@ -1,6 +1,29 @@
-﻿import React from "react";
+﻿import React , { useEffect, useState } from "react";
+
+import Navigation2 from './navigation2'
+
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  NavbarText
+} from 'reactstrap';
 
 export default function Header() {
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => setIsOpen(!isOpen);
+
+
   return (
     <div
       data-collapse="medium"
@@ -22,6 +45,8 @@ export default function Header() {
           </p>
         </div>
       </div>
+
+
       <div className="w-container">
         <div className="container-22">
           <a
@@ -35,6 +60,12 @@ export default function Header() {
               alt=""
             />
           </a>
+
+                {/*<Navigation2 />*/}
+
+                
+
+
           <nav role="navigation" className="nav-menu-2 w-nav-menu">
             <div
               data-hover="1"
@@ -43,14 +74,19 @@ export default function Header() {
               className="header-item w-dropdown"
             >
               <div className="header-dd w-dropdown-toggle">
-                <div className="text-block-2">Industries</div>
-                <div className="drop-down-arrow w-icon-dropdown-toggle"></div>
+                <div className="text-block-2" onClick={toggle}>Industries</div>
+                <NavbarToggler onClick={toggle} />
                 <div
                   data-ix="line-navigation-initial-app"
                   className="line-navigation"
                 ></div>
               </div>
-              <nav className="dropdown-list w-dropdown-list">
+              <Collapse isOpen={isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              
+            </Nav>
+          </Collapse>
+             {/* <nav className="dropdown-list w-dropdown-list">
                 <div className="collection-list-wrapper-3 w-dyn-list">
                   <div role="list" className="w-dyn-items">
                     <div role="listitem" className="dropdown-link w-dyn-item">
@@ -63,7 +99,7 @@ export default function Header() {
                     <div>No items found.</div>
                   </div>
                 </div>
-              </nav>
+              </nav>*/}
             </div>
             <div
               data-hover="1"
