@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import {
   nauticAlertPlanOptions,
   nauticAlertBroadbandVideo,
@@ -6,7 +6,7 @@ import {
 import RegistrationForm from "../lib/RegistrationForm";
 
 
-export default function RegistrationFormPage({}) {
+export default function PaymentMethodFormPage({}) {
   return (
       <>
         
