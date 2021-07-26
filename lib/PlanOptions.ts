@@ -20,6 +20,19 @@ export const nauticAlertBroadbandVideo = {
   "1O6X4USFUW09D3DMWPSSP16751": "BF6OQP852W8K2N1850LUP20556",
 };
 
+export function findPlanOption(
+  checkoutId: string,
+  arr?: PlanOption[]
+): PlanOption | null {
+  if (!arr) return null;
+  const res = arr.find((x) => x.checkoutId && x.checkoutId === checkoutId);
+  return (
+    res ||
+    arr.map((x) => findPlanOption(checkoutId, x.planOptions)).find(Boolean) ||
+    null
+  );
+}
+
 export const nauticAlertPlanOptions: PlanOption[] = [
   {
     name: "Insight Cellular",

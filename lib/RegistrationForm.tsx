@@ -8,6 +8,7 @@ import { saveToLocalStorage } from "./localStorage";
 import { FormEvent } from "react";
 import { CoverageMapTerm } from "../snippets/tMobileCoverageMap";
 import Image from "next/image";
+import NearshoreCheckout from "./nearshoreCheckout";
 
 const getPlanOptionById: { [key: string]: PlanOption } = {};
 const headingSize = "15pt";
@@ -55,7 +56,6 @@ export default class RegistrationForm extends React.Component<
             while (selectedPlan.length <= depth) selectedPlan.push("");
             selectedPlan[depth] = e.currentTarget.value;
             this.setState({ selectedPlan });
-            console.log(selectedPlan);
           }}
         >
           <option>{defaultChoice || "Select One"}</option>
@@ -385,7 +385,7 @@ export default class RegistrationForm extends React.Component<
   render() {
     const isValid = this.isPlanValid() && this.state.agreed;
     return (
-      <form style={{ fontSize: bodySize }} onSubmit={(e) => this.submitForm(e)}>
+      <div style={{ fontSize: bodySize }}>
         {this.state.showImeiModal && this.renderImeiModal()}
         <div className="quote-form-wrapper new-form">
           <div className="w-row">
@@ -393,21 +393,22 @@ export default class RegistrationForm extends React.Component<
             <div className="w-col w-col-6">{this.renderCol2()}</div>
           </div>
           <div className="w-row">{this.renderTerms()}</div>
-          <div className="w-row">
-            <div className="w-col w-col-12" style={{ textAlign: "center" }}>
-              <button
-                type="submit"
-                disabled={!isValid}
-                className={
-                  "buy-button button-icon w-button " + (!isValid && "disabled")
-                }
-              >
-                Proceed
-              </button>
-            </div>
-          </div>
+          {/*<div className="w-row">*/}
+          {/*  <div className="w-col w-col-12" style={{ textAlign: "center" }}>*/}
+          {/*    <button*/}
+          {/*      type="submit"*/}
+          {/*      disabled={!isValid}*/}
+          {/*      className={*/}
+          {/*        "buy-button button-icon w-button " + (!isValid && "disabled")*/}
+          {/*      }*/}
+          {/*    >*/}
+          {/*      Proceed*/}
+          {/*    </button>*/}
+          {/*  </div>*/}
+          {/*</div>*/}
+          <NearshoreCheckout plan={this.state} />
         </div>
-      </form>
+      </div>
     );
   }
 
@@ -469,25 +470,8 @@ export default class RegistrationForm extends React.Component<
     return this.state.selectedPlan.slice(-1)[0] || "";
   }
 
-  getSelectedPlanId() {
-    const { broadbandVideoAddOn } = this.props;
-    const basePlan = this.getBasePlanId();
-    if (this.state.broadbandVideo) {
-      const bbv = broadbandVideoAddOn[basePlan];
-      return bbv || basePlan;
-    }
-    return basePlan;
-  }
-
   isPlanValid() {
     const { broadbandVideoAddOn } = this.props;
     return !!broadbandVideoAddOn[this.getBasePlanId()];
-  }
-
-  submitForm(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    saveToLocalStorage(this.state);
-    // Checkout.loadButton(this.getSelectedPlanId(), this.generateUrlParams());
-    // TODO: Submit to backend for processing
   }
 }

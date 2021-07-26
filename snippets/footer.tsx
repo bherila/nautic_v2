@@ -25,17 +25,13 @@ export default function Footer() {
                 >
                   <img
                     src="https://niftybuttons.com/rkc-social-set-1/facebook.png"
-                    align="left"
-                    border="0"
-                    style={{ margin: "1px" }}
+                    style={{ margin: "1px", border: "none" }}
                   />
                 </a>
                 <a href="https://twitter.com/BobM_Global" target="_blank">
                   <img
                     src="https://niftybuttons.com/rkc-social-set-1/twitter.png"
-                    border="0"
-                    style={{ margin: "1px" }}
-                    align="left"
+                    style={{ margin: "1px", border: "none" }}
                   />
                 </a>
                 <a
@@ -44,9 +40,7 @@ export default function Footer() {
                 >
                   <img
                     src="https://niftybuttons.com/rkc-social-set-1/youtube.png"
-                    border="0"
-                    style={{ margin: "1px" }}
-                    align="left"
+                    style={{ margin: "1px", border: "none" }}
                   />
                 </a>
                 <a
@@ -55,9 +49,7 @@ export default function Footer() {
                 >
                   <img
                     src="https://niftybuttons.com/rkc-social-set-1/linkedin.png"
-                    border="0"
-                    style={{ margin: "1px" }}
-                    align="left"
+                    style={{ margin: "1px", border: "none" }}
                   />
                 </a>
               </div>

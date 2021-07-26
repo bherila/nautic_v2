@@ -1,11 +1,11 @@
 ﻿import "reflect-metadata";
-import {ApolloServer} from "apollo-server-micro";
+import { ApolloServer } from "apollo-server-micro";
 import Cors from "cors";
-import {NextApiRequest, NextApiResponse} from "next";
-import {buildSchema,} from "type-graphql";
+import { NextApiRequest, NextApiResponse } from "next";
+import { buildSchema } from "type-graphql";
 import initMiddleware from "../../lib/initMiddleware";
-import {GraphQLSchema} from "graphql";
-import {RegistrationResolver} from "../../lib/graphql/registrationResolver";
+import { GraphQLSchema } from "graphql";
+import { RegistrationResolver } from "../../lib/graphql/registrationResolver";
 
 // NOTE: Needed for vercel, don't remove!!
 // noinspection JSUnusedGlobalSymbols
@@ -35,7 +35,8 @@ const createSchema = async (shouldEmitSchemaFile = true) => {
 
 let apolloServerHandler: (req: any, res: any) => Promise<void>;
 let schema: GraphQLSchema | null = null;
-const getApolloServerHandler = async () => {
+
+async function getApolloServerHandler() {
   if (!schema) {
     schema = await createSchema();
   }
@@ -47,7 +48,7 @@ const getApolloServerHandler = async () => {
     });
   }
   return apolloServerHandler;
-};
+}
 
 // Initialize the cors middleware
 const cors = initMiddleware(
@@ -58,7 +59,7 @@ const cors = initMiddleware(
   })
 );
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async function (req: NextApiRequest, res: NextApiResponse) {
   await cors(req, res);
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader(
@@ -72,4 +73,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const apolloServerHandler = await getApolloServerHandler();
   return apolloServerHandler(req, res);
-};
+}

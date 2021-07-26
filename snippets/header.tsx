@@ -79,17 +79,152 @@ export default function Header() {
                   className="line-navigation"
                 ></div>
               </div>
-              <nav className="dropdown-list w-dropdown-list">
+              <nav
+                className="dropdown-list w-dropdown-list"
+                id="w-dropdown-list-1"
+                aria-labelledby="w-dropdown-toggle-1"
+              >
                 <div className="w-dyn-list">
                   <div role="list" className="collection-list-3 w-dyn-items">
                     <div role="listitem" className="dropdown-link w-dyn-item">
-                      <a href="#" className="link-block-16 w-inline-block">
-                        <div className="text-block-49"></div>
+                      <a
+                        href="/solutions/aquaculture"
+                        className="link-block-16 w-inline-block"
+                        tabIndex={0}
+                      >
+                        <div className="text-block-49">Aquaculture</div>
                       </a>
                     </div>
-                  </div>
-                  <div className="w-dyn-empty">
-                    <div>No items found.</div>
+                    <div role="listitem" className="dropdown-link w-dyn-item">
+                      <a
+                        href="/solutions/asset-tracking-monitoring"
+                        className="link-block-16 w-inline-block"
+                        tabIndex={0}
+                      >
+                        <div className="text-block-49">
+                          Asset Tracking &amp; Monitoring
+                        </div>
+                      </a>
+                    </div>
+                    <div role="listitem" className="dropdown-link w-dyn-item">
+                      <a
+                        href="/solutions/day-rate-short-term-solutions"
+                        className="link-block-16 w-inline-block"
+                        tabIndex={0}
+                      >
+                        <div className="text-block-49">
+                          Day Rate &amp; Short-Term Solutions
+                        </div>
+                      </a>
+                    </div>
+                    <div role="listitem" className="dropdown-link w-dyn-item">
+                      <a
+                        href="/solutions/energy"
+                        className="link-block-16 w-inline-block"
+                        tabIndex={0}
+                      >
+                        <div className="text-block-49">
+                          Energy Production and Pipeline Transmission Data
+                        </div>
+                      </a>
+                    </div>
+                    <div role="listitem" className="dropdown-link w-dyn-item">
+                      <a
+                        href="/solutions/goodspeed-wifi-hotspots"
+                        className="link-block-16 w-inline-block"
+                        tabIndex={0}
+                      >
+                        <div className="text-block-49">
+                          Goodspeed WiFi Hotspots
+                        </div>
+                      </a>
+                    </div>
+                    <div role="listitem" className="dropdown-link w-dyn-item">
+                      <a
+                        href="/solutions/it-networking-security"
+                        className="link-block-16 w-inline-block"
+                        tabIndex={0}
+                      >
+                        <div className="text-block-49">
+                          IT, Networking &amp; Security
+                        </div>
+                      </a>
+                    </div>
+                    <div role="listitem" className="dropdown-link w-dyn-item">
+                      <a
+                        href="/solutions/marine-ip-television-video-on-demand"
+                        className="link-block-16 w-inline-block"
+                        tabIndex={0}
+                      >
+                        <div className="text-block-49">
+                          Marine IP Television &amp; Video-On-Demand
+                        </div>
+                      </a>
+                    </div>
+                    <div role="listitem" className="dropdown-link w-dyn-item">
+                      <a
+                        href="/solutions/microclimate-weather-forecasting"
+                        className="link-block-16 w-inline-block"
+                        tabIndex={0}
+                      >
+                        <div className="text-block-49">
+                          MicroClimate Weather Forecasting
+                        </div>
+                      </a>
+                    </div>
+                    <div role="listitem" className="dropdown-link w-dyn-item">
+                      <a
+                        href="/solutions/offshore-internet"
+                        className="link-block-16 w-inline-block"
+                        tabIndex={0}
+                      >
+                        <div className="text-block-49">Offshore Internet</div>
+                      </a>
+                    </div>
+                    <div role="listitem" className="dropdown-link w-dyn-item">
+                      <a
+                        href="/solutions/out-of-band-management"
+                        className="link-block-16 w-inline-block"
+                        tabIndex={0}
+                      >
+                        <div className="text-block-49">
+                          Out-of-Band Management
+                        </div>
+                      </a>
+                    </div>
+                    <div role="listitem" className="dropdown-link w-dyn-item">
+                      <a
+                        href="/solutions/surface-buoy-monitoring"
+                        className="link-block-16 w-inline-block"
+                        tabIndex={0}
+                      >
+                        <div className="text-block-49">
+                          Surface Buoy Monitoring
+                        </div>
+                      </a>
+                    </div>
+                    <div role="listitem" className="dropdown-link w-dyn-item">
+                      <a
+                        href="/solutions/vessel-monitoring-and-security"
+                        className="link-block-16 w-inline-block"
+                        tabIndex={0}
+                      >
+                        <div className="text-block-49">
+                          Vessel Monitoring and Security
+                        </div>
+                      </a>
+                    </div>
+                    <div role="listitem" className="dropdown-link w-dyn-item">
+                      <a
+                        href="/solutions/voip-cellular-voice-solutions"
+                        className="link-block-16 w-inline-block"
+                        tabIndex={0}
+                      >
+                        <div className="text-block-49">
+                          VoIP &amp; Cellular Voice Solutions
+                        </div>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </nav>
