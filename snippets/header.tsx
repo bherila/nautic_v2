@@ -1,6 +1,7 @@
 ﻿import React from "react";
 
 export default function Header() {
+  let lastTabIndex = 0;
   return (
     <div
       data-collapse="medium"
@@ -44,23 +45,66 @@ export default function Header() {
             >
               <div className="header-dd w-dropdown-toggle">
                 <div className="text-block-2">Industries</div>
-                <div className="drop-down-arrow w-icon-dropdown-toggle"></div>
+                <div className="drop-down-arrow w-icon-dropdown-toggle" />
                 <div
                   data-ix="line-navigation-initial-app"
                   className="line-navigation"
-                ></div>
+                />
               </div>
-              <nav className="dropdown-list w-dropdown-list">
+              <nav
+                className="dropdown-list w-dropdown-list"
+                id="w-dropdown-list-0"
+                aria-labelledby="w-dropdown-toggle-0"
+              >
                 <div className="collection-list-wrapper-3 w-dyn-list">
                   <div role="list" className="w-dyn-items">
                     <div role="listitem" className="dropdown-link w-dyn-item">
-                      <a href="#" className="link-block-15 w-inline-block">
-                        <div className="text-block-50"></div>
+                      <a
+                        href="https://www.nearshorenetworks.com/industries/leisure-vessels"
+                        className="link-block-15 w-inline-block"
+                        tabIndex={lastTabIndex++}
+                      >
+                        <div className="text-block-50">Leisure Vessels</div>
                       </a>
                     </div>
-                  </div>
-                  <div className="w-dyn-empty">
-                    <div>No items found.</div>
+                    <div role="listitem" className="dropdown-link w-dyn-item">
+                      <a
+                        href="https://www.nearshorenetworks.com/industries/fishing-aquaculture"
+                        className="link-block-15 w-inline-block"
+                        tabIndex={lastTabIndex++}
+                      >
+                        <div className="text-block-50">
+                          Fishing &amp; Aquaculture
+                        </div>
+                      </a>
+                    </div>
+                    <div role="listitem" className="dropdown-link w-dyn-item">
+                      <a
+                        href="https://www.nearshorenetworks.com/industries/passenger-vessels"
+                        className="link-block-15 w-inline-block"
+                        tabIndex={lastTabIndex++}
+                      >
+                        <div className="text-block-50">Passenger Vessels</div>
+                      </a>
+                    </div>
+                    <div role="listitem" className="dropdown-link w-dyn-item">
+                      <a
+                        href="https://www.nearshorenetworks.com/industries/shipping"
+                        className="link-block-15 w-inline-block"
+                        tabIndex={lastTabIndex++}
+                      >
+                        <div className="text-block-50">Shipping</div>
+                      </a>
+                    </div>
+                    <div role="listitem" className="dropdown-link w-dyn-item">
+                      <a
+                        href="https://www.nearshorenetworks.com/industries/energy"
+                        className="link-block-15 w-inline-block"
+                        tabIndex={lastTabIndex++}
+                      >
+                        <div className="text-block-50">Energy</div>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </nav>
@@ -73,11 +117,11 @@ export default function Header() {
             >
               <div className="header-dd w-dropdown-toggle">
                 <div className="text-block-2">Solutions</div>
-                <div className="drop-down-arrow w-icon-dropdown-toggle"></div>
+                <div className="drop-down-arrow w-icon-dropdown-toggle" />
                 <div
                   data-ix="line-navigation-initial-app"
                   className="line-navigation"
-                ></div>
+                />
               </div>
               <nav
                 className="dropdown-list w-dropdown-list"
@@ -88,18 +132,18 @@ export default function Header() {
                   <div role="list" className="collection-list-3 w-dyn-items">
                     <div role="listitem" className="dropdown-link w-dyn-item">
                       <a
-                        href="/solutions/aquaculture"
+                        href="https://www.nearshorenetworks.com/solutions/aquaculture"
                         className="link-block-16 w-inline-block"
-                        tabIndex={0}
+                        tabIndex={lastTabIndex++}
                       >
                         <div className="text-block-49">Aquaculture</div>
                       </a>
                     </div>
                     <div role="listitem" className="dropdown-link w-dyn-item">
                       <a
-                        href="/solutions/asset-tracking-monitoring"
+                        href="https://www.nearshorenetworks.com/solutions/asset-tracking-monitoring"
                         className="link-block-16 w-inline-block"
-                        tabIndex={0}
+                        tabIndex={lastTabIndex++}
                       >
                         <div className="text-block-49">
                           Asset Tracking &amp; Monitoring
@@ -108,9 +152,9 @@ export default function Header() {
                     </div>
                     <div role="listitem" className="dropdown-link w-dyn-item">
                       <a
-                        href="/solutions/day-rate-short-term-solutions"
+                        href="https://www.nearshorenetworks.com/solutions/day-rate-short-term-solutions"
                         className="link-block-16 w-inline-block"
-                        tabIndex={0}
+                        tabIndex={lastTabIndex++}
                       >
                         <div className="text-block-49">
                           Day Rate &amp; Short-Term Solutions
@@ -119,9 +163,9 @@ export default function Header() {
                     </div>
                     <div role="listitem" className="dropdown-link w-dyn-item">
                       <a
-                        href="/solutions/energy"
+                        href="https://www.nearshorenetworks.com/solutions/energy"
                         className="link-block-16 w-inline-block"
-                        tabIndex={0}
+                        tabIndex={lastTabIndex++}
                       >
                         <div className="text-block-49">
                           Energy Production and Pipeline Transmission Data
@@ -130,9 +174,9 @@ export default function Header() {
                     </div>
                     <div role="listitem" className="dropdown-link w-dyn-item">
                       <a
-                        href="/solutions/goodspeed-wifi-hotspots"
+                        href="https://www.nearshorenetworks.com/solutions/goodspeed-wifi-hotspots"
                         className="link-block-16 w-inline-block"
-                        tabIndex={0}
+                        tabIndex={lastTabIndex++}
                       >
                         <div className="text-block-49">
                           Goodspeed WiFi Hotspots
@@ -141,9 +185,9 @@ export default function Header() {
                     </div>
                     <div role="listitem" className="dropdown-link w-dyn-item">
                       <a
-                        href="/solutions/it-networking-security"
+                        href="https://www.nearshorenetworks.com/solutions/it-networking-security"
                         className="link-block-16 w-inline-block"
-                        tabIndex={0}
+                        tabIndex={lastTabIndex++}
                       >
                         <div className="text-block-49">
                           IT, Networking &amp; Security
@@ -152,9 +196,9 @@ export default function Header() {
                     </div>
                     <div role="listitem" className="dropdown-link w-dyn-item">
                       <a
-                        href="/solutions/marine-ip-television-video-on-demand"
+                        href="https://www.nearshorenetworks.com/solutions/marine-ip-television-video-on-demand"
                         className="link-block-16 w-inline-block"
-                        tabIndex={0}
+                        tabIndex={lastTabIndex++}
                       >
                         <div className="text-block-49">
                           Marine IP Television &amp; Video-On-Demand
@@ -163,9 +207,9 @@ export default function Header() {
                     </div>
                     <div role="listitem" className="dropdown-link w-dyn-item">
                       <a
-                        href="/solutions/microclimate-weather-forecasting"
+                        href="https://www.nearshorenetworks.com/solutions/microclimate-weather-forecasting"
                         className="link-block-16 w-inline-block"
-                        tabIndex={0}
+                        tabIndex={lastTabIndex++}
                       >
                         <div className="text-block-49">
                           MicroClimate Weather Forecasting
@@ -174,18 +218,18 @@ export default function Header() {
                     </div>
                     <div role="listitem" className="dropdown-link w-dyn-item">
                       <a
-                        href="/solutions/offshore-internet"
+                        href="https://www.nearshorenetworks.com/solutions/offshore-internet"
                         className="link-block-16 w-inline-block"
-                        tabIndex={0}
+                        tabIndex={lastTabIndex++}
                       >
                         <div className="text-block-49">Offshore Internet</div>
                       </a>
                     </div>
                     <div role="listitem" className="dropdown-link w-dyn-item">
                       <a
-                        href="/solutions/out-of-band-management"
+                        href="https://www.nearshorenetworks.com/solutions/out-of-band-management"
                         className="link-block-16 w-inline-block"
-                        tabIndex={0}
+                        tabIndex={lastTabIndex++}
                       >
                         <div className="text-block-49">
                           Out-of-Band Management
@@ -194,9 +238,9 @@ export default function Header() {
                     </div>
                     <div role="listitem" className="dropdown-link w-dyn-item">
                       <a
-                        href="/solutions/surface-buoy-monitoring"
+                        href="https://www.nearshorenetworks.com/solutions/surface-buoy-monitoring"
                         className="link-block-16 w-inline-block"
-                        tabIndex={0}
+                        tabIndex={lastTabIndex++}
                       >
                         <div className="text-block-49">
                           Surface Buoy Monitoring
@@ -205,9 +249,9 @@ export default function Header() {
                     </div>
                     <div role="listitem" className="dropdown-link w-dyn-item">
                       <a
-                        href="/solutions/vessel-monitoring-and-security"
+                        href="https://www.nearshorenetworks.com/solutions/vessel-monitoring-and-security"
                         className="link-block-16 w-inline-block"
-                        tabIndex={0}
+                        tabIndex={lastTabIndex++}
                       >
                         <div className="text-block-49">
                           Vessel Monitoring and Security
@@ -216,9 +260,9 @@ export default function Header() {
                     </div>
                     <div role="listitem" className="dropdown-link w-dyn-item">
                       <a
-                        href="/solutions/voip-cellular-voice-solutions"
+                        href="https://www.nearshorenetworks.com/solutions/voip-cellular-voice-solutions"
                         className="link-block-16 w-inline-block"
-                        tabIndex={0}
+                        tabIndex={lastTabIndex++}
                       >
                         <div className="text-block-49">
                           VoIP &amp; Cellular Voice Solutions
@@ -237,11 +281,11 @@ export default function Header() {
             >
               <div className="header-dd w-dropdown-toggle">
                 <div className="text-block-2">Who We Are</div>
-                <div className="drop-down-arrow w-icon-dropdown-toggle"></div>
+                <div className="drop-down-arrow w-icon-dropdown-toggle" />
                 <div
                   data-ix="line-navigation-initial-app"
                   className="line-navigation"
-                ></div>
+                />
               </div>
               <nav className="dropdown-list w-dropdown-list">
                 <a
@@ -284,11 +328,11 @@ export default function Header() {
             >
               <div className="header-dd w-dropdown-toggle">
                 <div className="text-block-2">Activate Services</div>
-                <div className="drop-down-arrow w-icon-dropdown-toggle"></div>
+                <div className="drop-down-arrow w-icon-dropdown-toggle" />
                 <div
                   data-ix="line-navigation-initial-app"
                   className="line-navigation"
-                ></div>
+                />
               </div>
               <nav className="dropdown-list w-dropdown-list">
                 <a
@@ -326,7 +370,7 @@ export default function Header() {
             </a>
           </nav>
           <div className="menu-button-2 w-nav-button">
-            <div className="w-icon-nav-menu"></div>
+            <div className="w-icon-nav-menu" />
           </div>
         </div>
       </div>
