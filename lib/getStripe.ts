@@ -7,7 +7,8 @@ let stripePromise: Promise<Stripe | null>;
 const getStripe = () => {
   if (!stripePromise) {
     stripePromise = loadStripe(
-      process.env.STRIPE_PUBLISHABLE_KEY || "pk_test_oFd9xXUCCt0n0x25FzJA5vB9"
+      process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ||
+        "pk_test_oFd9xXUCCt0n0x25FzJA5vB9"
     );
   }
   return stripePromise;

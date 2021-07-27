@@ -9,10 +9,11 @@ import { FormEvent } from "react";
 import { CoverageMapTerm } from "../snippets/tMobileCoverageMap";
 import Image from "next/image";
 import NearshoreCheckout from "./nearshoreCheckout";
+import Terms from "../snippets/terms";
 
 const getPlanOptionById: { [key: string]: PlanOption } = {};
-const headingSize = "15pt";
-const bodySize = "10pt";
+export const headingSize = "15pt";
+export const bodySize = "10pt";
 const wInput = "w-input";
 
 const required = <span style={{ color: "red" }}>*</span>;
@@ -197,11 +198,6 @@ export default class RegistrationForm extends React.Component<
 
         {this.renderImeiField()}
         {this.renderIccid()}
-        <p className="text-block-19">
-          Nearshorenetworks will not share your information with others. All
-          credit card information is stored by our Secure Transaction process
-          provider, Stripe.
-        </p>
       </React.Fragment>
     );
   }
@@ -392,7 +388,12 @@ export default class RegistrationForm extends React.Component<
             <div className="w-col w-col-6">{this.renderCol1()}</div>
             <div className="w-col w-col-6">{this.renderCol2()}</div>
           </div>
-          <div className="w-row">{this.renderTerms()}</div>
+          <div className="w-row">
+            <Terms
+              isAgreed={this.state.agreed}
+              setAgreed={(agreed) => this.setState({ agreed })}
+            />
+          </div>
           {/*<div className="w-row">*/}
           {/*  <div className="w-col w-col-12" style={{ textAlign: "center" }}>*/}
           {/*    <button*/}
@@ -406,62 +407,16 @@ export default class RegistrationForm extends React.Component<
           {/*    </button>*/}
           {/*  </div>*/}
           {/*</div>*/}
-          <NearshoreCheckout plan={this.state} />
+          {this.state.agreed && !isValid && (
+            <div>
+              One or more inputs above isn&apos;t filled in
+              correctly/completely. Please scroll up and make sure all required
+              fields are filled. The continue button will appear here when all
+              required fields are completed.
+            </div>
+          )}
+          {isValid && <NearshoreCheckout plan={this.state} />}
         </div>
-      </div>
-    );
-  }
-
-  renderTerms() {
-    return (
-      <div style={{ textAlign: "left" }}>
-        <h3 style={{ fontSize: headingSize }}>Terms of Service</h3>
-        <h3 style={{ fontSize: bodySize, margin: 0 }}>Satellite</h3>
-        <ul style={{ fontSize: bodySize }}>
-          <li>Usage above Plan selected is billed at $1.89 per kb.</li>
-          <li>
-            Charges will be applied and billed the month following that in which
-            charges are incurred.
-          </li>
-        </ul>
-        <h3 style={{ fontSize: bodySize, margin: 0 }}>
-          Cellular and Broadband Video
-        </h3>
-        <ul style={{ columnCount: 1, fontSize: bodySize }}>
-          {[
-            "Cellular Service requires 24 hours to activate, Monday-Friday.  Activation requests received on Friday activate on Monday.",
-            "Activation Fee is $24.95.  First charge will be the Activation Fee plus the first month on a 3 month minimum subscription.",
-            "A 3-month minimum applies to any Service Plan subscription, upgrade or downgrade.",
-            "Usage above Plan Subscription limits during a month from bill date to bill date will be charged at $ 9.00 per GB in 1 GB increments.",
-            "Unused data does not carry over month to month.",
-            "Plan usage charges will be applied and billed the month following the month in which usage charges are incurred.",
-            "Termination requires 30 day notification and Subscriber is responsible for all charges through this period.",
-            "Complete deactivation of Service will require reactivation and a new Activation Fee will be charged.",
-            "All plans are unthrottled and all usage is the responsibility of the Subscriber of Record.",
-            "Subscribers are responsible for security surrounding access to their Device and all usage.",
-            "High Usage Alert notification is not provided.  Staying within Plan Subscription limits are the sole responsibility of the Subscriber.",
-            "Subscription to any plan acknowledges the above and agreement to these Terms and Conditions.",
-            <CoverageMapTerm key="coverage_map" />,
-            "Broadband video includes 2 GB of data. Unused data does not carry over.",
-            "Additional cellular usage above plan is billed in GB increments at $9 per GB.",
-            "Travel outside the US and Canada can result in additional cellular usage charges and are authorized by subscribing to this service.",
-            "Connection is NOT guaranteed at any time and conditions based on proximity to cellular towers as well as weather conditions affect quality of service.",
-            "Travel outside the US and Canada can result in additional charges and are authorized by subscribing to this service.",
-            "No connectivity outside the US is guaranteed or warranted.",
-          ].map((term, ix) => (
-            <li key={`term${ix}`} style={{ fontSize: bodySize }}>
-              {term}
-            </li>
-          ))}
-        </ul>
-        <label style={{ fontSize: bodySize }}>
-          <input
-            type="checkbox"
-            checked={this.state.agreed || false}
-            onChange={(e) => this.setState({ agreed: e.currentTarget.checked })}
-          />
-          &nbsp;I agree to the Terms of Service
-        </label>
       </div>
     );
   }

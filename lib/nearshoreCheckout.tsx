@@ -138,11 +138,13 @@ function CheckoutInternal(props: Props) {
     // } else if (paymentIntent) {
     //     setPayment(paymentIntent);
     // }
+
+    alert("success!");
   };
 
   return finalPrice <= 0 ? null : (
     <Wrap>
-      <form>
+      <form onSubmit={handleSubmit}>
         <h3>Secure checkout with Stripe</h3>
         <p>
           Your card will be charged ${finalPrice.toFixed(2)}/month for{" "}
@@ -182,11 +184,17 @@ function CheckoutInternal(props: Props) {
         </p>
         <button
           type="submit"
-          className="button-icon arrow w-button"
+          className="buy-button button-icon w-button disabled"
           style={{ marginTop: "20px" }}
         >
           Checkout
         </button>
+
+        <p style={{ marginTop: "20px" }}>
+          Nearshorenetworks will not share your information with others. All
+          credit card information is stored by our Secure Transaction process
+          provider, Stripe.
+        </p>
       </form>
     </Wrap>
   );

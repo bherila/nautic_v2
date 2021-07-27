@@ -16,20 +16,45 @@
   iccId: string;
 }
 
-export const defaultRegistrationState: RegistrationState = {
-  selectedPlan: [""],
-  broadbandVideo: false,
-  installDate: "",
-  imei: "",
-  ownerFname: "",
-  ownerLname: "",
-  ownerMi: "",
-  vesselName: "",
-  cellNumber: "",
-  vesselType: "",
-  dealerName: "",
-  dealerCompany: "",
-  showImeiModal: false,
-  agreed: false,
-  iccId: "",
-};
+function getDefaultRegistrationState() {
+  if (!process.env.TEST_FORM) {
+    return {
+      selectedPlan: [""],
+      broadbandVideo: false,
+      installDate: "",
+      imei: "",
+      ownerFname: "",
+      ownerLname: "",
+      ownerMi: "",
+      vesselName: "",
+      cellNumber: "",
+      vesselType: "",
+      dealerName: "",
+      dealerCompany: "",
+      showImeiModal: false,
+      agreed: false,
+      iccId: "",
+    };
+  } else {
+    return {
+      selectedPlan: [""],
+      broadbandVideo: false,
+      installDate: "",
+      imei: "911504516404422",
+      ownerFname: "John",
+      ownerLname: "Smith",
+      ownerMi: "W.",
+      vesselName: "My Vessel",
+      cellNumber: "908-883-1378",
+      vesselType: "",
+      dealerName: "Some DealerName",
+      dealerCompany: "Some DealerCompany",
+      showImeiModal: false,
+      agreed: false,
+      iccId: "891004234814455936F",
+    };
+  }
+}
+
+export const defaultRegistrationState: RegistrationState =
+  getDefaultRegistrationState();

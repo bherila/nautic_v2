@@ -9,7 +9,6 @@ export default function RegistrationFormPage({}) {
   return (
     <>
       <h1 className="heading-39">Cellular Plan Activation</h1>
-
       <div className="w-container">
         <div className="container-21 w-container">
           <p>
@@ -22,10 +21,10 @@ export default function RegistrationFormPage({}) {
             Our Data Sims connect to multiple carriers in every country and give
             you super fast data around the world.
             <br />
-            Have your own device and already have one of our sims?&nbsp;
-            Complete the following form and we’ll get you activated. If you need
-            us to mail you a sim so you can get connected, just call us
-            US&nbsp;Toll Free at 844-526-2627 extension 2, or email us at{" "}
+            Have your own device and already have one of our sims? Complete the
+            following form and we’ll get you activated. If you need us to mail
+            you a SIM so you can get connected, just call us US Toll Free at
+            844-526-2627 extension 2, or email us at{" "}
             <a href="mailto:comms@nearshorenetworks.com">
               comms@nearshorenetworks.com
             </a>{" "}

@@ -2,7 +2,11 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import Stripe from "stripe";
 import RegistrationState from "../../lib/RegistrationState";
-import { PlanOption } from "../../lib/PlanOptions";
+import {
+  findPlanOption,
+  nauticAlertPlanOptions,
+  PlanOption,
+} from "../../lib/PlanOptions";
 
 const key: string =
   process.env.STRIPE_SECRET_KEY || "sk_test_dXH7pAFCTeRjL39fWSwwYcQd";
@@ -12,25 +16,31 @@ async function handler(
   req: NextApiRequest,
   res: NextApiResponse<SubscribeResponse | { err: string }>
 ) {
-  const planDetails: PlanOption = req.body.planDetails;
-  const formInputs: RegistrationState = req.body.formInputs;
+  const planDetails: PlanOption | null = findPlanOption(
+    req.body.planDetails.checkoutId,
+    nauticAlertPlanOptions
+  );
   if (!planDetails) {
     res.status(400).json({ err: "planDetails is not valid" });
     return;
   }
+
+  const formInputs: RegistrationState = req.body.formInputs;
   if (!formInputs) {
     res.status(400).json({ err: "formInputs is not valid" });
     return;
   }
 
+  // Format plan name for Stripe "Product"
   const expectedPlanName =
     planDetails.name +
     (formInputs.broadbandVideo
       ? " with broadband video"
       : " without broadband video");
 
-  // Stripe customer
+  const expectedPrice = planDetails?.price?.toFixed(2);
 
+  // Stripe customer
   const customer = await stripe.customers.create({
     name: [
       formInputs.ownerFname,
@@ -54,14 +64,14 @@ async function handler(
   }
 
   // Stripe product & price
-
   const allProducts = await stripe.products.list({
     limit: 25,
   });
   let product: Stripe.Product | undefined = allProducts.data.find(
     (x) => x.name === expectedPlanName
   );
-  let price: Stripe.Price;
+
+  let price: Stripe.Price | undefined;
   if (product) {
     price = (
       await stripe.prices?.list({
@@ -69,11 +79,14 @@ async function handler(
         currency: "usd",
         active: true,
       })
-    ).data[0];
-  } else {
+    ).data.find(
+      (p) => p.currency === "usd" && p.unit_amount_decimal === expectedPrice
+    );
+  }
+  if (typeof price === "undefined") {
     price = await stripe.prices?.create({
       currency: "usd",
-      unit_amount_decimal: planDetails.price?.toFixed(2),
+      unit_amount_decimal: expectedPrice,
       product_data: {
         name: expectedPlanName,
         metadata: {
@@ -87,12 +100,25 @@ async function handler(
       product = price.product as Stripe.Product;
     }
   }
+
   if (!product) {
     res.status(500).json({ err: "failed to get/create product" });
     return;
   }
   if (!price) {
     res.status(500).json({ err: "failed to get/create price" });
+    return;
+  }
+
+  // Activation fee -- create as invoice item. When the subscription is created
+  // the pending invoice items for the customer will be added to the first payment
+  const invoiceItem = await stripe.invoiceItems.create({
+    currency: "usd",
+    price: "24.99",
+    customer: customer.id,
+  });
+  if (!invoiceItem) {
+    res.status(500).json({ err: "failed to charge initiation fee" });
     return;
   }
 
