@@ -7,15 +7,9 @@ import {
 } from "@stripe/react-stripe-js";
 import getStripe from "../lib/getStripe";
 import RegistrationState from "./RegistrationState";
-import {
-  findPlanOption,
-  getAllPlanOptions,
-  nauticAlertPlanOptions,
-  PlanOption,
-} from "./PlanOptions";
+import { findPlanOption, getAllPlanOptions } from "./PlanOptions";
 import { fetchPostJSON } from "./jsonHelpers";
-import { SubscribeResponse } from "../pages/api/subscribe";
-import { validate, validateSync, ValidationError } from "class-validator";
+import router from "next/router";
 
 const CARD_OPTIONS = {
   iconStyle: "solid" as const,
@@ -110,8 +104,17 @@ function CheckoutInternal(props: Props) {
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
+    // Abort if already processing
+    if (payment.status === "processing") {
+      return;
+    }
+
     // Abort if form isn't valid
-    if (!e.currentTarget.reportValidity()) return;
+    if (!e.currentTarget.reportValidity()) {
+      return;
+    }
+
+    // Prevent double submit
     setPayment({ status: "processing" });
 
     // Create a PaymentIntent with the specified amount.
@@ -139,15 +142,14 @@ function CheckoutInternal(props: Props) {
         },
       }
     );
-    //
-    // if (error) {
-    //     setPayment({ status: 'error' });
-    //     setErrorMessage(error.message ?? 'An unknown error occured');
-    // } else if (paymentIntent) {
-    //     setPayment(paymentIntent);
-    // }
 
-    alert("Success! Someone will contact you soon.");
+    if (error) {
+      setPayment({ status: "error" });
+      setErrorMessage(error.message ?? "An unknown error occured");
+    } else if (paymentIntent) {
+      setPayment(paymentIntent);
+      await router.push("/thanks");
+    }
   };
 
   return finalPrice <= 0 ? null : (
@@ -182,7 +184,10 @@ function CheckoutInternal(props: Props) {
         </div>
         <button
           type="submit"
-          className="buy-button button-icon w-button"
+          className={
+            "buy-button button-icon w-button" +
+            (payment.status === "processing" ? " disabled" : "")
+          }
           style={{ marginTop: "20px" }}
         >
           Checkout

@@ -5,7 +5,7 @@ import RegistrationState, {
   ValidatingRegistrationState,
 } from "../lib/RegistrationState";
 import Image from "next/image";
-import NearshoreCheckout from "./nearshoreCheckout";
+import CheckoutSubmit from "./CheckoutSubmit";
 import TermsContentNautic from "../snippets/TermsContentNautic";
 import TermsContainer from "../snippets/TermsContainer";
 import { validateSync } from "class-validator";
@@ -411,20 +411,20 @@ export default class RegistrationForm extends React.Component<
               content={this.props.termsContent}
             />
           </div>
-          {/*<div className="w-row">*/}
-          {/*  <div className="w-col w-col-12" style={{ textAlign: "center" }}>*/}
-          {/*    <button*/}
-          {/*      type="submit"*/}
-          {/*      disabled={!isValid}*/}
-          {/*      className={*/}
-          {/*        "buy-button button-icon w-button " + (!isValid && "disabled")*/}
-          {/*      }*/}
-          {/*    >*/}
-          {/*      Proceed*/}
-          {/*    </button>*/}
-          {/*  </div>*/}
-          {/*</div>*/}
-          {!this.state.agreed ? null : !isValid ? (
+
+          {!this.state.agreed ? (
+            <div className="w-row">
+              <div className="w-col w-col-12" style={{ textAlign: "center" }}>
+                <button
+                  type="submit"
+                  disabled={true}
+                  className={"buy-button button-icon w-button disabled"}
+                >
+                  Accept Terms to Continue
+                </button>
+              </div>
+            </div>
+          ) : !isValid ? (
             <div
               style={{
                 border: "1px solid maroon",
@@ -453,7 +453,7 @@ export default class RegistrationForm extends React.Component<
               )}
             </div>
           ) : (
-            <NearshoreCheckout checkoutFormState={this.state} />
+            <CheckoutSubmit checkoutFormState={this.state} />
           )}
         </div>
       </div>
