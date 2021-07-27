@@ -4,6 +4,7 @@ import Stripe from "stripe";
 import RegistrationState from "../../lib/RegistrationState";
 import {
   findPlanOption,
+  getAllPlanOptions,
   nauticAlertPlanOptions,
   PlanOption,
 } from "../../lib/PlanOptions";
@@ -18,7 +19,7 @@ async function handler(
 ) {
   const planDetails: PlanOption | null = findPlanOption(
     req.body.planDetails.checkoutId,
-    nauticAlertPlanOptions
+    getAllPlanOptions()
   );
   if (!planDetails) {
     res.status(400).json({ err: "planDetails is not valid" });

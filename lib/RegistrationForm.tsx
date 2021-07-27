@@ -4,12 +4,10 @@ import isIMEIValid from "../lib/luhn";
 import RegistrationState, {
   defaultRegistrationState,
 } from "../lib/RegistrationState";
-import { saveToLocalStorage } from "./localStorage";
-import { FormEvent } from "react";
-import { CoverageMapTerm } from "../snippets/tMobileCoverageMap";
 import Image from "next/image";
 import NearshoreCheckout from "./nearshoreCheckout";
-import Terms from "../snippets/terms";
+import TermsContentNautic from "../snippets/TermsContentNautic";
+import TermsContainer from "../snippets/TermsContainer";
 
 const getPlanOptionById: { [key: string]: PlanOption } = {};
 export const headingSize = "15pt";
@@ -401,9 +399,10 @@ export default class RegistrationForm extends React.Component<
             <div className="w-col w-col-6">{this.renderCol2()}</div>
           </div>
           <div className="w-row">
-            <Terms
+            <TermsContainer
               isAgreed={this.state.agreed}
               setAgreed={(agreed) => this.setState({ agreed })}
+              content={<TermsContentNautic />}
             />
           </div>
           {/*<div className="w-row">*/}

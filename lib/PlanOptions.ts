@@ -33,7 +33,7 @@ export function findPlanOption(
   );
 }
 
-export function getAllOptions() {
+export function getAllPlanOptions() {
   return [...cellPlanOptions, ...nauticAlertPlanOptions];
 }
 
