@@ -21,21 +21,7 @@ export default function TermsContainer(props: TermsProps) {
           </p>
         </div>
       ) : (
-        <div>
-          <h3 style={{ fontSize: headingSize }}>Terms of Service</h3>
-          <h3 style={{ fontSize: bodySize, margin: 0 }}>Satellite</h3>
-          <ul style={{ fontSize: bodySize }}>
-            <li>Usage above Plan selected is billed at $1.89 per kb.</li>
-            <li>
-              Charges will be applied and billed the month following that in
-              which charges are incurred.
-            </li>
-          </ul>
-          <h3 style={{ fontSize: bodySize, margin: 0 }}>
-            Cellular and Broadband Video
-          </h3>
-          {props.content}
-        </div>
+        <div>{props.content}</div>
       )}
       <label style={{ fontSize: bodySize }}>
         <input

@@ -29,6 +29,7 @@ interface Props {
   renderVesselType: boolean;
   broadbandVideoAddOn: any;
   planOptions: PlanOption[];
+  termsContent: React.ReactNode;
 }
 
 export default class RegistrationForm extends React.Component<
@@ -407,7 +408,7 @@ export default class RegistrationForm extends React.Component<
             <TermsContainer
               isAgreed={this.state.agreed}
               setAgreed={(agreed) => this.setState({ agreed })}
-              content={<TermsContentNautic />}
+              content={this.props.termsContent}
             />
           </div>
           {/*<div className="w-row">*/}

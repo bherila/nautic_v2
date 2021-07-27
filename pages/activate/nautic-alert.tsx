@@ -4,6 +4,7 @@ import {
   nauticAlertBroadbandVideo,
 } from "../../lib/PlanOptions";
 import RegistrationForm from "../../lib/RegistrationForm";
+import TermsContentNautic from "../../snippets/TermsContentNautic";
 
 export default function RegistrationFormPage({}) {
   return (
@@ -16,6 +17,7 @@ export default function RegistrationFormPage({}) {
           renderDealerFields={false}
           renderVesselType={false}
           planOptions={nauticAlertPlanOptions}
+          termsContent={<TermsContentNautic />}
         />
       </div>
     </>
