@@ -9,11 +9,13 @@ import getStripe from "../lib/getStripe";
 import RegistrationState from "./RegistrationState";
 import {
   findPlanOption,
+  getAllPlanOptions,
   nauticAlertPlanOptions,
   PlanOption,
 } from "./PlanOptions";
 import { fetchPostJSON } from "./jsonHelpers";
 import { SubscribeResponse } from "../pages/api/subscribe";
+import { validate, validateSync, ValidationError } from "class-validator";
 
 const CARD_OPTIONS = {
   iconStyle: "solid" as const,
@@ -93,7 +95,7 @@ function CheckoutInternal(props: Props) {
     props.checkoutFormState.selectedPlan[
       props.checkoutFormState.selectedPlan.length - 1
     ];
-  const plan = findPlanOption(planId, nauticAlertPlanOptions);
+  const plan = findPlanOption(planId, getAllPlanOptions());
   const finalPrice =
     (plan?.price || 0) + (props.checkoutFormState.broadbandVideo ? 14.99 : 0);
 
@@ -145,7 +147,7 @@ function CheckoutInternal(props: Props) {
     //     setPayment(paymentIntent);
     // }
 
-    alert("success!");
+    alert("Success! Someone will contact you soon.");
   };
 
   return finalPrice <= 0 ? null : (

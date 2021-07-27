@@ -59,6 +59,7 @@ async function handler(
         formInputs.ownerLname,
       ].join(" "),
       phone: formInputs.cellNumber,
+      email: formInputs.email,
       metadata: {
         dealerName: formInputs.dealerName || "",
         dealerCompany: formInputs.dealerCompany || "",

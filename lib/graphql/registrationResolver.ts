@@ -1,5 +1,5 @@
 ﻿import { Mutation, Query, Resolver } from "type-graphql";
-import { defaultRegistrationState } from "../RegistrationState";
+import { ValidatingRegistrationState } from "../RegistrationState";
 import { RegistrationGraphType } from "./registrationGraphType";
 
 @Resolver(RegistrationGraphType)
@@ -8,7 +8,7 @@ export class RegistrationResolver {
     name: "defaultRegistration",
   })
   defaultRegistration() {
-    return defaultRegistrationState;
+    return new ValidatingRegistrationState();
   }
 
   @Mutation((returns) => RegistrationGraphType, {

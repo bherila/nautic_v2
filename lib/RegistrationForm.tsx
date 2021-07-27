@@ -2,12 +2,13 @@
 import { PlanOption } from "./PlanOptions";
 import isIMEIValid from "../lib/luhn";
 import RegistrationState, {
-  defaultRegistrationState,
+  ValidatingRegistrationState,
 } from "../lib/RegistrationState";
 import Image from "next/image";
 import NearshoreCheckout from "./nearshoreCheckout";
 import TermsContentNautic from "../snippets/TermsContentNautic";
 import TermsContainer from "../snippets/TermsContainer";
+import { validateSync } from "class-validator";
 
 const getPlanOptionById: { [key: string]: PlanOption } = {};
 export const headingSize = "15pt";
@@ -36,7 +37,7 @@ export default class RegistrationForm extends React.Component<
 > {
   constructor(props: Props, context: any) {
     super(props, context);
-    this.state = { ...defaultRegistrationState };
+    this.state = new ValidatingRegistrationState();
   }
 
   renderPlanOptions(
@@ -389,7 +390,11 @@ export default class RegistrationForm extends React.Component<
   }
 
   render() {
-    const isValid = this.isPlanValid() && this.state.agreed;
+    const validationErrors = validateSync(
+      new ValidatingRegistrationState(this.state)
+    );
+    const isValid = this.state.agreed && validationErrors.length === 0;
+    console.info("validation result", validationErrors);
     return (
       <div style={{ fontSize: bodySize }}>
         {this.state.showImeiModal && this.renderImeiModal()}
@@ -418,26 +423,46 @@ export default class RegistrationForm extends React.Component<
           {/*    </button>*/}
           {/*  </div>*/}
           {/*</div>*/}
-          {this.state.agreed && !isValid && (
-            <div>
+          {!this.state.agreed ? null : !isValid ? (
+            <div
+              style={{
+                border: "1px solid maroon",
+                padding: "20px",
+                margin: "15px auto",
+              }}
+            >
               One or more inputs above isn&apos;t filled in
               correctly/completely. Please scroll up and make sure all required
               fields are filled. The continue button will appear here when all
               required fields are completed.
+              {validationErrors.length == 0 ? null : (
+                <>
+                  <p>Please correct these errors:</p>
+                  <ul>
+                    {validationErrors.map(
+                      (err, idx) =>
+                        err.constraints && (
+                          <li key={`err${idx}`}>
+                            {Object.values(err.constraints).join(". ")}
+                          </li>
+                        )
+                    )}
+                  </ul>
+                </>
+              )}
             </div>
+          ) : (
+            <NearshoreCheckout checkoutFormState={this.state} />
           )}
-          {isValid && <NearshoreCheckout checkoutFormState={this.state} />}
         </div>
       </div>
     );
   }
 
   getBasePlanId() {
+    if (!this.state.selectedPlan || !this.state.selectedPlan[0]) {
+      return "";
+    }
     return this.state.selectedPlan.slice(-1)[0] || "";
-  }
-
-  isPlanValid() {
-    const { broadbandVideoAddOn } = this.props;
-    return !!broadbandVideoAddOn[this.getBasePlanId()];
   }
 }

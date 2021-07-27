@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import "../styles/normalize.css";
 import "../styles/components.css";
 import "../styles/nearshorenetworks.css";
