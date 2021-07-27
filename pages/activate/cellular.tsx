@@ -1,9 +1,6 @@
 ﻿import React from "react";
-import {
-  nauticAlertPlanOptions,
-  nauticAlertBroadbandVideo,
-} from "../lib/PlanOptions";
-import RegistrationForm from "../lib/RegistrationForm";
+import { cellPlanOptions } from "../../lib/PlanOptions";
+import RegistrationForm from "../../lib/RegistrationForm";
 
 export default function RegistrationFormPage({}) {
   return (
@@ -38,11 +35,11 @@ export default function RegistrationFormPage({}) {
           </p>
         </div>
         <RegistrationForm
-          broadbandVideoAddOn={nauticAlertBroadbandVideo}
+          broadbandVideoAddOn={[]}
           renderInstallDate={false}
-          renderDealerFields={false}
-          renderVesselType={false}
-          planOptions={nauticAlertPlanOptions}
+          renderDealerFields={true}
+          renderVesselType={true}
+          planOptions={cellPlanOptions}
         />
       </div>
     </>

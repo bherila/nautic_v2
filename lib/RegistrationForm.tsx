@@ -235,6 +235,18 @@ export default class RegistrationForm extends React.Component<
           />
         </div>
 
+        <div>
+          <label>Email {required}</label>
+          <input
+            className={wInput}
+            type="email"
+            placeholder="yourname@domain.com"
+            value={this.state.email || ""}
+            onChange={(e) => this.setState({ email: e.currentTarget.value })}
+            required={true}
+          />
+        </div>
+
         {renderVesselType && (
           <div>
             <label>Vessel Type</label>
@@ -415,7 +427,7 @@ export default class RegistrationForm extends React.Component<
               required fields are completed.
             </div>
           )}
-          {isValid && <NearshoreCheckout plan={this.state} />}
+          {isValid && <NearshoreCheckout checkoutFormState={this.state} />}
         </div>
       </div>
     );

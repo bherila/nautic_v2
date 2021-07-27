@@ -2,7 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import Stripe from "stripe";
 
-const STRIPE_WEBHOOK_TEST_KEY = "whsec_pJi9E0woWs4jSTuYCXQPdJESzhTKjp0z";
+const STRIPE_WEBHOOK_TEST_KEY = "whsec_pJi9E0woWs4jSTuYCXQPdJESzhTKjp0z"; // TEST KEY, NOT PROD ENABLED!!
 const key: string = process.env.STRIPE_WEBHOOK_KEY || STRIPE_WEBHOOK_TEST_KEY;
 const stripe = new Stripe(key, { apiVersion: "2020-08-27" });
 

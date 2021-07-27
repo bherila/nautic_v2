@@ -40,7 +40,7 @@ const CARD_OPTIONS = {
 };
 
 interface Props {
-  plan: RegistrationState;
+  checkoutFormState: RegistrationState;
 }
 
 function Wrap(props: { children: ReactNode }) {
@@ -89,14 +89,20 @@ function CheckoutInternal(props: Props) {
     }
   };
 
-  const planId = props.plan.selectedPlan[props.plan.selectedPlan.length - 1];
+  const planId =
+    props.checkoutFormState.selectedPlan[
+      props.checkoutFormState.selectedPlan.length - 1
+    ];
   const plan = findPlanOption(planId, nauticAlertPlanOptions);
   const finalPrice =
-    (plan?.price || 0) + (props.plan.broadbandVideo ? 14.99 : 0);
+    (plan?.price || 0) + (props.checkoutFormState.broadbandVideo ? 14.99 : 0);
 
   const apiDetail = {
-    planDetails: plan,
-    formInputs: props.plan,
+    planDetails: {
+      checkoutId: plan?.checkoutId,
+      name: plan?.name,
+    },
+    formInputs: props.checkoutFormState,
   };
   console.log(apiDetail);
 
@@ -123,7 +129,7 @@ function CheckoutInternal(props: Props) {
 
     // Use your card Element with other Stripe.js APIs
     const { error, paymentIntent } = await stripe!.confirmCardPayment(
-      response.client_secret,
+      response.clientSecret,
       {
         payment_method: {
           card: cardElement!,
@@ -149,7 +155,10 @@ function CheckoutInternal(props: Props) {
         <p>
           Your card will be charged ${finalPrice.toFixed(2)}/month for{" "}
           {plan?.name}
-          {props.plan.broadbandVideo ? " with broadband video add-on" : ""}.
+          {props.checkoutFormState.broadbandVideo
+            ? " with broadband video add-on"
+            : ""}
+          .
         </p>
         <div
           style={{
@@ -169,22 +178,9 @@ function CheckoutInternal(props: Props) {
             }}
           />
         </div>
-        <p>
-          <input
-            style={{
-              backgroundColor: "#fff",
-              padding: "10px",
-              margin: "10px 0",
-              border: "1px solid gray",
-              width: "100%",
-            }}
-            type="email"
-            placeholder="Email address"
-          />
-        </p>
         <button
           type="submit"
-          className="buy-button button-icon w-button disabled"
+          className="buy-button button-icon w-button"
           style={{ marginTop: "20px" }}
         >
           Checkout

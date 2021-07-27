@@ -2,6 +2,7 @@
   selectedPlan: string[];
   broadbandVideo: boolean;
   installDate: string;
+  email: string;
   imei: string;
   ownerFname: string;
   ownerLname: string;
@@ -22,6 +23,7 @@ function getDefaultRegistrationState() {
       selectedPlan: [""],
       broadbandVideo: false,
       installDate: "",
+      email: "",
       imei: "",
       ownerFname: "",
       ownerLname: "",
@@ -40,6 +42,7 @@ function getDefaultRegistrationState() {
       selectedPlan: [""],
       broadbandVideo: false,
       installDate: "",
+      email: "nsn@qa.team",
       imei: "911504516404422",
       ownerFname: "John",
       ownerLname: "Smith",

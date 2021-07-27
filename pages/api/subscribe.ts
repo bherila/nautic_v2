@@ -38,26 +38,37 @@ async function handler(
       ? " with broadband video"
       : " without broadband video");
 
-  const expectedPrice = planDetails?.price?.toFixed(2);
+  if (typeof planDetails?.price !== "number") {
+    res.status(400).json({ err: "planDetails.price is not valid" });
+    return;
+  }
+  const expectedPrice = Math.round(planDetails.price * 100);
 
   // Stripe customer
-  const customer = await stripe.customers.create({
-    name: [
-      formInputs.ownerFname,
-      formInputs.ownerMi,
-      formInputs.ownerLname,
-    ].join(" "),
-    phone: formInputs.cellNumber,
-    metadata: {
-      dealerName: formInputs.dealerName || "",
-      dealerCompany: formInputs.dealerCompany || "",
-      iccId: formInputs.iccId,
-      imei: formInputs.imei,
-      vesselName: formInputs.vesselName,
-      vesselType: formInputs.vesselType,
-      desiredInstallDate: formInputs.installDate,
-    },
-  });
+  let customer = (
+    await stripe.customers?.list({
+      email: formInputs.email,
+    })
+  ).data.find((customer) => customer.phone === formInputs.cellNumber);
+  if (!customer) {
+    customer = await stripe.customers.create({
+      name: [
+        formInputs.ownerFname,
+        formInputs.ownerMi,
+        formInputs.ownerLname,
+      ].join(" "),
+      phone: formInputs.cellNumber,
+      metadata: {
+        dealerName: formInputs.dealerName || "",
+        dealerCompany: formInputs.dealerCompany || "",
+        iccId: formInputs.iccId,
+        imei: formInputs.imei,
+        vesselName: formInputs.vesselName,
+        vesselType: formInputs.vesselType,
+        desiredInstallDate: formInputs.installDate,
+      },
+    });
+  }
   if (!customer) {
     res.status(500).json({ err: "failed to create customer" });
     return;
@@ -78,15 +89,19 @@ async function handler(
         product: product.id,
         currency: "usd",
         active: true,
+        type: "recurring",
       })
-    ).data.find(
-      (p) => p.currency === "usd" && p.unit_amount_decimal === expectedPrice
-    );
+    ).data.find((p) => p.currency === "usd" && p.unit_amount === expectedPrice);
   }
   if (typeof price === "undefined") {
     price = await stripe.prices?.create({
       currency: "usd",
-      unit_amount_decimal: expectedPrice,
+      unit_amount: expectedPrice,
+      recurring: {
+        interval: "month",
+        interval_count: 1,
+        usage_type: "licensed",
+      },
       product_data: {
         name: expectedPlanName,
         metadata: {
@@ -114,7 +129,8 @@ async function handler(
   // the pending invoice items for the customer will be added to the first payment
   const invoiceItem = await stripe.invoiceItems.create({
     currency: "usd",
-    price: "24.99",
+    unit_amount: 2499, // $24.99, enter in cents
+    description: "Activation fee",
     customer: customer.id,
   });
   if (!invoiceItem) {
@@ -135,9 +151,11 @@ async function handler(
   const payment_intent = invoice.payment_intent as Stripe.PaymentIntent;
 
   // Return non-secret values to the client.
+  console.info(invoice);
   res.status(200).json({
     subscriptionId: subscription.id,
-    clientSecret: payment_intent?.client_secret,
+    invoiceId: invoice.id,
+    clientSecret: payment_intent?.client_secret || "",
   } as SubscribeResponse);
 }
 

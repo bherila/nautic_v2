@@ -33,6 +33,28 @@ export function findPlanOption(
   );
 }
 
+export function getAllOptions() {
+  return [...cellPlanOptions, ...nauticAlertPlanOptions];
+}
+
+export const cellPlanOptions: PlanOption[] = [
+  {
+    name: "6GB Monthly Subscription",
+    price: 48.0,
+    checkoutId: "CELL6GB",
+  },
+  {
+    name: "10GB Monthly Subscription",
+    price: 75.0,
+    checkoutId: "CELL10GB",
+  },
+  {
+    name: "50GB Monthly Subscription",
+    price: 350.0,
+    checkoutId: "CELL50GB",
+  },
+];
+
 export const nauticAlertPlanOptions: PlanOption[] = [
   {
     name: "Insight Cellular",

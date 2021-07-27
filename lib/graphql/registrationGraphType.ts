@@ -1,5 +1,6 @@
 ﻿import { Field, ObjectType } from "type-graphql";
 import RegistrationState from "../../lib/RegistrationState";
+import { IsEmail } from "class-validator";
 
 const nonnull = { nullable: false };
 
@@ -11,6 +12,7 @@ export class RegistrationGraphType implements RegistrationState {
   @Field(() => Boolean, nonnull) broadbandVideo!: boolean;
   @Field(() => String, nonnull) installDate!: string;
   @Field(() => String, nonnull) imei!: string;
+  @Field(() => String, nonnull) @IsEmail() email!: string;
   @Field(() => String, nonnull) ownerFname!: string;
   @Field(() => String, nonnull) ownerLname!: string;
   @Field(() => String, nonnull) ownerMi!: string;
