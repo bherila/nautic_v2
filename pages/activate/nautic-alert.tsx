@@ -33,8 +33,8 @@ export default function RegistrationFormPage({}) {
         <RegistrationForm
           broadbandVideoAddOn={nauticAlertBroadbandVideo}
           renderInstallDate={false}
-          renderDealerFields={false}
-          renderVesselType={false}
+          renderDealerFields={true}
+          renderVesselType={true}
           planOptions={nauticAlertPlanOptions}
           termsContent={<TermsContentNautic />}
           imeiContentOverride={<NauticIMEIModal />}

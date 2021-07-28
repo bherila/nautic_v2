@@ -123,7 +123,7 @@ export default class RegistrationForm extends React.Component<
   renderName() {
     return (
       <div>
-        <label>Vessel Owner&apos;s Full Name {required}</label>
+        <label>Device Owner’s Full Name {required}</label>
         <input
           className={wInput}
           type="text"
@@ -228,7 +228,7 @@ export default class RegistrationForm extends React.Component<
         </div>
 
         <div>
-          <label>Cell Phone Number {required}</label>
+          <label>Device Owner’s Cell Phone Number {required}</label>
           <input
             className={wInput}
             type="tel"
@@ -242,7 +242,7 @@ export default class RegistrationForm extends React.Component<
         </div>
 
         <div>
-          <label>Email {required}</label>
+          <label>Device Owner’s Email {required}</label>
           <input
             className={wInput}
             type="email"
@@ -276,7 +276,7 @@ export default class RegistrationForm extends React.Component<
         {renderDealerFields && (
           <React.Fragment>
             <div>
-              <label>Dealer or Installer Name (optional)</label>
+              <label>Dealer or Installer Name</label>
               <input
                 className={wInput}
                 type="text"
@@ -289,7 +289,7 @@ export default class RegistrationForm extends React.Component<
             </div>
 
             <div>
-              <label>Dealer or Installer Company (optional)</label>
+              <label>Dealer or Installer Company</label>
               <input
                 className={wInput}
                 type="text"
@@ -387,10 +387,10 @@ export default class RegistrationForm extends React.Component<
                 margin: "15px auto",
               }}
             >
-              One or more inputs above isn&apos;t filled in
-              correctly/completely. Please scroll up and make sure all required
-              fields are filled. The continue button will appear here when all
-              required fields are completed.
+              One or more inputs above isn’t filled in correctly/completely.
+              Please scroll up and make sure all required fields are filled. The
+              continue button will appear here when all required fields are
+              completed.
               {validationErrors.length == 0 ? null : (
                 <>
                   <p>Please correct these errors:</p>
