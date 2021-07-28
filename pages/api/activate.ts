@@ -56,28 +56,32 @@ async function handleAsSubscription(
     }
 
     // create reusable transporter object using the default SMTP transport
-    let transporter = nodemailer.createTransport(emailConfig);
+    try {
+      let transporter = nodemailer.createTransport(emailConfig);
 
-    const cc = subscription.metadata.emailCC?.split(",") || [];
+      const cc = subscription.metadata.emailCC?.split(",") || [];
 
-    // send mail with defined transport object
-    let info = await transporter.sendMail({
-      from: '"Nearshore Networks Signup Form" <ben@herila.net>', // sender address
-      to: ["comms@nearshorenetworks.com", "ben@herila.net", ...cc], // list of receivers
-      subject: "New Subscriber Alert", // Subject line
-      text: JSON.stringify(
-        {
-          stripe_subscription_id: subscription.id,
-          payment_intent_id: payment_intent_id,
-          amount: payment_intent.amount,
-          metadata: subscription.metadata,
-        },
-        null,
-        2
-      ), // plain text body
-      // html: "<b>Hello world?</b>", // html body
-    });
-    console.info("email sent", info);
+      // send mail with defined transport object
+      let info = await transporter.sendMail({
+        from: '"Nearshore Networks Signup Form" <ben@herila.net>', // sender address
+        to: ["comms@nearshorenetworks.com", "ben@herila.net", ...cc], // list of receivers
+        subject: "New Subscriber Alert", // Subject line
+        text: JSON.stringify(
+          {
+            stripe_subscription_id: subscription.id,
+            payment_intent_id: payment_intent_id,
+            amount: payment_intent.amount,
+            metadata: subscription.metadata,
+          },
+          null,
+          2
+        ), // plain text body
+        // html: "<b>Hello world?</b>", // html body
+      });
+      console.info("email sent", info);
+    } catch (err) {
+      console.error("Couldn't send email confirmation", err);
+    }
   }
 
   // // Handle the event
