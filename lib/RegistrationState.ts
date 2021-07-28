@@ -26,7 +26,7 @@ export default interface RegistrationState {
   showImeiModal: boolean;
   agreed: boolean;
   iccId: string;
-  emailCC: string;
+  emailCC?: string;
 }
 
 export class ValidatingRegistrationState implements RegistrationState {

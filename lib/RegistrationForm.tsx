@@ -395,7 +395,6 @@ export default class RegistrationForm extends React.Component<
       new ValidatingRegistrationState(this.state)
     );
     const isValid = this.state.agreed && validationErrors.length === 0;
-    console.info("validation result", validationErrors);
     return (
       <div style={{ fontSize: bodySize }}>
         {this.state.showImeiModal && this.renderImeiModal()}
