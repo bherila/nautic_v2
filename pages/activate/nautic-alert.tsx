@@ -18,6 +18,7 @@ export default function RegistrationFormPage({}) {
           renderVesselType={false}
           planOptions={nauticAlertPlanOptions}
           termsContent={<TermsContentNautic />}
+          cc="nfvelado@nauticalert.com"
         />
       </div>
     </>

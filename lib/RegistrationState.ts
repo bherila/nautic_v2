@@ -1,7 +1,6 @@
 ﻿import {
   IsArray,
   IsBoolean,
-  IsDateString,
   IsEmail,
   IsOptional,
   IsPhoneNumber,
@@ -9,7 +8,6 @@
   MaxLength,
   MinLength,
 } from "class-validator";
-import RegistrationForm from "./RegistrationForm";
 
 export default interface RegistrationState {
   selectedPlan: string[];
@@ -28,27 +26,80 @@ export default interface RegistrationState {
   showImeiModal: boolean;
   agreed: boolean;
   iccId: string;
+  emailCC: string;
 }
 
 export class ValidatingRegistrationState implements RegistrationState {
-  constructor(other?: RegistrationState) {
+  constructor(other?: Partial<RegistrationState>) {
+    this.emailCC = "";
+    this.selectedPlan = [""];
+    this.broadbandVideo = false;
+    this.installDate = "";
+    this.email = "";
+    this.imei = "";
+    this.ownerFname = "";
+    this.ownerLname = "";
+    this.ownerMi = "";
+    this.vesselName = "";
+    this.cellNumber = "";
+    this.vesselType = "";
+    this.dealerName = "";
+    this.dealerCompany = "";
+    this.showImeiModal = false;
+    this.agreed = false;
+    this.iccId = "";
     if (other) {
-      this.selectedPlan = other.selectedPlan;
-      this.broadbandVideo = other.broadbandVideo;
-      this.installDate = other.installDate;
-      this.email = other.email;
-      this.imei = other.imei;
-      this.ownerFname = other.ownerFname;
-      this.ownerLname = other.ownerLname;
-      this.ownerMi = other.ownerMi;
-      this.vesselName = other.vesselName;
-      this.cellNumber = other.cellNumber;
-      this.vesselType = other.vesselType;
-      this.dealerName = other.dealerName;
-      this.dealerCompany = other.dealerCompany;
-      this.showImeiModal = other.showImeiModal;
-      this.agreed = other.agreed;
-      this.iccId = other.iccId;
+      if (typeof other.selectedPlan !== "undefined") {
+        this.selectedPlan = other.selectedPlan;
+      }
+      if (typeof other.broadbandVideo !== "undefined") {
+        this.broadbandVideo = other.broadbandVideo;
+      }
+      if (typeof other.installDate !== "undefined") {
+        this.installDate = other.installDate;
+      }
+      if (typeof other.email !== "undefined") {
+        this.email = other.email;
+      }
+      if (typeof other.imei !== "undefined") {
+        this.imei = other.imei;
+      }
+      if (typeof other.ownerFname !== "undefined") {
+        this.ownerFname = other.ownerFname;
+      }
+      if (typeof other.ownerLname !== "undefined") {
+        this.ownerLname = other.ownerLname;
+      }
+      if (typeof other.ownerMi !== "undefined") {
+        this.ownerMi = other.ownerMi;
+      }
+      if (typeof other.vesselName !== "undefined") {
+        this.vesselName = other.vesselName;
+      }
+      if (typeof other.cellNumber !== "undefined") {
+        this.cellNumber = other.cellNumber;
+      }
+      if (typeof other.vesselType !== "undefined") {
+        this.vesselType = other.vesselType;
+      }
+      if (typeof other.dealerName !== "undefined") {
+        this.dealerName = other.dealerName;
+      }
+      if (typeof other.dealerCompany !== "undefined") {
+        this.dealerCompany = other.dealerCompany;
+      }
+      if (typeof other.showImeiModal !== "undefined") {
+        this.showImeiModal = other.showImeiModal;
+      }
+      if (typeof other.agreed !== "undefined") {
+        this.agreed = other.agreed;
+      }
+      if (typeof other.iccId !== "undefined") {
+        this.iccId = other.iccId;
+      }
+      if (typeof other.emailCC !== "undefined") {
+        this.emailCC = other.emailCC;
+      }
     } else if (process.env.TEST_FORM) {
       this.selectedPlan = [""];
       this.broadbandVideo = false;
@@ -66,25 +117,10 @@ export class ValidatingRegistrationState implements RegistrationState {
       this.showImeiModal = false;
       this.agreed = false;
       this.iccId = "891004234814455936F";
-    } else {
-      this.selectedPlan = [""];
-      this.broadbandVideo = false;
-      this.installDate = "";
-      this.email = "";
-      this.imei = "";
-      this.ownerFname = "";
-      this.ownerLname = "";
-      this.ownerMi = "";
-      this.vesselName = "";
-      this.cellNumber = "";
-      this.vesselType = "";
-      this.dealerName = "";
-      this.dealerCompany = "";
-      this.showImeiModal = false;
-      this.agreed = false;
-      this.iccId = "";
     }
   }
+
+  @IsOptional() emailCC: string;
 
   @IsArray({ message: "Selected plan is required" }) selectedPlan: string[];
 

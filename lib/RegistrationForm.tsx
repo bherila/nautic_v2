@@ -6,7 +6,6 @@ import RegistrationState, {
 } from "../lib/RegistrationState";
 import Image from "next/image";
 import CheckoutSubmit from "./CheckoutSubmit";
-import TermsContentNautic from "../snippets/TermsContentNautic";
 import TermsContainer from "../snippets/TermsContainer";
 import { validateSync } from "class-validator";
 
@@ -30,6 +29,7 @@ interface Props {
   broadbandVideoAddOn: any;
   planOptions: PlanOption[];
   termsContent: React.ReactNode;
+  cc?: string;
 }
 
 export default class RegistrationForm extends React.Component<
@@ -38,7 +38,7 @@ export default class RegistrationForm extends React.Component<
 > {
   constructor(props: Props, context: any) {
     super(props, context);
-    this.state = new ValidatingRegistrationState();
+    this.state = new ValidatingRegistrationState({ emailCC: props.cc });
   }
 
   renderPlanOptions(
