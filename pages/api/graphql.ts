@@ -6,6 +6,7 @@ import { buildSchema } from "type-graphql";
 import initMiddleware from "../../lib/initMiddleware";
 import { GraphQLSchema } from "graphql";
 import { RegistrationResolver } from "../../lib/graphql/registrationResolver";
+import { withSentry } from "@sentry/nextjs";
 
 // NOTE: Needed for vercel, don't remove!!
 // noinspection JSUnusedGlobalSymbols
@@ -59,7 +60,7 @@ const cors = initMiddleware(
   })
 );
 
-export default async function (req: NextApiRequest, res: NextApiResponse) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   await cors(req, res);
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader(
@@ -74,3 +75,5 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   const apolloServerHandler = await getApolloServerHandler();
   return apolloServerHandler(req, res);
 }
+
+export default withSentry(handler);

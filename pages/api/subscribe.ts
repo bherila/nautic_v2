@@ -8,6 +8,7 @@ import {
   nauticAlertPlanOptions,
   PlanOption,
 } from "../../lib/PlanOptions";
+import { withSentry } from "@sentry/nextjs";
 
 const key: string =
   process.env.STRIPE_SECRET_KEY || "sk_test_dXH7pAFCTeRjL39fWSwwYcQd";
@@ -172,4 +173,4 @@ export interface SubscribeResponse {
   clientSecret: string;
 }
 
-export default handler;
+export default withSentry(handler);

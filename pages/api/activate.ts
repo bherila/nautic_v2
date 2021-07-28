@@ -3,6 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import Stripe from "stripe";
 import nodemailer from "nodemailer";
 import SMTPTransport from "nodemailer/lib/smtp-transport";
+import { withSentry } from "@sentry/nextjs";
 
 const STRIPE_WEBHOOK_TEST_KEY = "whsec_pJi9E0woWs4jSTuYCXQPdJESzhTKjp0z"; // TEST KEY, NOT PROD ENABLED!!
 const webhookKey: string =
@@ -47,16 +48,16 @@ async function handleAsSubscription(
   });
   console.info(`Updated subscription ${subscription_id}`);
 
-  const invoice = await stripe.invoices?.pay(
-    subscription.latest_invoice as string,
-    { payment_method: cards[0].id }
-  );
-  console.info(
-    "Paid invoice " +
-      subscription.latest_invoice +
-      ", new status = " +
-      invoice.status
-  );
+  // const invoice = await stripe.invoices?.pay(
+  //   subscription.latest_invoice as string,
+  //   { payment_method: cards[0].id }
+  // );
+  // console.info(
+  //   "Paid invoice " +
+  //     subscription.latest_invoice +
+  //     ", new status = " +
+  //     invoice.status
+  // );
 
   let emailConfig: SMTPTransport.Options;
   if (process.env.SMTP_CONFIG) {
@@ -133,50 +134,8 @@ async function handleAsSubscription(
   // }
 }
 
-// export const config = {
-//   api: {
-//     bodyParser: false,
-//   },
-// };
-
-// TODO: move to helper
-function parseBody(req: NextApiRequest): Promise<Buffer> {
-  return new Promise((resolve, reject) => {
-    if (!req.body) {
-      let buffer = "";
-      req.on("data", (chunk) => {
-        buffer += chunk;
-      });
-
-      req.on("end", () => {
-        resolve(Buffer.from(buffer));
-      });
-    } else {
-      reject("!!req.body");
-    }
-  });
-}
-
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   let event: Stripe.Event = req.body;
-  // try {
-  //   // FYI: https://maxkarlsson.dev/blog/2020/12/verify-stripe-webhook-signature-in-next-js-api-routes/
-  //   const sig = req.headers["stripe-signature"] as string;
-  //   event = stripe.webhooks.constructEvent(
-  //     (await parseBody(req)).toString(), // Stringify the request for the Stripe library
-  //     sig,
-  //     webhookKey
-  //   );
-  // } catch (err) {
-  //   console.error(err);
-  //   console.error(`⚠️  Webhook signature verification failed.`);
-  //   console.error(
-  //     `⚠️  Check the env file and enter the correct webhook secret.`
-  //   );
-  //   // res.status(400);
-  //   // return;
-  //   event =
-  // }
 
   // Extract the object from the event.
   if (event.type === "customer.subscription.created") {
@@ -200,4 +159,4 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   res.status(200);
 }
 
-export default handler;
+export default withSentry(handler);
