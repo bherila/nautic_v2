@@ -60,7 +60,10 @@ const cors = initMiddleware(
   })
 );
 
-async function handler(req: NextApiRequest, res: NextApiResponse) {
+async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> {
   await cors(req, res);
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader(
@@ -69,7 +72,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   );
   if (req.method === "OPTIONS") {
     res.end();
-    return false;
+    return;
   }
 
   const apolloServerHandler = await getApolloServerHandler();

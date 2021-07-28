@@ -4,10 +4,10 @@ import isIMEIValid from "../lib/luhn";
 import RegistrationState, {
   ValidatingRegistrationState,
 } from "../lib/RegistrationState";
-import Image from "next/image";
 import CheckoutSubmit from "./CheckoutSubmit";
 import TermsContainer from "../snippets/TermsContainer";
 import { validateSync } from "class-validator";
+import IMEIModal from "../snippets/IMEIModal";
 
 const getPlanOptionById: { [key: string]: PlanOption } = {};
 export const headingSize = "15pt";
@@ -29,6 +29,7 @@ interface Props {
   broadbandVideoAddOn: any;
   planOptions: PlanOption[];
   termsContent: React.ReactNode;
+  imeiContentOverride?: React.ReactNode;
   cc?: string;
 }
 
@@ -335,61 +336,6 @@ export default class RegistrationForm extends React.Component<
     );
   }
 
-  renderImeiModal() {
-    return (
-      <div
-        id="modal-nautic-imei"
-        className="modal"
-        style={{
-          display: "block",
-          position: "fixed",
-          boxShadow: "-3px 2px 3px 7px #ccc",
-          top: "20%",
-          left: "30%",
-          right: "30%",
-          zIndex: 1000,
-          background: "#fff",
-          padding: "4rem",
-          fontSize: bodySize,
-        }}
-      >
-        <button
-          style={{ float: "right", fontWeight: "bold", fontSize: headingSize }}
-          onClick={(e) => this.setState({ showImeiModal: false })}
-        >
-          X
-        </button>
-        <h3 style={{ marginTop: 0 }}>How do I find my IMEI?</h3>
-        <ol>
-          <li>
-            Go to Home Screen, press button in upper right to be taken to System
-            Settings
-          </li>
-          <li>
-            At System Settings scroll the bottom bar to the left and press
-            “Info” tab. &nbsp;The “MEID” line is the IMEI.
-          </li>
-        </ol>
-        <Image
-          src="/img/insight_meid_screenshot.jpg"
-          width={429}
-          height={323}
-        />
-        {/*<img*/}
-        {/*    src="https://assets.website-files.com/5a29d8f7c76e0b0001d9eac5/5b463af08b30b647f3f575f0_Insight%20MEID%20Screenshot.JPG"*/}
-        {/*    srcSet="https://assets.website-files.com/5a29d8f7c76e0b0001d9eac5/5b463af08b30b647f3f575f0_Insight%20MEID%20Screenshot-p-800.jpeg 800w, https://assets.website-files.com/5a29d8f7c76e0b0001d9eac5/5b463af08b30b647f3f575f0_Insight%20MEID%20Screenshot.JPG 982w"*/}
-        {/*    sizes="(max-width: 479px) 79vw, (max-width: 767px) 84vw, (max-width: 991px) 323px, 429px"*/}
-        {/*    alt=""*/}
-        {/*    style={{*/}
-        {/*        paddingTop: "10px",*/}
-        {/*        marginLeft: "auto",*/}
-        {/*        marginRight: "auto",*/}
-        {/*    }}*/}
-        {/*/>*/}
-      </div>
-    );
-  }
-
   render() {
     const validationErrors = validateSync(
       new ValidatingRegistrationState(this.state)
@@ -397,7 +343,12 @@ export default class RegistrationForm extends React.Component<
     const isValid = this.state.agreed && validationErrors.length === 0;
     return (
       <div style={{ fontSize: bodySize }}>
-        {this.state.showImeiModal && this.renderImeiModal()}
+        {this.state.showImeiModal && (
+          <IMEIModal
+            contentOverride={this.props.imeiContentOverride}
+            onClose={() => this.setState({ showImeiModal: false })}
+          />
+        )}
         <div className="quote-form-wrapper new-form">
           <div className="w-row">
             <div className="w-col w-col-6">{this.renderCol1()}</div>
