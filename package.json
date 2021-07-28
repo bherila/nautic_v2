@@ -32,6 +32,7 @@
     "@babel/plugin-proposal-class-properties": "^7.14.5",
     "@babel/plugin-proposal-decorators": "^7.14.5",
     "@types/cors": "^2.8.12",
+    "@types/micro": "^7.3.6",
     "@types/react": "17.0.14",
     "babel-plugin-transform-typescript-metadata": "^0.3.2",
     "eslint": "7.31.0",

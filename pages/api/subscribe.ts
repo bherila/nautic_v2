@@ -60,15 +60,6 @@ async function handler(
       ].join(" "),
       phone: formInputs.cellNumber,
       email: formInputs.email,
-      metadata: {
-        dealerName: formInputs.dealerName || "",
-        dealerCompany: formInputs.dealerCompany || "",
-        iccId: formInputs.iccId,
-        imei: formInputs.imei,
-        vesselName: formInputs.vesselName,
-        vesselType: formInputs.vesselType,
-        desiredInstallDate: formInputs.installDate,
-      },
     });
   }
   if (!customer) {
@@ -146,6 +137,21 @@ async function handler(
     items: [{ price: price.id }],
     payment_behavior: "default_incomplete",
     expand: ["latest_invoice.payment_intent"],
+    metadata: {
+      broadbandVideo: formInputs.broadbandVideo ? "true" : "false",
+      installDate: formInputs.installDate || "",
+      email: formInputs.email || "",
+      imei: formInputs.imei || "",
+      ownerFname: formInputs.ownerFname || "",
+      ownerMi: formInputs.ownerMi || "",
+      ownerLname: formInputs.ownerLname || "",
+      vesselName: formInputs.vesselName || "",
+      cellNumber: formInputs.cellNumber || "",
+      vesselType: formInputs.vesselType || "",
+      dealerName: formInputs.dealerName || "",
+      dealerCompany: formInputs.dealerCompany || "",
+      iccId: formInputs.iccId || "",
+    },
   });
 
   // We have to do these casts because of the 'expand' just above.

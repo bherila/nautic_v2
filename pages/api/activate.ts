@@ -5,83 +5,102 @@ import nodemailer from "nodemailer";
 import SMTPTransport from "nodemailer/lib/smtp-transport";
 
 const STRIPE_WEBHOOK_TEST_KEY = "whsec_pJi9E0woWs4jSTuYCXQPdJESzhTKjp0z"; // TEST KEY, NOT PROD ENABLED!!
-const key: string = process.env.STRIPE_WEBHOOK_KEY || STRIPE_WEBHOOK_TEST_KEY;
-const stripe = new Stripe(key, { apiVersion: "2020-08-27" });
+const webhookKey: string =
+  process.env.STRIPE_WEBHOOK_KEY || STRIPE_WEBHOOK_TEST_KEY;
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+const stripe = new Stripe(
+  process.env.STRIPE_SECRET_KEY || "sk_test_dXH7pAFCTeRjL39fWSwwYcQd",
+  { apiVersion: "2020-08-27" }
+);
 
 async function handleAsSubscription(
   res: NextApiResponse,
-  dataObject: Record<string, string>
-) {
-  const subscription_id = dataObject["subscription"];
-  const payment_intent_id = dataObject["payment_intent"];
+  dataObject: Stripe.Subscription
+): Promise<string> {
+  const subscription_id = dataObject.id;
+  const customer = await stripe.customers?.retrieve(
+    dataObject.customer as string
+  );
+  if (!customer) {
+    return "no customer";
+  }
 
   // Retrieve the payment intent used to pay the subscription
-  const payment_intent = await stripe.paymentIntents.retrieve(
-    payment_intent_id
-  );
-  console.info(`Retrieved payment intent ${payment_intent_id}`);
+  // const payment_intent = await stripe.paymentIntents.retrieve(
+  //   payment_intent_id
+  // );
+  // console.info(`Retrieved payment intent ${payment_intent_id}`);
+  //
+  // if (typeof payment_intent.payment_method !== "string") {
+  //   throw new Error("Expected payment_intent.payment_method to be a string");
+  // }
 
-  if (typeof payment_intent.payment_method !== "string") {
-    throw new Error("Expected payment_intent.payment_method to be a string");
-  }
+  const cards = (
+    await stripe.paymentMethods?.list({
+      customer: dataObject.customer as string,
+      type: "card",
+    })
+  ).data;
+
   const subscription = await stripe.subscriptions.update(subscription_id, {
-    default_payment_method: payment_intent.payment_method,
+    default_payment_method: cards[0].id,
   });
   console.info(`Updated subscription ${subscription_id}`);
 
-  const customer = await stripe.customers?.retrieve(
-    subscription.customer as string
+  const invoice = await stripe.invoices?.pay(
+    subscription.latest_invoice as string,
+    { payment_method: cards[0].id }
   );
-  if (customer) {
-    let emailConfig: SMTPTransport.Options;
-    if (process.env.SMTP_CONFIG) {
-      emailConfig = JSON.parse(process.env.SMTP_CONFIG);
-    } else {
-      const emailAccount = await nodemailer.createTestAccount();
-      emailConfig = {
-        host: "smtp.ethereal.email",
-        port: 587,
-        secure: false, // true for 465, false for other ports
-        auth: {
-          user: emailAccount.user, // generated ethereal user
-          pass: emailAccount.pass, // generated ethereal password
+  console.info(
+    "Paid invoice " +
+      subscription.latest_invoice +
+      ", new status = " +
+      invoice.status
+  );
+
+  let emailConfig: SMTPTransport.Options;
+  if (process.env.SMTP_CONFIG) {
+    emailConfig = JSON.parse(process.env.SMTP_CONFIG);
+  } else {
+    const emailAccount = await nodemailer.createTestAccount();
+    emailConfig = {
+      host: "smtp.ethereal.email",
+      port: 587,
+      secure: false, // true for 465, false for other ports
+      auth: {
+        user: emailAccount.user, // generated ethereal user
+        pass: emailAccount.pass, // generated ethereal password
+      },
+    };
+  }
+
+  // create reusable transporter object using the default SMTP transport
+  try {
+    let transporter = nodemailer.createTransport(emailConfig);
+
+    const cc = subscription.metadata.emailCC?.split(",") || [];
+
+    // send mail with defined transport object
+    let info = await transporter.sendMail({
+      from: '"Nearshore Networks Signup Form" <ben@herila.net>', // sender address
+      to: ["comms@nearshorenetworks.com", "ben@herila.net", ...cc], // list of receivers
+      subject: "New Subscriber Alert", // Subject line
+      text: JSON.stringify(
+        {
+          stripe_subscription_id: subscription.id,
+          payment_method_id: cards[0].id,
+          metadata: subscription.metadata,
         },
-      };
-    }
-
-    // create reusable transporter object using the default SMTP transport
-    try {
-      let transporter = nodemailer.createTransport(emailConfig);
-
-      const cc = subscription.metadata.emailCC?.split(",") || [];
-
-      // send mail with defined transport object
-      let info = await transporter.sendMail({
-        from: '"Nearshore Networks Signup Form" <ben@herila.net>', // sender address
-        to: ["comms@nearshorenetworks.com", "ben@herila.net", ...cc], // list of receivers
-        subject: "New Subscriber Alert", // Subject line
-        text: JSON.stringify(
-          {
-            stripe_subscription_id: subscription.id,
-            payment_intent_id: payment_intent_id,
-            amount: payment_intent.amount,
-            metadata: subscription.metadata,
-          },
-          null,
-          2
-        ), // plain text body
-        // html: "<b>Hello world?</b>", // html body
-      });
-      console.info("email sent", info);
-    } catch (err) {
-      console.error("Couldn't send email confirmation", err);
-    }
+        null,
+        2
+      ), // plain text body
+      // html: "<b>Hello world?</b>", // html body
+    });
+    console.info("email sent", info);
+    return info.messageId;
+  } catch (err) {
+    console.error("Couldn't send email confirmation", err);
+    return "error";
   }
 
   // // Handle the event
@@ -114,35 +133,70 @@ async function handleAsSubscription(
   // }
 }
 
+// export const config = {
+//   api: {
+//     bodyParser: false,
+//   },
+// };
+
+// TODO: move to helper
+function parseBody(req: NextApiRequest): Promise<Buffer> {
+  return new Promise((resolve, reject) => {
+    if (!req.body) {
+      let buffer = "";
+      req.on("data", (chunk) => {
+        buffer += chunk;
+      });
+
+      req.on("end", () => {
+        resolve(Buffer.from(buffer));
+      });
+    } else {
+      reject("!!req.body");
+    }
+  });
+}
+
 async function handler(req: NextApiRequest, res: NextApiResponse) {
-  let event: Stripe.Event;
-  try {
-    event = stripe.webhooks.constructEvent(
-      req.body,
-      req.headers["stripe-signature"] || "",
-      key
-    );
-  } catch (err) {
-    console.error(err);
-    console.error(`⚠️  Webhook signature verification failed.`);
-    console.error(
-      `⚠️  Check the env file and enter the correct webhook secret.`
-    );
-    res.status(400);
-    return;
-  }
+  let event: Stripe.Event = req.body;
+  // try {
+  //   // FYI: https://maxkarlsson.dev/blog/2020/12/verify-stripe-webhook-signature-in-next-js-api-routes/
+  //   const sig = req.headers["stripe-signature"] as string;
+  //   event = stripe.webhooks.constructEvent(
+  //     (await parseBody(req)).toString(), // Stringify the request for the Stripe library
+  //     sig,
+  //     webhookKey
+  //   );
+  // } catch (err) {
+  //   console.error(err);
+  //   console.error(`⚠️  Webhook signature verification failed.`);
+  //   console.error(
+  //     `⚠️  Check the env file and enter the correct webhook secret.`
+  //   );
+  //   // res.status(400);
+  //   // return;
+  //   event =
+  // }
 
   // Extract the object from the event.
-  const dataObject = event.data.object as Record<string, string>;
-  if (dataObject["billing_reason"] == "subscription_create") {
+  if (event.type === "customer.subscription.created") {
     try {
-      await handleAsSubscription(res, dataObject);
-    } catch {
+      const result = await handleAsSubscription(
+        res,
+        event.data.object as Stripe.Subscription
+      );
+      res.json({
+        result: "Handled as subscription created, result = " + result,
+      });
+      res.status(200);
+      return;
+    } catch (err) {
+      res.json({ err: err.toString() });
       res.status(500);
       return;
     }
   }
-  res.json({ result: "OK" });
+  res.json({ result: "No-op" });
   res.status(200);
 }
 
