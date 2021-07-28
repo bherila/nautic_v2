@@ -31,6 +31,7 @@ interface Props {
   termsContent: React.ReactNode;
   imeiContentOverride?: React.ReactNode;
   cc?: string;
+  defaultPlanText?: string;
 }
 
 export default class RegistrationForm extends React.Component<
@@ -160,7 +161,11 @@ export default class RegistrationForm extends React.Component<
       <React.Fragment>
         <div>
           <label>Plan Options {required}</label>
-          {this.renderPlanOptions(planOptions, 0, "Select Your Device")}
+          {this.renderPlanOptions(
+            planOptions,
+            0,
+            this.props.defaultPlanText || "Select Your Plan"
+          )}
         </div>
 
         {!!broadbandVideoAddOn[this.getBasePlanId()] && (

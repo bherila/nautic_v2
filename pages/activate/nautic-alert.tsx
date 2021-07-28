@@ -38,6 +38,7 @@ export default function RegistrationFormPage({}) {
           planOptions={nauticAlertPlanOptions}
           termsContent={<TermsContentNautic />}
           imeiContentOverride={<NauticIMEIModal />}
+          defaultPlanText="Select Your Device"
           cc="nfvelado@nauticalert.com"
         />
       </div>
