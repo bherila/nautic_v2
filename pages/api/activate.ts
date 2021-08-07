@@ -83,7 +83,7 @@ async function handleAsSubscription(
 
     // send mail with defined transport object
     let info = await transporter.sendMail({
-      from: '"Nearshore Networks Signup Form" <ben@herila.net>', // sender address
+      from: '"Ben Herila" <ben@herila.net>', // sender address
       to: ["comms@nearshorenetworks.com", "ben@herila.net", ...cc], // list of receivers
       subject: "New Subscriber Alert", // Subject line
       text: JSON.stringify(
