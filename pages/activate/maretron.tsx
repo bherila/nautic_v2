@@ -44,9 +44,9 @@ export default function RegistrationFormPage({}) {
           termsContent={<TermsContentMaretron />}
         />
       </div>
-      <div className="container-21 w-container" style={{ textAlign: "center" }}>
-        <h1>SMS100 Activation Support</h1>
-        <p>
+      <div className="container-21 w-container">
+        <h1 style={{ textAlign: "center" }}>SMS100 Activation Support</h1>
+        <p style={{ textAlign: "center" }}>
           US Toll Free &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + 1 844 526 2627 ext. 2
         </p>
       </div>
