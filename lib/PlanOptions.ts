@@ -35,7 +35,7 @@ export function findPlanOption(
 }
 
 export function getAllPlanOptions() {
-  return [...cellPlanOptions, ...nauticAlertPlanOptions];
+  return [...cellPlanOptions, ...nauticAlertPlanOptions, ...maretronOptions];
 }
 
 export const maretronOptions: PlanOption[] = [
