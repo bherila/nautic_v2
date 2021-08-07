@@ -6,6 +6,7 @@ import {
 import RegistrationForm from "../../lib/RegistrationForm";
 import TermsContentNautic from "../../snippets/TermsContentNautic";
 import Image from "next/image";
+import Layout from "../components/layout";
 
 function NauticIMEIModal() {
   return (
@@ -27,7 +28,7 @@ function NauticIMEIModal() {
 
 export default function RegistrationFormPage({}) {
   return (
-    <>
+    <Layout>
       <h1 className="heading-39">Nautic Alert Plan Activation</h1>
       <div className="w-container">
         <RegistrationForm
@@ -42,6 +43,6 @@ export default function RegistrationFormPage({}) {
           cc="nfvelado@nauticalert.com"
         />
       </div>
-    </>
+    </Layout>
   );
 }

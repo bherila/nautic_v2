@@ -8,10 +8,9 @@ import CheckoutSubmit from "./CheckoutSubmit";
 import TermsContainer from "../snippets/TermsContainer";
 import { validateSync } from "class-validator";
 import IMEIModal from "../snippets/IMEIModal";
+import { bodySize } from "../lib/styles";
 
 const getPlanOptionById: { [key: string]: PlanOption } = {};
-export const headingSize = "15pt";
-export const bodySize = "10pt";
 const wInput = "w-input";
 
 const required = <span style={{ color: "red" }}>*</span>;
@@ -272,35 +271,6 @@ export default class RegistrationForm extends React.Component<
               </label>
             ))}
           </div>
-        )}
-        {renderDealerFields && (
-          <React.Fragment>
-            <div>
-              <label>Dealer or Installer Name</label>
-              <input
-                className={wInput}
-                type="text"
-                placeholder="Installer Name"
-                value={this.state.dealerName || ""}
-                onChange={(e) =>
-                  this.setState({ dealerName: e.currentTarget.value })
-                }
-              />
-            </div>
-
-            <div>
-              <label>Dealer or Installer Company</label>
-              <input
-                className={wInput}
-                type="text"
-                placeholder="Installer Company"
-                value={this.state.dealerCompany || ""}
-                onChange={(e) =>
-                  this.setState({ dealerCompany: e.currentTarget.value })
-                }
-              />
-            </div>
-          </React.Fragment>
         )}
       </React.Fragment>
     );

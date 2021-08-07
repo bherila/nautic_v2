@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     });
   }
   return (
-    <Layout>
+    <>
       <Head>
         <title>Nearshore Networks</title>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
@@ -41,7 +41,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
       <Component {...pageProps} />
-    </Layout>
+    </>
   );
 }
 export default MyApp;

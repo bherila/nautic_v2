@@ -5,6 +5,7 @@ export interface PlanOption {
   price?: number;
   checkoutId?: string;
   enableIccId?: boolean;
+  activationFee?: number;
 }
 
 export const nauticAlertBroadbandVideo = {
@@ -37,21 +38,34 @@ export function getAllPlanOptions() {
   return [...cellPlanOptions, ...nauticAlertPlanOptions];
 }
 
+export const maretronOptions: PlanOption[] = [
+  {
+    name: "SMS100 Unlimited Subscription",
+    price: 19.95,
+    checkoutId: "SMS100",
+    activationFee: 14.95,
+    enableIccId: true,
+  },
+];
+
 export const cellPlanOptions: PlanOption[] = [
   {
     name: "6GB Monthly Subscription",
     price: 48.0,
     checkoutId: "CELL6GB",
+    enableIccId: true,
   },
   {
     name: "10GB Monthly Subscription",
     price: 75.0,
     checkoutId: "CELL10GB",
+    enableIccId: true,
   },
   {
     name: "50GB Monthly Subscription",
     price: 350.0,
     checkoutId: "CELL50GB",
+    enableIccId: true,
   },
 ];
 

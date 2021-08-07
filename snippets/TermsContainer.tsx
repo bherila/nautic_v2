@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { CoverageMapTerm } from "./tMobileCoverageMap";
-import { bodySize, headingSize } from "../lib/RegistrationForm";
+import { bodySize, headingSize } from "../lib/styles";
 
 export interface TermsProps {
   isAgreed: boolean;

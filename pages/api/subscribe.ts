@@ -119,11 +119,17 @@ async function handler(
     return;
   }
 
+  // Use activation fee if specified, else override.
+  const activationFeeCents =
+    typeof planDetails.activationFee === "number"
+      ? Math.round(planDetails.activationFee * 100)
+      : 2499;
+
   // Activation fee -- create as invoice item. When the subscription is created
   // the pending invoice items for the customer will be added to the first payment
   const invoiceItem = await stripe.invoiceItems.create({
     currency: "usd",
-    unit_amount: 2499, // $24.99, enter in cents
+    unit_amount: activationFeeCents,
     description: "Activation fee",
     customer: customer.id,
   });

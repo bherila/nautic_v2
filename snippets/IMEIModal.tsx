@@ -1,5 +1,5 @@
 import * as React from "react";
-import { bodySize, headingSize } from "../lib/RegistrationForm";
+import { bodySize, headingSize } from "../lib/styles";
 import { CSSProperties } from "react";
 
 export default function IMEIModal({
@@ -52,7 +52,7 @@ const modalStyle: CSSProperties = {
   zIndex: 1000,
   background: "#fff",
   padding: "4rem",
-  fontSize: bodySize,
+  fontSize: "10pt",
 };
 
 const closeButtonStyle: CSSProperties = {
