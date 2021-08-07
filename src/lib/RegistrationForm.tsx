@@ -8,7 +8,7 @@ import CheckoutSubmit from "./CheckoutSubmit";
 import TermsContainer from "../snippets/TermsContainer";
 import { validateSync } from "class-validator";
 import IMEIModal from "../snippets/IMEIModal";
-import { bodySize } from "../lib/styles";
+import { bodySize } from "./styles";
 
 const getPlanOptionById: { [key: string]: PlanOption } = {};
 const wInput = "w-input";
