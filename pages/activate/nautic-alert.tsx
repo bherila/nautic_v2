@@ -21,7 +21,12 @@ function NauticIMEIModal() {
           tab. &nbsp;The “MEID” line is the IMEI.
         </li>
       </ol>
-      <Image src="/img/insight_meid_screenshot.jpg" width={429} height={323} />
+      <Image
+        src="/img/insight_meid_screenshot.jpg"
+        width={429}
+        height={323}
+        alt="Insight MEID screenshot"
+      />
     </>
   );
 }

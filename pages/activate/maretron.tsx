@@ -22,7 +22,12 @@ export default function RegistrationFormPage({}) {
           <p>All fields are mandatory unless indicated</p>
         </div>
         <div style={{ display: "block" }}>
-          <Image src="/img/Maretron-Logo.png" width={300} height={69} />
+          <Image
+            src="/img/Maretron-Logo.png"
+            width={300}
+            height={69}
+            alt="Maretron"
+          />
         </div>
       </div>
       <div className="w-container">
@@ -38,6 +43,12 @@ export default function RegistrationFormPage({}) {
           planOptions={maretronOptions}
           termsContent={<TermsContentMaretron />}
         />
+      </div>
+      <div className="container-21 w-container" style={{ textAlign: "center" }}>
+        <h1>SMS100 Activation Support</h1>
+        <p>
+          US Toll Free &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + 1 844 526 2627 ext. 2
+        </p>
       </div>
     </main>
   );
