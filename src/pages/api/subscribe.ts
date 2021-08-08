@@ -9,10 +9,8 @@ import {
   PlanOption,
 } from "../../lib/PlanOptions";
 import { withSentry } from "@sentry/nextjs";
-
-const key: string =
-  process.env.STRIPE_SECRET_KEY || "sk_test_dXH7pAFCTeRjL39fWSwwYcQd";
-const stripe = new Stripe(key, { apiVersion: "2020-08-27" });
+import getServerSideStripe from "../../lib/getServerSideStripe";
+const stripe = getServerSideStripe();
 
 async function handler(
   req: NextApiRequest,
@@ -179,4 +177,5 @@ export interface SubscribeResponse {
   clientSecret: string;
 }
 
+// noinspection JSUnusedGlobalSymbols
 export default withSentry(handler);

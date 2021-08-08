@@ -79,4 +79,5 @@ async function handler(
   return apolloServerHandler(req, res);
 }
 
+// noinspection JSUnusedGlobalSymbols
 export default withSentry(handler);

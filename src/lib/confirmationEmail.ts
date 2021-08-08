@@ -35,6 +35,7 @@ export default async function confirmationEmail(
       text: JSON.stringify(
         {
           stripe_subscription_id: subscription.id,
+          subscription_status: subscription.status,
           payment_method_id,
           metadata: subscription.metadata,
         },

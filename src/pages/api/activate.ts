@@ -1,19 +1,10 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import Stripe from "stripe";
-import nodemailer from "nodemailer";
-import SMTPTransport from "nodemailer/lib/smtp-transport";
 import { withSentry } from "@sentry/nextjs";
 import confirmationEmail from "../../lib/confirmationEmail";
-
-const STRIPE_WEBHOOK_TEST_KEY = "whsec_pJi9E0woWs4jSTuYCXQPdJESzhTKjp0z"; // TEST KEY, NOT PROD ENABLED!!
-const webhookKey: string =
-  process.env.STRIPE_WEBHOOK_KEY || STRIPE_WEBHOOK_TEST_KEY;
-
-const stripe = new Stripe(
-  process.env.STRIPE_SECRET_KEY || "sk_test_dXH7pAFCTeRjL39fWSwwYcQd",
-  { apiVersion: "2020-08-27" }
-);
+import getServerSideStripe from "../../lib/getServerSideStripe";
+const stripe = getServerSideStripe();
 
 async function handleAsSubscription(
   res: NextApiResponse,
@@ -116,4 +107,5 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   res.status(200);
 }
 
+// noinspection JSUnusedGlobalSymbols
 export default withSentry(handler);
