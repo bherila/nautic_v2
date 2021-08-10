@@ -40,9 +40,9 @@ export function getAllPlanOptions() {
 
 export const maretronOptions: PlanOption[] = [
   {
-    name: "SMS100 Unlimited Subscription",
+    name: "Maretron SMS100 Unlimited Subscription",
     price: 19.95,
-    checkoutId: "SMS100",
+    checkoutId: "MARETRON_SMS100",
     activationFee: 14.95,
     enableIccId: true,
   },
@@ -50,19 +50,19 @@ export const maretronOptions: PlanOption[] = [
 
 export const cellPlanOptions: PlanOption[] = [
   {
-    name: "6GB Monthly Subscription",
+    name: "6GB Monthly Cellular Subscription",
     price: 48.0,
     checkoutId: "CELL6GB",
     enableIccId: true,
   },
   {
-    name: "10GB Monthly Subscription",
+    name: "10GB Monthly Cellular Subscription",
     price: 75.0,
     checkoutId: "CELL10GB",
     enableIccId: true,
   },
   {
-    name: "50GB Monthly Subscription",
+    name: "50GB Monthly Cellular Subscription",
     price: 350.0,
     checkoutId: "CELL50GB",
     enableIccId: true,
@@ -125,17 +125,17 @@ export const nauticAlertPlanOptions: PlanOption[] = [
     nextDefaultChoice: "Choose Your Service",
     planOptions: [
       {
-        name: "Standard",
+        name: "VTracker Standard",
         price: 29.99,
         checkoutId: "PXJWVMGKD6SBDU56J1M0P16752",
       },
       {
-        name: "Enhanced",
+        name: "VTracker Enhanced",
         price: 44.99,
         checkoutId: "PCQHDF1U45B73TRDO4P3P20692",
       },
       {
-        name: "CloudWatch",
+        name: "VTracker CloudWatch",
         price: 69.99,
         checkoutId: "1O6X4USFUW09D3DMWPSSP16751",
       },
