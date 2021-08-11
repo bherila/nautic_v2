@@ -10,6 +10,7 @@ import {
 } from "../../lib/PlanOptions";
 import { withSentry } from "@sentry/nextjs";
 import getServerSideStripe from "../../lib/getServerSideStripe";
+import Plan = module
 const stripe = getServerSideStripe();
 
 async function handler(
@@ -143,6 +144,9 @@ async function handler(
     payment_behavior: "default_incomplete",
     expand: ["latest_invoice.payment_intent"],
     metadata: {
+      plan_name: planDetails.name,
+      plan_activation_fee: planDetails.activationFee || 0,
+      plan_price: planDetails.price,
       broadbandVideo: formInputs.broadbandVideo ? "true" : "false",
       installDate: formInputs.installDate || "",
       email: formInputs.email || "",
