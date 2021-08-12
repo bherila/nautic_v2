@@ -3,6 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import Stripe from "stripe";
 import RegistrationState from "../../lib/RegistrationState";
 import {
+  DEFAULT_ACTIVATION_FEE,
   findPlanOption,
   getAllPlanOptions,
   nauticAlertPlanOptions,
@@ -121,7 +122,7 @@ async function handler(
   const activationFeeCents =
     typeof planDetails.activationFee === "number"
       ? Math.round(planDetails.activationFee * 100)
-      : 2499;
+      : DEFAULT_ACTIVATION_FEE;
 
   // Activation fee -- create as invoice item. When the subscription is created
   // the pending invoice items for the customer will be added to the first payment
@@ -145,7 +146,7 @@ async function handler(
     metadata: {
       emailCC: formInputs.emailCC || '',
       plan_name: planDetails.name,
-      plan_activation_fee: planDetails.activationFee || 0,
+      plan_activation_fee: planDetails.activationFee || (DEFAULT_ACTIVATION_FEE / 100).toFixed(2),
       plan_price: planDetails.price,
       broadbandVideo: formInputs.broadbandVideo ? "true" : "false",
       installDate: formInputs.installDate || "",

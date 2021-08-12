@@ -8,6 +8,8 @@ export interface PlanOption {
   activationFee?: number;
 }
 
+export const DEFAULT_ACTIVATION_FEE = 2499;
+
 export const nauticAlertBroadbandVideo = {
   UX3PAAODXHR8XWPSSOZWP14533: "TSESO16SDJK3XBU8PSSNP20548",
   "5C73RJC6X0BN61N2EXARP14532": "S1V7JWWSB6ZBSUWXXWR0P20549",
