@@ -144,6 +144,7 @@ async function handler(
     payment_behavior: "default_incomplete",
     expand: ["latest_invoice.payment_intent"],
     metadata: {
+      cc: formInputs.emailCC || '',
       plan_name: planDetails.name,
       plan_activation_fee: planDetails.activationFee || 0,
       plan_price: planDetails.price,
