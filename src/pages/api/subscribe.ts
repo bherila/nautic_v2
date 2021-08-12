@@ -10,7 +10,6 @@ import {
 } from "../../lib/PlanOptions";
 import { withSentry } from "@sentry/nextjs";
 import getServerSideStripe from "../../lib/getServerSideStripe";
-import Plan = module
 const stripe = getServerSideStripe();
 
 async function handler(
