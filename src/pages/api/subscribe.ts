@@ -144,9 +144,10 @@ async function handler(
     payment_behavior: "default_incomplete",
     expand: ["latest_invoice.payment_intent"],
     metadata: {
-      emailCC: formInputs.emailCC || '',
+      emailCC: formInputs.emailCC || "",
       plan_name: planDetails.name,
-      plan_activation_fee: planDetails.activationFee || (DEFAULT_ACTIVATION_FEE / 100).toFixed(2),
+      plan_activation_fee:
+        planDetails.activationFee || (DEFAULT_ACTIVATION_FEE / 100).toFixed(2),
       plan_price: planDetails.price,
       broadbandVideo: formInputs.broadbandVideo ? "true" : "false",
       installDate: formInputs.installDate || "",

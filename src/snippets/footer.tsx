@@ -1,126 +1,132 @@
 ﻿import React from "react";
+import Image from "next/image";
 
 export default function Footer() {
   return (
-    <div className="footer-style-4">
-      <div className="top-footer w-hidden-tiny"></div>
-      <div className="container-8 w-container">
-        <div className="w-row">
-          <div className="w-col w-col-5">
-            <div className="div-block-30">
-              <h4 className="heading-white-copy margin-footer heading-gray">
+    <section className="light-gray-bg wf-section">
+      <div className="page-footer">
+        <div className="footer-container">
+          <div className="footer-wrapper-two">
+            <div className="footer-brand">
+              <div className="footer-logo">
+                <Image
+                  src={require("../images/logo-white.svg")}
+                  width="180"
+                  height="100"
+                  alt=""
+                  className="footer-logo-image"
+                />
+              </div>
+              <h5 className="footer-title">About NEARSHORE</h5>
+              <p className="footer-text">
+                We empower the maritime industry and remote locations with
+                secure, reliable, and tailor-made communications solutions
+                anywhere in the world.
+              </p>
+              <p className="footer-text">
+                Call +1 844 526 2627
+                <br />
+                Email: comms@nearshorenetworks.com
+              </p>
+            </div>
+            <div className="footer-menu-col">
+              <a href="#" className="footer-link">
                 About Us
-              </h4>
-              <div className="div-block-31">
-                <p className="darker">
-                  NearshoreNetworks brings innovation to vessel communications
-                  by merging on demand Satellite and 4G/LTE solutions with
-                  flexible terms of service and delivery.
-                </p>
-              </div>
-              <div className="html-embed w-embed">
-                <a
-                  href="https://www.facebook.com/nearshorenetworks/"
-                  target="_blank"
-                >
-                  <img
-                    src="https://niftybuttons.com/rkc-social-set-1/facebook.png"
-                    style={{ margin: "1px", border: "none" }}
-                  />
-                </a>
-                <a href="https://twitter.com/BobM_Global" target="_blank">
-                  <img
-                    src="https://niftybuttons.com/rkc-social-set-1/twitter.png"
-                    style={{ margin: "1px", border: "none" }}
-                  />
-                </a>
-                <a
-                  href="https://www.youtube.com/channel/UCx7phI3rdYJDbSI3WvZkA3w"
-                  target="_blank"
-                >
-                  <img
-                    src="https://niftybuttons.com/rkc-social-set-1/youtube.png"
-                    style={{ margin: "1px", border: "none" }}
-                  />
-                </a>
-                <a
-                  href="https://www.linkedin.com/company/nearshorenetworks/"
-                  target="_blank"
-                >
-                  <img
-                    src="https://niftybuttons.com/rkc-social-set-1/linkedin.png"
-                    style={{ margin: "1px", border: "none" }}
-                  />
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="w-col w-col-3"></div>
-          <div className="w-col w-col-4">
-            <div className="div-block-4">
-              <h4 className="heading-white margin-footer">Connect</h4>
-              <a
-                href="../../contact-us.html"
-                className="button-icon arrow w-button"
-              >
-                Book a Consultation
               </a>
-              <div className="top-content tt">
-                <div className="troll-free-text inside-navigation white">
-                  <span className="number dark more">
-                    <a
-                      href="mailto:comms@nearshorenetworks.com?subject=Nearshorenetworks%20-%20Contact%20Request"
-                      className="footer-linkx"
-                    >
-                      comms@nearshorenetworks.com
-                    </a>
-                  </span>
-                </div>
-                <div className="top-content">
-                  <div className="troll-free-text inside-navigation white">
-                    <span className="number dark more">
-                      <a href="tel:+1844526-2627" className="footer-linkx">
-                        +1 844 526-2627
-                      </a>
-                    </span>
-                  </div>
-                </div>
-              </div>
+              <a href="#" className="footer-link">
+                Solutions
+              </a>
+              <a href="#" className="footer-link">
+                Industries
+              </a>
             </div>
-          </div>
-        </div>
-        <div className="footer-divider"></div>
-        <div className="row-5 w-row">
-          <div className="column-40 w-col w-col-3">
-            <img
-              src="/img/nearshorenetworks-logo-light.png"
-              width="145"
-              id="footer-logo"
-              alt=""
-              className="image-2"
-            />
-          </div>
-          <div className="column-39 w-col w-col-9">
-            <div className="w-row">
-              <div className="w-col w-col-6">
-                <div className="text-block-15">
-                  Nearshorenetworks, Inc. all rights reserved, 2021
-                </div>
-              </div>
-              <div className="column-68 w-col w-col-3">
-                <a href="../../privacy-policy.html" className="link-5">
+            <div className="footer-menu-col">
+              <a href="#" className="footer-link">
+                Contact Us
+              </a>
+              <a href="#" className="footer-link">
+                Activate Services
+              </a>
+              <a href="#" className="footer-link">
+                Blog
+              </a>
+            </div>
+            <div className="footer-menu-col subscribe-col">
+              <EmailSubscribeForm />
+              <div className="footer-menu-terms">
+                <a href="#" className="footer-link link-terms">
+                  Terms &amp; Conditions
+                </a>
+                <a href="#" className="footer-link link-terms">
                   Privacy Policy
                 </a>
               </div>
-              <div className="column-67 w-col w-col-3">
-                <a href="../../terms-conditions.html" className="link-5">
-                  Terms &amp; Conditions
-                </a>
-              </div>
+            </div>
+          </div>
+          <div className="footer-bottom">
+            <div className="footer-copyright">
+              © 2022 NearShore Networks. All rights reserved.
+            </div>
+            <div className="footer-social-block-two">
+              <a href="#" className="footer-social-link w-inline-block">
+                <Image
+                  src={require("../images/icon-linkedin.svg")}
+                  height="50"
+                  alt=""
+                  className="footer-social-image"
+                />
+              </a>
+              <a href="#" className="footer-social-link w-inline-block">
+                <Image
+                  src={require("../images/icon-facebook.svg")}
+                  loading="lazy"
+                  width="50"
+                  height="50"
+                  alt=""
+                  className="footer-social-image"
+                />
+              </a>
+              <a href="#" className="footer-social-link w-inline-block">
+                <Image
+                  src={require("../images/icon-youtube.svg")}
+                  width="50"
+                  height="50"
+                  alt=""
+                  className="footer-social-image"
+                />
+              </a>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
+}
+
+function EmailSubscribeForm({}) {
+  return null;
+  // return <>
+  //     <div className="footer-form w-form">
+  //         <form id="wf-form-Footer-Form" name="wf-form-Footer-Form" data-name="Footer Form"
+  //               method="get" className="footer-form-container" aria-label="Footer Form">
+  //             <div className="footer-title">Subscribe to our Newsletter</div>
+  //             <div className="footer-form-block">
+  //                 <input type="email" className="footer-form-field w-input"
+  //                        maxLength={256} name="email-subscribe-2"
+  //                        data-name="Email Subscribe 2" aria-label="Get product updates"
+  //                        placeholder="Enter your email." id="email-subscribe-2" required/>
+  //                 <input type="submit" value="Subscribe" data-wait="Please wait..."
+  //                        className="footer-form-submit w-button"/>
+  //             </div>
+  //         </form>
+  //         <div className="w-form-done" tabIndex={-1} role="region"
+  //              aria-label="Footer Form success">
+  //             <div>Thank you! Your submission has been received!</div>
+  //         </div>
+  //         <div className="w-form-fail" tabIndex={-1} role="region"
+  //              aria-label="Footer Form failure">
+  //             <div>Oops! Something went wrong while submitting the form.</div>
+  //         </div>
+  //     </div>
+  // </>
 }
