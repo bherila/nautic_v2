@@ -3,6 +3,7 @@ import { cellPlanOptions } from "../../lib/PlanOptions";
 import RegistrationForm from "../../lib/RegistrationForm";
 import { CellularTerms } from "../../snippets/TermsContentCellular";
 import Layout from "../components/layout";
+import HeroUnit from "../../snippets/HeroUnit";
 
 function HaveOrNeedASim() {
   return (
@@ -29,7 +30,11 @@ function HaveOrNeedASim() {
 export default function RegistrationFormPage({}) {
   return (
     <Layout>
-      <h1 className="heading-39">Cellular Plan Activation</h1>
+        <div className="page-header page-adaptive wf-section">
+            <HeroUnit title="Cellular" img={require('../../images/5a-Activate-Services---cellular.jpg')}>
+                Stay connected wherever you travel, at affordable rates. It's EASY with NEARSHORE.
+            </HeroUnit>
+        </div>
       <div className="w-container">
         <div
           className="container-21 w-container"

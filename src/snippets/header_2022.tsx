@@ -31,10 +31,10 @@ function SearchBox({}) {
 
 export default function Header() {
   return (
-    <nav className="navbar">
+    <nav className="navbar-3">
       <div className="navbar__wrapper">
         <div className="section-top-menu wf-section">
-          <div className="navigation-top-menu-container w-container">
+          <div className="navigation-top-menu-container-3 w-container">
             <div className="navigation-top-menu">
               <a href={route("/resources")} className="top-menu-link">
                 Resources
@@ -1078,7 +1078,7 @@ export default function Header() {
                             <ul role="list" className="navmenu__dropdown-list">
                               <li className="navmenu__dropdown-section">
                                 <a
-                                  href={route("/adaptive-services-satellite")}
+                                  href={'https://www.nearshorenetworks.com/activate-services/adaptive-services-satellite'}
                                   aria-current="page"
                                   className="navmenu_dropdown-section-link w-inline-block w--current"
                                   tabIndex={0}
@@ -1104,9 +1104,9 @@ export default function Header() {
                               </li>
                               <li className="navmenu__dropdown-section">
                                 <a
-                                  href={route(
-                                    "https://nauticalert-activate.nearshorenetworks.com/activate/cellular"
-                                  )}
+                                  href={
+                                    "/activate/cellular"
+                                  }
                                   className="navmenu_dropdown-section-link w-inline-block"
                                   tabIndex={0}
                                 >
@@ -1130,9 +1130,9 @@ export default function Header() {
                               </li>
                               <li className="navmenu__dropdown-section">
                                 <a
-                                  href={route(
-                                    "https://nauticalert-activate.nearshorenetworks.com/activate/nautic-alert"
-                                  )}
+                                  href={
+                                    "/activate/nautic-alert"
+                                  }
                                   className="navmenu_dropdown-section-link w-inline-block"
                                   tabIndex={0}
                                 >
@@ -1156,97 +1156,6 @@ export default function Header() {
                                 </a>
                               </li>
                             </ul>
-                          </div>
-                          <div className="navmenu__dropdown-block">
-                            <div className="w-layout-grid navmenu__dropdown-right">
-                              <a
-                                id="w-node-_6319ce9e-951c-a1e9-fc64-012404acfec9-c602e44f"
-                                href={route("#")}
-                                className="navmenu__dropdown-banner-link w-inline-block"
-                                tabIndex={0}
-                              >
-                                <img
-                                  src="https://uploads-ssl.webflow.com/592988ef5514b75886b7269f/62f46317b9b831910932272c_NavBanner.jpg"
-                                  loading="eager"
-                                  srcSet="https://uploads-ssl.webflow.com/592988ef5514b75886b7269f/62f46317b9b831910932272c_NavBanner-p-800.jpeg 800w, https://uploads-ssl.webflow.com/592988ef5514b75886b7269f/62f46317b9b831910932272c_NavBanner-p-1080.jpeg 1080w, https://uploads-ssl.webflow.com/592988ef5514b75886b7269f/62f46317b9b831910932272c_NavBanner.jpg 1200w"
-                                  sizes="100vw"
-                                  alt=""
-                                  className="navmenu__banner-image"
-                                />
-                                <div className="sr-only">Webflow in 2021</div>
-                              </a>
-                              <ul
-                                id="w-node-_6319ce9e-951c-a1e9-fc64-012404acfecd-c602e44f"
-                                role="list"
-                                className="navmenu__dropdown-list"
-                              >
-                                <li className="navmenu__dropdown-section cc-last">
-                                  <div className="navmenu__dropdown-section-heading">
-                                    ready to get started?
-                                  </div>
-                                  <ul
-                                    role="list"
-                                    className="navmenu__col-1-list"
-                                  >
-                                    <li className="navmenu__dropdown-section-list-item">
-                                      <a
-                                        href={route("#")}
-                                        className="navmenu__section-link-row cc-first w-inline-block"
-                                        tabIndex={0}
-                                      >
-                                        <div className="navmenu__dropdown-section-link-heading">
-                                          Find a Template
-                                        </div>
-                                      </a>
-                                    </li>
-                                    <li className="navmenu__dropdown-section-list-item">
-                                      <a
-                                        href={route("#")}
-                                        className="navmenu__section-link-row w-inline-block"
-                                        tabIndex={0}
-                                      >
-                                        <div className="navmenu__dropdown-section-link-heading">
-                                          Get inspired
-                                        </div>
-                                      </a>
-                                    </li>
-                                    <li className="navmenu__dropdown-section-list-item">
-                                      <a
-                                        href={route("#")}
-                                        className="navmenu__section-link-row w-inline-block"
-                                        tabIndex={0}
-                                      >
-                                        <div className="navmenu__dropdown-section-link-heading">
-                                          Customer stories
-                                        </div>
-                                      </a>
-                                    </li>
-                                    <li className="navmenu__dropdown-section-list-item">
-                                      <a
-                                        href={route("#")}
-                                        className="navmenu__section-link-row w-inline-block"
-                                        tabIndex={0}
-                                      >
-                                        <div className="navmenu__dropdown-section-link-heading">
-                                          Contact Support
-                                        </div>
-                                      </a>
-                                    </li>
-                                    <li className="navmenu__dropdown-section-list-item">
-                                      <a
-                                        href={route("#")}
-                                        className="navmenu__section-link-row cc-last w-inline-block"
-                                        tabIndex={0}
-                                      >
-                                        <div className="navmenu__dropdown-section-link-heading">
-                                          Accessibility at Webflow
-                                        </div>
-                                      </a>
-                                    </li>
-                                  </ul>
-                                </li>
-                              </ul>
-                            </div>
                           </div>
                         </div>
                       </div>

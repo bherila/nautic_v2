@@ -7,6 +7,7 @@ import RegistrationForm from "../../lib/RegistrationForm";
 import TermsContentNautic from "../../snippets/TermsContentNautic";
 import Image from "next/image";
 import Layout from "../components/layout";
+import HeroUnit from "../../snippets/HeroUnit";
 
 function NauticIMEIModal() {
   return (
@@ -34,7 +35,11 @@ function NauticIMEIModal() {
 export default function RegistrationFormPage({}) {
   return (
     <Layout>
-      <h1 className="heading-39">Nautic Alert Plan Activation</h1>
+        <div className="page-header page-adaptive wf-section">
+            <HeroUnit title="Nautic Alert" img={require('../../images/5a-Activate-Services---nautic-alert.jpg')}>
+                Enable security onboard wherever you travel. NEARSHORE's 99.5% guaranteed uptime connection and affordable rates are perfect for your travels.
+            </HeroUnit>
+        </div>
       <div className="w-container">
         <RegistrationForm
           broadbandVideoAddOn={nauticAlertBroadbandVideo}
