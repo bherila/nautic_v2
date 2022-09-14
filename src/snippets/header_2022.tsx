@@ -163,7 +163,7 @@ export default function Header() {
                         >
                           <path
                             fill="rgb(0,0,0)"
-                            fill-opacity="1"
+                            fillOpacity="1"
                             d=" M-6,-4 C-6,-4 6,-4 6,-4"
                           ></path>
                           <path

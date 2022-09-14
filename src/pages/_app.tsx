@@ -2,7 +2,6 @@ import "reflect-metadata";
 import "../styles/normalize.css";
 import "../styles/components.css";
 import "../styles/nearshorenetworks.css";
-import 'animate.css';
 import type { AppProps } from "next/app";
 import Layout from "./components/layout";
 import Head from "next/head";
@@ -30,11 +29,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           name="google-site-verification"
         />
         <script
-          src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=5a29d8f7c76e0b0001d9eac5"
-          type="text/javascript"
-          crossOrigin="anonymous"
-        />
-
+            src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=63154f3300bbd06788d75ff9"
+            type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+            crossOrigin="anonymous"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
                 type="text/javascript"
                 crossOrigin="anonymous" />
@@ -45,9 +42,10 @@ function MyApp({ Component, pageProps }: AppProps) {
           src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"
           type="text/javascript"
         />
-        <script type="text/javascript" src="/js/webflow.js" />
       </Head>
       <Component {...pageProps} />
+
+      <script type="text/javascript" src="/js/webflow.js" />
     </>
   );
 }
