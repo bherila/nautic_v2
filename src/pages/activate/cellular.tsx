@@ -30,11 +30,15 @@ function HaveOrNeedASim() {
 export default function RegistrationFormPage({}) {
   return (
     <Layout>
-        <div className="page-header page-adaptive wf-section">
-            <HeroUnit title="Cellular" img={require('../../images/5a-Activate-Services---cellular.jpg')}>
-                Stay connected wherever you travel, at affordable rates. It's EASY with NEARSHORE.
-            </HeroUnit>
-        </div>
+      <div className="page-header page-adaptive wf-section">
+        <HeroUnit
+          title="Cellular"
+          img={require("../../images/5a-Activate-Services---cellular.jpg")}
+        >
+          Stay connected wherever you travel, at affordable rates. It&rsquot;s
+          EASY with NEARSHORE.
+        </HeroUnit>
+      </div>
       <div className="w-container">
         <div
           className="container-21 w-container"

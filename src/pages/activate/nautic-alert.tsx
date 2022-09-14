@@ -35,11 +35,16 @@ function NauticIMEIModal() {
 export default function RegistrationFormPage({}) {
   return (
     <Layout>
-        <div className="page-header page-adaptive wf-section">
-            <HeroUnit title="Nautic Alert" img={require('../../images/5a-Activate-Services---nautic-alert.jpg')}>
-                Enable security onboard wherever you travel. NEARSHORE's 99.5% guaranteed uptime connection and affordable rates are perfect for your travels.
-            </HeroUnit>
-        </div>
+      <div className="page-header page-adaptive wf-section">
+        <HeroUnit
+          title="Nautic Alert"
+          img={require("../../images/5a-Activate-Services---nautic-alert.jpg")}
+        >
+          Enable security onboard wherever you travel. NEARSHORE&rsquot;s 99.5%
+          guaranteed uptime connection and affordable rates are perfect for your
+          travels.
+        </HeroUnit>
+      </div>
       <div className="w-container">
         <RegistrationForm
           broadbandVideoAddOn={nauticAlertBroadbandVideo}

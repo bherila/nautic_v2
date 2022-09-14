@@ -1078,7 +1078,9 @@ export default function Header() {
                             <ul role="list" className="navmenu__dropdown-list">
                               <li className="navmenu__dropdown-section">
                                 <a
-                                  href={'https://www.nearshorenetworks.com/activate-services/adaptive-services-satellite'}
+                                  href={
+                                    "https://www.nearshorenetworks.com/activate-services/adaptive-services-satellite"
+                                  }
                                   aria-current="page"
                                   className="navmenu_dropdown-section-link w-inline-block w--current"
                                   tabIndex={0}
@@ -1104,9 +1106,7 @@ export default function Header() {
                               </li>
                               <li className="navmenu__dropdown-section">
                                 <a
-                                  href={
-                                    "/activate/cellular"
-                                  }
+                                  href={"/activate/cellular"}
                                   className="navmenu_dropdown-section-link w-inline-block"
                                   tabIndex={0}
                                 >
@@ -1130,9 +1130,7 @@ export default function Header() {
                               </li>
                               <li className="navmenu__dropdown-section">
                                 <a
-                                  href={
-                                    "/activate/nautic-alert"
-                                  }
+                                  href={"/activate/nautic-alert"}
                                   className="navmenu_dropdown-section-link w-inline-block"
                                   tabIndex={0}
                                 >
