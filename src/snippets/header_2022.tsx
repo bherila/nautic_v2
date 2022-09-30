@@ -52,7 +52,8 @@ export default function Header() {
             <Image
               src={require("../images/logo.png")}
               alt=""
-              className="image-2"
+              height={40}
+              width={106}
             />
           </a>
           <div className="navbar__navmenu-mobile">
@@ -73,114 +74,6 @@ export default function Header() {
                 data-default-duration="1.5"
                 data-duration="0"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  height="24"
-                  preserveAspectRatio="xMidYMid meet"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    transform: "translate3d(0px, 0px, 0px)",
-                  }}
-                >
-                  <defs>
-                    <clipPath id="__lottie_element_2">
-                      <rect width="24" height="24" x="0" y="0"></rect>
-                    </clipPath>
-                    <clipPath id="__lottie_element_16">
-                      <path d="M0,0 L24,0 L24,24 L0,24z"></path>
-                    </clipPath>
-                  </defs>
-                  <g clipPath="url(#__lottie_element_2)">
-                    <g
-                      clipPath="url(#__lottie_element_16)"
-                      transform="matrix(1,0,0,1,0,0)"
-                      opacity="1"
-                      style={{ display: "block" }}
-                    >
-                      <g
-                        transform="matrix(1,0,0,1,12,22)"
-                        opacity="1"
-                        style={{ display: "block" }}
-                      >
-                        <g
-                          opacity="1"
-                          transform="matrix(1.3328100442886353,0,0,0.9994699954986572,0,0)"
-                        >
-                          <path
-                            fill="rgb(0,0,0)"
-                            fillOpacity="1"
-                            d=" M-6,-4 C-6,-4 6,-4 6,-4"
-                          ></path>
-                          <path
-                            strokeLinecap="butt"
-                            strokeLinejoin="miter"
-                            fillOpacity="0"
-                            strokeMiterlimit="4"
-                            stroke="rgb(0,0,0)"
-                            strokeOpacity="1"
-                            strokeWidth="2"
-                            d=" M-6,-4 C-6,-4 6,-4 6,-4"
-                          ></path>
-                        </g>
-                      </g>
-                      <g
-                        transform="matrix(1,0,0,1,12,16)"
-                        opacity="1"
-                        style={{ display: "block" }}
-                      >
-                        <g
-                          opacity="1"
-                          transform="matrix(1.3328100442886353,0,0,0.9994699954986572,0,0)"
-                        >
-                          <path
-                            fill="rgb(0,0,0)"
-                            fillOpacity="1"
-                            d=" M-6,-4 C-6,-4 6,-4 6,-4"
-                          ></path>
-                          <path
-                            strokeLinecap="butt"
-                            strokeLinejoin="miter"
-                            fillOpacity="0"
-                            strokeMiterlimit="4"
-                            stroke="rgb(0,0,0)"
-                            strokeOpacity="1"
-                            strokeWidth="2"
-                            d=" M-6,-4 C-6,-4 6,-4 6,-4"
-                          ></path>
-                        </g>
-                      </g>
-                      <g
-                        transform="matrix(1,0,0,1,12,9.998000144958496)"
-                        opacity="1"
-                        style={{ display: "block" }}
-                      >
-                        <g
-                          opacity="1"
-                          transform="matrix(1.3328100442886353,0,0,0.9994699954986572,0,0)"
-                        >
-                          <path
-                            fill="rgb(0,0,0)"
-                            fillOpacity="1"
-                            d=" M-6,-4 C-6,-4 6,-4 6,-4"
-                          ></path>
-                          <path
-                            strokeLinecap="butt"
-                            strokeLinejoin="miter"
-                            fillOpacity="0"
-                            strokeMiterlimit="4"
-                            stroke="rgb(0,0,0)"
-                            strokeOpacity="1"
-                            strokeWidth="2"
-                            d=" M-6,-4 C-6,-4 6,-4 6,-4"
-                          ></path>
-                        </g>
-                      </g>
-                    </g>
-                  </g>
-                </svg>
               </div>
             </div>
           </div>
