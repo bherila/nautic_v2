@@ -35,7 +35,7 @@ export default function RegistrationFormPage({}) {
           title="Cellular"
           img={require("../../images/5a-Activate-Services---cellular.jpg")}
         >
-          Stay connected wherever you travel, at affordable rates. It&rsquot;s
+          Stay connected wherever you travel, at affordable rates. It’s
           EASY with NEARSHORE.
         </HeroUnit>
       </div>
