@@ -344,6 +344,7 @@ export default class RegistrationForm extends React.Component<
                   type="submit"
                   disabled={true}
                   className={"buy-button button-icon w-button disabled"}
+                  style={{paddingLeft: '20px', paddingRight: '20px'}}
                 >
                   Accept Terms to Continue
                 </button>

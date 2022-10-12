@@ -2,23 +2,17 @@ import "reflect-metadata";
 import "../styles/normalize.css";
 import "../styles/components.css";
 import "../styles/nearshorenetworks.css";
+import '@fontsource/open-sans/300.css'
+import '@fontsource/open-sans/400.css'
+import '@fontsource/open-sans/500.css'
+import '@fontsource/open-sans/600.css'
+import '@fontsource/open-sans/700.css'
+import '@fontsource/open-sans/800.css'
+import '@fontsource/roboto'
 import type { AppProps } from "next/app";
-import Layout from "./components/layout";
 import Head from "next/head";
 
-declare var WebFont: any;
-
 function MyApp({ Component, pageProps }: AppProps) {
-  if (typeof window !== "undefined") {
-    WebFont.load({
-      google: {
-        families: [
-          "Poppins:300,regular,500,600,700",
-          "Playfair Display:regular,italic,700,700italic,900,900italic",
-        ],
-      },
-    });
-  }
   return (
     <>
       <Head>
@@ -44,13 +38,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           type="text/javascript"
           crossOrigin="anonymous"
         />
-        <script
-          src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"
-          type="text/javascript"
-        />
       </Head>
       <Component {...pageProps} />
-
       <script type="text/javascript" src="/js/webflow.js" />
     </>
   );

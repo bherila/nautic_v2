@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@azure/cosmos": "^3.12.1",
+    "@fontsource/open-sans": "^4.5.12",
+    "@fontsource/roboto": "^4.5.8",
     "@sentry/nextjs": "^6.10.0",
     "@stripe/react-stripe-js": "^1.4.1",
     "@stripe/stripe-js": "^1.16.0",
