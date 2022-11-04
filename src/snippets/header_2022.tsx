@@ -4,6 +4,9 @@ import Image from "next/image";
 const prefix = "https://www.nearshorenetworks.com/";
 
 function route(str: string): string {
+  if (str.startsWith('http')) {
+    return str;
+  }
   return (prefix + str).replace(".html", "");
 }
 
