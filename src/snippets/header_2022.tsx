@@ -66,7 +66,7 @@ export default function Header() {
         </div>
         <div className="navbar__container-2">
           <div className="navbar__mobile-overlay-2"></div>
-          <a href={route("index.html")} className="brand w-nav-brand">
+          <a href={route("https://www.nearshorenetworks.com")} className="brand w-nav-brand">
             <img
               src="/images/logo.png"
               loading="lazy"
