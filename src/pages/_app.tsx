@@ -11,6 +11,7 @@ import '@fontsource/open-sans/800.css'
 import '@fontsource/roboto'
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import Script from "next/script";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -22,18 +23,18 @@ function MyApp({ Component, pageProps }: AppProps) {
           content="4S_29TZmGdAwjBsw_FZ-JD20hrZdMoOyoWFEvRSLito"
           name="google-site-verification"
         />
-        <script
+        <Script
           src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=63154f3300bbd06788d75ff9"
           type="text/javascript"
           integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
           crossOrigin="anonymous"
         />
-        <script
+        <Script
           src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
           type="text/javascript"
           crossOrigin="anonymous"
         />
-        <script
+        <Script
           src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.0/jquery-ui.min.js"
           type="text/javascript"
           crossOrigin="anonymous"

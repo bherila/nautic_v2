@@ -107,6 +107,7 @@ export default function Footer() {
             <a
               href="https://www.linkedin.com/company/nearshorenetworks/"
               target="_blank"
+              rel="noreferrer"
               className="footer-social-link w-inline-block"
             >
               <img
@@ -121,6 +122,7 @@ export default function Footer() {
             <a
               href="https://www.facebook.com/nearshorenetworks/"
               target="_blank"
+              rel="noreferrer"
               className="footer-social-link w-inline-block"
             >
               <img
@@ -135,6 +137,7 @@ export default function Footer() {
             <a
               href="https://www.youtube.com/channel/UCYCF59Cgfs53n1m6mZx861Q"
               target="_blank"
+              rel="noreferrer"
               className="footer-social-link w-inline-block"
             >
               <img

@@ -98,7 +98,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       res.status(200);
       return;
     } catch (err) {
-      res.json({ err: err.toString() });
+      res.json({ err: (err as Error).toString() });
       res.status(500);
       return;
     }

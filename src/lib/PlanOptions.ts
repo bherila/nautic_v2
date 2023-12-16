@@ -42,9 +42,9 @@ export function getAllPlanOptions() {
 
 export const maretronOptions: PlanOption[] = [
   {
-    name: "Maretron SMS100 Unlimited Subscription",
+    name: "Maretron SMS200 Unlimited Subscription",
     price: 19.95,
-    checkoutId: "MARETRON_SMS100",
+    checkoutId: "MARETRON_SMS200",
     activationFee: 14.95,
     enableIccId: true,
   },

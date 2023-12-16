@@ -201,7 +201,7 @@ export default function Header() {
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
                                   <div className="navmenu_dropdown-section-icon-block">
-                                    <img
+                                    <Image unoptimized
                                       src="/images/offshore-internet-menu-icon.svg"
                                       loading="lazy"
                                       width="40"
@@ -227,7 +227,7 @@ export default function Header() {
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
                                   <div className="navmenu_dropdown-section-icon-block">
-                                    <img
+                                    <Image unoptimized
                                       src="/images/shipping-menu-icon.svg"
                                       loading="lazy"
                                       width="40"
@@ -255,7 +255,7 @@ export default function Header() {
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
                                   <div className="navmenu_dropdown-section-icon-block">
-                                    <img
+                                    <Image unoptimized
                                       src="/images/cruise-menu-icon.svg"
                                       loading="lazy"
                                       width="40"
@@ -619,7 +619,7 @@ export default function Header() {
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
                                   <div className="navmenu_dropdown-section-icon-block">
-                                    <img
+                                    <Image unoptimized
                                       src="/images/day-rate-menu-icon.svg"
                                       loading="lazy"
                                       width="40"
@@ -647,7 +647,7 @@ export default function Header() {
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
                                   <div className="navmenu_dropdown-section-icon-block">
-                                    <img
+                                    <Image unoptimized
                                       src="/images/vessel-monitoring-menu-icon.svg"
                                       loading="lazy"
                                       width="40"
@@ -673,7 +673,7 @@ export default function Header() {
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
                                   <div className="navmenu_dropdown-section-icon-block">
-                                    <img
+                                    <Image unoptimized
                                       src="/images/nearshore-athena-menu-icon.svg"
                                       loading="lazy"
                                       width="40"
