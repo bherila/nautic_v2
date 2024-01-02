@@ -5,10 +5,18 @@ import RegistrationForm from "../../lib/RegistrationForm";
 import TermsContentMaretron from "../../snippets/TermsContentMaretron";
 import Image from "next/image";
 import Layout from "../components/layout";
+import HeroUnit from "@/snippets/HeroUnit";
 
 export default function RegistrationFormPage({}) {
   return (
     <Layout>
+
+        <HeroUnit
+            title="Maretron SMS200"
+            img={require("../../images/maretron_sms_image.jpg")}
+        >
+            Let us empower your voyage with Cutting-Edge Marine Technology
+        </HeroUnit>
       <div
         className="w-container"
         style={{
@@ -20,8 +28,8 @@ export default function RegistrationFormPage({}) {
         }}
       >
         <div style={{ display: "block" }}>
-          <h1>SMS200 Activation Page</h1>
-          <p>All fields are mandatory unless indicated</p>
+            <p><b>Connect NOW and navigate confidently!</b></p>
+            <p>All fields are mandatory unless indicated</p>
         </div>
         <div style={{ display: "block" }}>
           <Image
