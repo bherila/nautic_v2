@@ -1,5 +1,5 @@
 {
-  "name": "nearshorenetworks",
+  "name": "nautic_v3",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,36 +9,31 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@fontsource/open-sans": "^4.5.12",
-    "@fontsource/roboto": "^4.5.8",
-    "@sentry/nextjs": "^6.10.0",
-    "@stripe/react-stripe-js": "^1.4.1",
-    "@stripe/stripe-js": "^1.16.0",
-    "@types/nodemailer": "^6.4.4",
-    "apollo-server-micro": "^3.0.2",
-    "class-validator": "^0.13.1",
+    "@apollo/server": "^4.9.5",
+    "@as-integrations/next": "^3.0.0",
+    "@fontsource/open-sans": "^5.0.20",
+    "@fontsource/roboto": "^5.0.8",
+    "@sentry/nextjs": "^7.91.0",
+    "@stripe/react-stripe-js": "^2.4.0",
+    "class-validator": "^0.14.0",
     "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
-    "graphql": "^15.5.1",
-    "micro": "^9.3.4",
-    "next": "^13.4.19",
-    "nodemailer": "^6.6.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "reflect-metadata": "^0.1.13",
-    "stripe": "^8.165.0",
-    "type-graphql": "^1.1.1"
+    "graphql": "^16.8.1",
+    "next": "14.0.4",
+    "nodemailer": "^6.9.8",
+    "react": "^18",
+    "react-dom": "^18",
+    "reflect-metadata": "^0.2.1",
+    "stripe": "^14.10.0",
+    "type-graphql": "^2.0.0-beta.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.8",
-    "@babel/plugin-proposal-class-properties": "^7.14.5",
-    "@babel/plugin-proposal-decorators": "^7.14.5",
-    "@types/cors": "^2.8.12",
-    "@types/micro": "^7.3.6",
-    "@types/react": "17.0.14",
-    "babel-plugin-transform-typescript-metadata": "^0.3.2",
-    "eslint": "7.31.0",
-    "eslint-config-next": "11.0.1",
-    "typescript": "^4.2.3"
+    "@types/cors": "^2.8.17",
+    "@types/node": "^20",
+    "@types/nodemailer": "^6.4.14",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.4",
+    "typescript": "^5"
   }
 }

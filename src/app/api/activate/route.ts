@@ -1,18 +1,15 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
-import { withSentry } from "@sentry/nextjs";
-import confirmationEmail from "../../lib/confirmationEmail";
-import getServerSideStripe from "../../lib/getServerSideStripe";
+import confirmationEmail from "@/lib/confirmationEmail";
+import getServerSideStripe from "@/lib/getServerSideStripe";
 const stripe = getServerSideStripe();
 
 async function handleAsSubscription(
-  res: NextApiResponse,
-  dataObject: Stripe.Subscription
+  dataObject: Stripe.Subscription,
 ): Promise<string> {
   const subscription_id = dataObject.id;
   const customer = await stripe.customers?.retrieve(
-    dataObject.customer as string
+    dataObject.customer as string,
   );
   if (!customer) {
     return "no customer";
@@ -82,30 +79,24 @@ async function handleAsSubscription(
   // }
 }
 
-async function handler(req: NextApiRequest, res: NextApiResponse) {
-  let event: Stripe.Event = req.body;
+export async function POST(req: NextRequest) {
+  let event: Stripe.Event = await req.json();
 
   // Extract the object from the event.
   if (event.type === "customer.subscription.created") {
     try {
       const result = await handleAsSubscription(
-        res,
-        event.data.object as Stripe.Subscription
+        event.data.object as Stripe.Subscription,
       );
-      res.json({
+      return NextResponse.json({
         result: "Handled as subscription created, result = " + result,
       });
-      res.status(200);
-      return;
     } catch (err) {
-      res.json({ err: (err as Error).toString() });
-      res.status(500);
-      return;
+      return NextResponse.json(
+        { err: (err as Error).toString() },
+        { status: 500 },
+      );
     }
   }
-  res.json({ result: "No-op" });
-  res.status(200);
+  return NextResponse.json({ result: "No-op" });
 }
-
-// noinspection JSUnusedGlobalSymbols
-export default withSentry(handler);

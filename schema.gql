@@ -3,29 +3,30 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
-type Mutation {
-  """Creates the subscription and registers the subscriber."""
-  submitRegistration: RegistrationStateGraphType!
-}
-
 type Query {
-  defaultRegistration: RegistrationStateGraphType!
+  defaultRegistration: nN!
 }
 
-type RegistrationStateGraphType {
-  agreed: Boolean!
+type nN {
+  selectedPlan: [String!]!
   broadbandVideo: Boolean!
-  cellNumber: String!
-  dealerCompany: String!
-  dealerName: String!
-  iccId: String!
-  imei: String!
   installDate: String!
+  imei: String!
+  email: String!
   ownerFname: String!
   ownerLname: String!
   ownerMi: String!
-  selectedPlan: [String!]!
-  showImeiModal: Boolean!
   vesselName: String!
+  cellNumber: String!
   vesselType: String!
+  dealerName: String!
+  dealerCompany: String!
+  showImeiModal: Boolean!
+  agreed: Boolean!
+  iccId: String!
+}
+
+type Mutation {
+  """Creates the subscription and registers the subscriber."""
+  submitRegistration: nN!
 }

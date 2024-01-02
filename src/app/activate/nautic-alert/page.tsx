@@ -1,13 +1,14 @@
-﻿import React from "react";
+﻿'use client'
+import React from "react";
 import {
   nauticAlertPlanOptions,
   nauticAlertBroadbandVideo,
-} from "../../lib/PlanOptions";
-import RegistrationForm from "../../lib/RegistrationForm";
-import TermsContentNautic from "../../snippets/TermsContentNautic";
+} from "@/lib/PlanOptions";
+import RegistrationForm from "@/lib/RegistrationForm";
+import TermsContentNautic from "@/snippets/TermsContentNautic";
 import Image from "next/image";
-import Layout from "../components/layout";
-import HeroUnit from "../../snippets/HeroUnit";
+import Layout from "@/lib/layout";
+import HeroUnit from "@/snippets/HeroUnit";
 
 function NauticIMEIModal() {
   return (
@@ -32,13 +33,13 @@ function NauticIMEIModal() {
   );
 }
 
-export default function RegistrationFormPage({}) {
+export default function RegistrationFormPage() {
   return (
     <Layout>
       <div className="page-header page-adaptive wf-section">
         <HeroUnit
           title="Nautic Alert"
-          img={require("../../images/5a-Activate-Services---nautic-alert.jpg")}
+          img={require("../../../images/5a-Activate-Services---nautic-alert.jpg")}
         >
           Enable security onboard wherever you travel. NEARSHORE’s 99.5%
           guaranteed uptime connection and affordable rates are perfect for your

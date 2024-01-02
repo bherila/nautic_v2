@@ -1,9 +1,10 @@
-﻿import React from "react";
-import { cellPlanOptions } from "../../lib/PlanOptions";
-import RegistrationForm from "../../lib/RegistrationForm";
-import { CellularTerms } from "../../snippets/TermsContentCellular";
-import Layout from "../components/layout";
-import HeroUnit from "../../snippets/HeroUnit";
+﻿'use client'
+import React from "react";
+import { cellPlanOptions } from "@/lib/PlanOptions";
+import RegistrationForm from "@/lib/RegistrationForm";
+import { CellularTerms } from "@/snippets/TermsContentCellular";
+import Layout from "@/lib/layout";
+import HeroUnit from "@/snippets/HeroUnit";
 
 function HaveOrNeedASim() {
   return (
@@ -27,13 +28,13 @@ function HaveOrNeedASim() {
   );
 }
 
-export default function RegistrationFormPage({}) {
+export default function RegistrationFormPage() {
   return (
     <Layout>
       <div className="page-header page-adaptive wf-section">
         <HeroUnit
           title="Cellular"
-          img={require("../../images/5a-Activate-Services---cellular.jpg")}
+          img={require("../../../images/5a-Activate-Services---cellular.jpg")}
         >
           Stay connected wherever you travel, at affordable rates. It’s
           EASY with NEARSHORE.

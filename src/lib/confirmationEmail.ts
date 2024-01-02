@@ -4,7 +4,7 @@ import Stripe from "stripe";
 
 export default async function confirmationEmail(
   subscription: Stripe.Subscription,
-  payment_method_id: string
+  payment_method_id: string,
 ): Promise<string> {
   let emailConfig: SMTPTransport.Options;
   if (process.env.SMTP_CONFIG) {
@@ -40,7 +40,7 @@ export default async function confirmationEmail(
           metadata: subscription.metadata,
         },
         null,
-        2
+        2,
       ), // plain text body
       // html: "<b>Hello world?</b>", // html body
     });

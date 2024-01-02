@@ -45,7 +45,7 @@ export default class RegistrationForm extends React.Component<
   renderPlanOptions(
     planOptions: PlanOption[],
     depth: number,
-    defaultChoice: string
+    defaultChoice: string,
   ) {
     const selectedOption = (this.state.selectedPlan || [])[depth] || "";
     console.log("selectedOption", selectedOption);
@@ -79,14 +79,14 @@ export default class RegistrationForm extends React.Component<
         {planOptions
           .filter(
             (opt) =>
-              opt.name === selectedOption && (opt.planOptions || []).length > 0
+              opt.name === selectedOption && (opt.planOptions || []).length > 0,
           )
           .map((opt) =>
             this.renderPlanOptions(
               opt.planOptions || [],
               depth + 1,
-              opt.nextDefaultChoice || ""
-            )
+              opt.nextDefaultChoice || "",
+            ),
           )}
       </React.Fragment>
     );
@@ -163,7 +163,7 @@ export default class RegistrationForm extends React.Component<
           {this.renderPlanOptions(
             planOptions,
             0,
-            this.props.defaultPlanText || "Select Your Plan"
+            this.props.defaultPlanText || "Select Your Plan",
           )}
         </div>
 
@@ -313,7 +313,7 @@ export default class RegistrationForm extends React.Component<
 
   render() {
     const validationErrors = validateSync(
-      new ValidatingRegistrationState(this.state)
+      new ValidatingRegistrationState(this.state),
     );
     const isValid = this.state.agreed && validationErrors.length === 0;
     return (
@@ -344,7 +344,7 @@ export default class RegistrationForm extends React.Component<
                   type="submit"
                   disabled={true}
                   className={"buy-button button-icon w-button disabled"}
-                  style={{paddingLeft: '20px', paddingRight: '20px'}}
+                  style={{ paddingLeft: "20px", paddingRight: "20px" }}
                 >
                   Accept Terms to Continue
                 </button>
@@ -372,7 +372,7 @@ export default class RegistrationForm extends React.Component<
                           <li key={`err${idx}`}>
                             {Object.values(err.constraints).join(". ")}
                           </li>
-                        )
+                        ),
                     )}
                   </ul>
                 </>

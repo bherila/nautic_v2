@@ -25,7 +25,7 @@ export const nauticAlertBroadbandVideo = {
 
 export function findPlanOption(
   checkoutId: string,
-  arr?: PlanOption[]
+  arr?: PlanOption[],
 ): PlanOption | null {
   if (!arr) return null;
   const res = arr.find((x) => x.checkoutId && x.checkoutId === checkoutId);

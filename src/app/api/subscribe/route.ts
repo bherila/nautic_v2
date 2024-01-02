@@ -1,35 +1,37 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from "next";
 import Stripe from "stripe";
-import RegistrationState from "../../lib/RegistrationState";
+import RegistrationState from "@/lib/RegistrationState";
 import {
   DEFAULT_ACTIVATION_FEE,
   findPlanOption,
   getAllPlanOptions,
-  nauticAlertPlanOptions,
   PlanOption,
-} from "../../lib/PlanOptions";
-import { withSentry } from "@sentry/nextjs";
-import getServerSideStripe from "../../lib/getServerSideStripe";
+} from "@/lib/PlanOptions";
+import getServerSideStripe from "@/lib/getServerSideStripe";
+import { NextRequest, NextResponse } from "next/server";
 const stripe = getServerSideStripe();
 
-async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<SubscribeResponse | { err: string }>
-) {
+export async function POST(request: NextRequest) {
+  const body: any = await request.json();
+  console.info(body);
   const planDetails: PlanOption | null = findPlanOption(
-    req.body.planDetails.checkoutId,
-    getAllPlanOptions()
+    body.planDetails.checkoutId,
+    getAllPlanOptions(),
   );
   if (!planDetails) {
-    res.status(400).json({ err: "planDetails is not valid" });
-    return;
+    console.error("planDetails is not valid");
+    return NextResponse.json(
+      { err: "planDetails is not valid" },
+      { status: 400 },
+    );
   }
 
-  const formInputs: RegistrationState = req.body.formInputs;
+  const formInputs: RegistrationState = body.formInputs;
   if (!formInputs) {
-    res.status(400).json({ err: "formInputs is not valid" });
-    return;
+    console.error("formInputs is not valid");
+    return NextResponse.json(
+      { err: "formInputs is not valid" },
+      { status: 400 },
+    );
   }
 
   // Format plan name for Stripe "Product"
@@ -40,8 +42,10 @@ async function handler(
       : " without broadband video");
 
   if (typeof planDetails?.price !== "number") {
-    res.status(400).json({ err: "planDetails.price is not valid" });
-    return;
+    return NextResponse.json(
+      { err: "planDetails.price is not valid" },
+      { status: 400 },
+    );
   }
   const expectedPrice = Math.round(planDetails.price * 100);
 
@@ -63,8 +67,10 @@ async function handler(
     });
   }
   if (!customer) {
-    res.status(500).json({ err: "failed to create customer" });
-    return;
+    return NextResponse.json(
+      { err: "failed to create customer" },
+      { status: 500 },
+    );
   }
 
   // Stripe product & price
@@ -72,7 +78,7 @@ async function handler(
     limit: 25,
   });
   let product: Stripe.Product | undefined = allProducts.data.find(
-    (x) => x.name === expectedPlanName
+    (x) => x.name === expectedPlanName,
   );
 
   let price: Stripe.Price | undefined;
@@ -110,11 +116,17 @@ async function handler(
   }
 
   if (!product) {
-    res.status(500).json({ err: "failed to get/create product" });
+    return NextResponse.json(
+      { err: "failed to get/create product" },
+      { status: 500 },
+    );
     return;
   }
   if (!price) {
-    res.status(500).json({ err: "failed to get/create price" });
+    return NextResponse.json(
+      { err: "failed to get/create price" },
+      { status: 500 },
+    );
     return;
   }
 
@@ -133,8 +145,10 @@ async function handler(
     customer: customer.id,
   });
   if (!invoiceItem) {
-    res.status(500).json({ err: "failed to charge initiation fee" });
-    return;
+    return NextResponse.json(
+      { err: "failed to charge initiation fee" },
+      { status: 500 },
+    );
   }
 
   // Stripe subscription
@@ -171,7 +185,7 @@ async function handler(
 
   // Return non-secret values to the client.
   console.info(invoice);
-  res.status(200).json({
+  return NextResponse.json({
     subscriptionId: subscription.id,
     invoiceId: invoice.id,
     clientSecret: payment_intent?.client_secret || "",
@@ -182,6 +196,3 @@ export interface SubscribeResponse {
   subscriptionId: string;
   clientSecret: string;
 }
-
-// noinspection JSUnusedGlobalSymbols
-export default withSentry(handler);

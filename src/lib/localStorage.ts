@@ -12,6 +12,6 @@ export function saveToLocalStorage(s: RegistrationState): void {
   sessionStorage.setItem("nsnICCID", s.iccId || "");
   sessionStorage.setItem(
     "nsnSubscriptionPlan",
-    s.selectedPlan.join(":") + (s.broadbandVideo ? " + broadband video" : "")
+    s.selectedPlan.join(":") + (s.broadbandVideo ? " + broadband video" : ""),
   );
 }

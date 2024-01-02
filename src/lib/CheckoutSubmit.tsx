@@ -1,4 +1,5 @@
-import React, { Children, ReactNode, useEffect, useState } from "react";
+'use client'
+import React, { ReactNode, useState } from "react";
 import {
   Elements,
   CardElement,

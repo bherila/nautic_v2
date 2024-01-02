@@ -1,10 +1,10 @@
 ﻿import { Field, ObjectType } from "type-graphql";
-import RegistrationState from "../../lib/RegistrationState";
+import RegistrationState from "@/lib/RegistrationState";
 import { IsEmail } from "class-validator";
 
 const nonnull = { nullable: false };
 
-@ObjectType({ isAbstract: true })
+@ObjectType()
 export class RegistrationGraphType implements RegistrationState {
   @Field(() => [String], nonnull)
   selectedPlan!: string[];

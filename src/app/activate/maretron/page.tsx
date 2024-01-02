@@ -1,19 +1,18 @@
-﻿
+﻿'use client'
 import React from "react";
-import { maretronOptions } from "../../lib/PlanOptions";
-import RegistrationForm from "../../lib/RegistrationForm";
-import TermsContentMaretron from "../../snippets/TermsContentMaretron";
+import { maretronOptions } from "@/lib/PlanOptions";
+import RegistrationForm from "@/lib/RegistrationForm";
+import TermsContentMaretron from "@/snippets/TermsContentMaretron";
 import Image from "next/image";
-import Layout from "../components/layout";
+import Layout from "@/lib/layout";
 import HeroUnit from "@/snippets/HeroUnit";
 
-export default function RegistrationFormPage({}) {
+export default function RegistrationFormPage() {
   return (
     <Layout>
-
         <HeroUnit
             title="Maretron SMS200"
-            img={require("../../images/maretron_sms_image.jpg")}
+            img={require("../../../images/maretron_sms_image.jpg")}
         >
             Let us empower your voyage with Cutting-Edge Marine Technology
         </HeroUnit>

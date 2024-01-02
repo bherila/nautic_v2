@@ -1,6 +1,6 @@
+"use client";
 import React, { useState } from "react";
-import { CoverageMapTerm } from "./tMobileCoverageMap";
-import { bodySize, headingSize } from "../lib/styles";
+import { bodySize } from "@/lib/styles";
 
 export interface TermsProps {
   isAgreed: boolean;

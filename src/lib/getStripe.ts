@@ -8,7 +8,7 @@ const getStripe = () => {
   if (!stripePromise) {
     stripePromise = loadStripe(
       process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ||
-        "pk_test_oFd9xXUCCt0n0x25FzJA5vB9"
+        "pk_test_oFd9xXUCCt0n0x25FzJA5vB9",
     );
   }
   return stripePromise;
