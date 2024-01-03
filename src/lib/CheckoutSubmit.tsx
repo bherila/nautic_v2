@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { ReactNode, useState } from "react";
 import {
   Elements,
@@ -141,7 +141,7 @@ function CheckoutInternal(props: Props) {
           card: cardElement!,
           // billing_details: { name: input.cardholderName },
         },
-      }
+      },
     );
 
     if (error) {

@@ -1,4 +1,4 @@
-﻿'use client'
+﻿"use client";
 import React from "react";
 import { cellPlanOptions } from "@/lib/PlanOptions";
 import RegistrationForm from "@/lib/RegistrationForm";
@@ -28,16 +28,16 @@ function HaveOrNeedASim() {
   );
 }
 
-export default function RegistrationFormPage() {
+export default function CellularPage() {
   return (
     <Layout>
       <div className="page-header page-adaptive wf-section">
         <HeroUnit
           title="Cellular"
-          img={require("../../../images/5a-Activate-Services---cellular.jpg")}
+          img={"/images/5a-Activate-Services---cellular.jpg"}
         >
-          Stay connected wherever you travel, at affordable rates. It’s
-          EASY with NEARSHORE.
+          Stay connected wherever you travel, at affordable rates. It’s EASY
+          with NEARSHORE.
         </HeroUnit>
       </div>
       <div className="w-container">

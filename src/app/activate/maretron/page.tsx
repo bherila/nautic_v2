@@ -1,4 +1,4 @@
-﻿'use client'
+﻿"use client";
 import React from "react";
 import { maretronOptions } from "@/lib/PlanOptions";
 import RegistrationForm from "@/lib/RegistrationForm";
@@ -7,15 +7,17 @@ import Image from "next/image";
 import Layout from "@/lib/layout";
 import HeroUnit from "@/snippets/HeroUnit";
 
-export default function RegistrationFormPage() {
+export default function MaretronPage() {
   return (
     <Layout>
+      <div className="page-header page-adaptive wf-section">
         <HeroUnit
-            title="Maretron SMS200"
-            img={require("../../../images/maretron_sms_image.jpg")}
+          title="Maretron SMS200"
+          img={"/images/maretron_1825x1122.webp"}
         >
-            Let us empower your voyage with Cutting-Edge Marine Technology
+          Let us empower your voyage with Cutting-Edge Marine Technology
         </HeroUnit>
+      </div>
       <div
         className="w-container"
         style={{
@@ -23,12 +25,13 @@ export default function RegistrationFormPage() {
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
-          paddingTop: "20px",
         }}
       >
         <div style={{ display: "block" }}>
-            <p><b>Connect NOW and navigate confidently!</b></p>
-            <p>All fields are mandatory unless indicated</p>
+          <p>
+            <b>Connect NOW and navigate confidently!</b>
+          </p>
+          <p>All fields are mandatory unless indicated</p>
         </div>
         <div style={{ display: "block" }}>
           <Image

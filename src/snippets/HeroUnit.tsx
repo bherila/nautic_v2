@@ -11,7 +11,7 @@ export default function HeroUnit(props: {
     <div className="page-header-container page-industries-header-container w-container">
       <div className="page-header-container header-image">
         <div className="page-header-image-container animate__animated animate__fadeIn">
-          <Image src={img} loading="lazy" alt="" className="featured-img" />
+          <img src={img} loading="eager" alt="" className="featured-img" />
         </div>
       </div>
       <div className="page-header-container header-content">
