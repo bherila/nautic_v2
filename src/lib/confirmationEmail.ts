@@ -42,7 +42,6 @@ export default async function confirmationEmail(
         null,
         2,
       ), // plain text body
-      // html: "<b>Hello world?</b>", // html body
     });
     console.info("email sent", info);
     return info.messageId;

@@ -29,9 +29,3 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   return handler(request);
 }
-
-// export const config = {
-//   api: {
-//     bodyParser: false,
-//   },
-// };
