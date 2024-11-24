@@ -1,32 +1,9 @@
-﻿'use client'
-
 import { cellPlanOptions } from '@/lib/PlanOptions'
 import RegistrationForm from '@/lib/RegistrationForm'
 import { CellularTerms } from '@/snippets/TermsContentCellular'
 import Layout from '@/lib/layout'
 import HeroUnit from '@/snippets/HeroUnit'
-
-function HaveOrNeedASim() {
-  return (
-    <>
-      <h3 style={{ textTransform: 'uppercase' }}>Have a SIM? Or Need a SIM?</h3>
-      <p>
-        Our Data SIMs connect to multiple carriers in every country and give you
-        super fast data around the world.
-      </p>
-      <p>
-        Have your own device and already have one of our sims? Complete the
-        following form and we’ll get you activated. If you need us to mail you a
-        SIM so you can get connected, just call us US Toll Free at 844-526-2627
-        extension 2, or email us at{' '}
-        <a href="mailto:comms@nearshorenetworks.com">
-          comms@nearshorenetworks.com
-        </a>{' '}
-        and we’ll get one out to you Priority USPS.
-      </p>
-    </>
-  )
-}
+import HaveOrNeedASim from './HaveOrNeedASim'
 
 export default function CellularPage() {
   return (
@@ -54,6 +31,14 @@ export default function CellularPage() {
           renderVesselType={true}
           planOptions={cellPlanOptions}
           termsContent={<CellularTerms />}
+          defaultFname={process.env.DEFAULT_FNAME ?? ''}
+          defaultLname={process.env.DEFAULT_LNAME ?? ''}
+          defaultMi={process.env.DEFAULT_MI ?? ''}
+          defaultEmail={process.env.DEFAULT_EMAIL ?? ''}
+          defaultIMEI={process.env.DEFAULT_IMEI ?? ''}
+          defaultCellNumber={process.env.DEFAULT_CELL_NUMBER ?? ''}
+          defaultVesselName={process.env.DEFAULT_VESSEL_NAME ?? ''}
+          defaultIccId={process.env.DEFAULT_ICCID ?? ''}
         />
       </div>
     </Layout>

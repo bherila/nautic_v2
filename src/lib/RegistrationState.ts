@@ -48,75 +48,59 @@ export class ValidatingRegistrationState implements RegistrationState {
     this.showImeiModal = false
     this.agreed = false
     this.iccId = ''
-    if (other) {
-      if (typeof other.selectedPlan !== 'undefined') {
-        this.selectedPlan = other.selectedPlan
-      }
-      if (typeof other.broadbandVideo !== 'undefined') {
-        this.broadbandVideo = other.broadbandVideo
-      }
-      if (typeof other.installDate !== 'undefined') {
-        this.installDate = other.installDate
-      }
-      if (typeof other.email !== 'undefined') {
-        this.email = other.email
-      }
-      if (typeof other.imei !== 'undefined') {
-        this.imei = other.imei
-      }
-      if (typeof other.ownerFname !== 'undefined') {
-        this.ownerFname = other.ownerFname
-      }
-      if (typeof other.ownerLname !== 'undefined') {
-        this.ownerLname = other.ownerLname
-      }
-      if (typeof other.ownerMi !== 'undefined') {
-        this.ownerMi = other.ownerMi
-      }
-      if (typeof other.vesselName !== 'undefined') {
-        this.vesselName = other.vesselName
-      }
-      if (typeof other.cellNumber !== 'undefined') {
-        this.cellNumber = other.cellNumber
-      }
-      if (typeof other.vesselType !== 'undefined') {
-        this.vesselType = other.vesselType
-      }
-      if (typeof other.dealerName !== 'undefined') {
-        this.dealerName = other.dealerName
-      }
-      if (typeof other.dealerCompany !== 'undefined') {
-        this.dealerCompany = other.dealerCompany
-      }
-      if (typeof other.showImeiModal !== 'undefined') {
-        this.showImeiModal = other.showImeiModal
-      }
-      if (typeof other.agreed !== 'undefined') {
-        this.agreed = other.agreed
-      }
-      if (typeof other.iccId !== 'undefined') {
-        this.iccId = other.iccId
-      }
-      if (typeof other.emailCC !== 'undefined') {
-        this.emailCC = other.emailCC
-      }
-    } else if (process.env.TEST_FORM) {
-      this.selectedPlan = ['']
-      this.broadbandVideo = false
-      this.installDate = ''
-      this.email = 'nsn@qa.team'
-      this.imei = '911504516404422'
-      this.ownerFname = 'John'
-      this.ownerLname = 'Smith'
-      this.ownerMi = 'W.'
-      this.vesselName = 'My Vessel'
-      this.cellNumber = '908-883-1378'
-      this.vesselType = ''
-      this.dealerName = 'Some DealerName'
-      this.dealerCompany = 'Some DealerCompany'
-      this.showImeiModal = false
-      this.agreed = false
-      this.iccId = '891004234814455936F'
+    if (!other) {
+      return
+    }
+    if (typeof other.selectedPlan !== 'undefined') {
+      this.selectedPlan = other.selectedPlan
+    }
+    if (typeof other.broadbandVideo !== 'undefined') {
+      this.broadbandVideo = other.broadbandVideo
+    }
+    if (typeof other.installDate !== 'undefined') {
+      this.installDate = other.installDate
+    }
+    if (typeof other.email !== 'undefined') {
+      this.email = other.email
+    }
+    if (typeof other.imei !== 'undefined') {
+      this.imei = other.imei
+    }
+    if (typeof other.ownerFname !== 'undefined') {
+      this.ownerFname = other.ownerFname
+    }
+    if (typeof other.ownerLname !== 'undefined') {
+      this.ownerLname = other.ownerLname
+    }
+    if (typeof other.ownerMi !== 'undefined') {
+      this.ownerMi = other.ownerMi
+    }
+    if (typeof other.vesselName !== 'undefined') {
+      this.vesselName = other.vesselName
+    }
+    if (typeof other.cellNumber !== 'undefined') {
+      this.cellNumber = other.cellNumber
+    }
+    if (typeof other.vesselType !== 'undefined') {
+      this.vesselType = other.vesselType
+    }
+    if (typeof other.dealerName !== 'undefined') {
+      this.dealerName = other.dealerName
+    }
+    if (typeof other.dealerCompany !== 'undefined') {
+      this.dealerCompany = other.dealerCompany
+    }
+    if (typeof other.showImeiModal !== 'undefined') {
+      this.showImeiModal = other.showImeiModal
+    }
+    if (typeof other.agreed !== 'undefined') {
+      this.agreed = other.agreed
+    }
+    if (typeof other.iccId !== 'undefined') {
+      this.iccId = other.iccId
+    }
+    if (typeof other.emailCC !== 'undefined') {
+      this.emailCC = other.emailCC
     }
   }
 

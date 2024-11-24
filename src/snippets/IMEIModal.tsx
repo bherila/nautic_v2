@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { bodySize, headingSize } from '../lib/styles'
+import { headingSize } from '../lib/styles'
 import { CSSProperties } from 'react'
 
 export default function IMEIModal({
@@ -12,7 +12,7 @@ export default function IMEIModal({
   return (
     <div id="modal-nautic-imei" className="modal" style={modalStyle}>
       <button style={closeButtonStyle} onClick={onClose}>
-        X
+        &times;
       </button>
       <h3 style={{ marginTop: 0 }}>How do I find my IMEI?</h3>
       {contentOverride ? (

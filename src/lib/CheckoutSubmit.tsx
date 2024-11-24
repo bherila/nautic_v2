@@ -10,7 +10,6 @@ import getStripe from '../lib/getStripe'
 import RegistrationState from './RegistrationState'
 import { findPlanOption, getAllPlanOptions } from './PlanOptions'
 import { fetchPostJSON } from './jsonHelpers'
-import router from 'next/router'
 
 const CARD_OPTIONS = {
   iconStyle: 'solid' as const,
@@ -149,7 +148,7 @@ function CheckoutInternal(props: Props) {
       setErrorMessage(error.message ?? 'An unknown error occured')
     } else if (paymentIntent) {
       setPayment(paymentIntent)
-      await router.push('/thanks')
+      location.href = '/thanks'
     }
   }
 

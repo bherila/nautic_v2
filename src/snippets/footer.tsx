@@ -1,5 +1,4 @@
-﻿import Image from 'next/image'
-
+﻿'use client'
 export default function Footer() {
   return (
     <section className="page-footer wf-section">
@@ -70,28 +69,19 @@ export default function Footer() {
             </a>
           </div>
           <div className="footer-menu-col subscribe-col">
-            <div className="footer-form w-form">
-              {/*<form id="wf-form-Footer-Form" name="wf-form-Footer-Form" data-name="Footer Form" method="get" className="footer-form-container">*/}
-              {/*  <div className="footer-title">Subscribe to our Newsletter</div>*/}
-              {/*  <div className="footer-form-block"><input type="email" className="footer-form-field w-input" maxLength="256" name="email-subscribe-2" data-name="Email Subscribe 2" aria-label="Get product updates" placeholder="Enter your email." id="email-subscribe-2" required/><input type="submit" value="Subscribe" data-wait="Please wait..." className="footer-form-submit w-button"/></div>*/}
-              {/*</form>*/}
-              {/*<div className="w-form-done">*/}
-              {/*  <div>Thank you! Your submission has been received!</div>*/}
-              {/*</div>*/}
-              {/*<div className="w-form-fail">*/}
-              {/*  <div>Oops! Something went wrong while submitting the form.</div>*/}
-              {/*</div>*/}
-            </div>
             <div className="footer-menu-terms">
               <a
                 href="https://www.nearshorenetworks.com/terms-conditions"
                 className="footer-link link-terms"
+                style={{ display: 'block' }}
               >
                 Terms &amp; Conditions
               </a>
+              <br />
               <a
                 href="https://www.nearshorenetworks.com/privacy-policy"
                 className="footer-link link-terms"
+                style={{ display: 'block' }}
               >
                 Privacy Policy
               </a>
@@ -100,7 +90,8 @@ export default function Footer() {
         </div>
         <div className="footer-bottom">
           <div className="footer-copyright">
-            © 2022 NearShore Networks. All rights reserved.
+            © 2018-{new Date().getFullYear()} NearShore Networks. All rights
+            reserved.
           </div>
           <div className="footer-social-block-two">
             <a

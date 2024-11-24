@@ -1,37 +1,12 @@
-﻿'use client'
-
-import {
+﻿import {
   nauticAlertPlanOptions,
   nauticAlertBroadbandVideo,
 } from '@/lib/PlanOptions'
 import RegistrationForm from '@/lib/RegistrationForm'
 import TermsContentNautic from '@/snippets/TermsContentNautic'
-import Image from 'next/image'
 import Layout from '@/lib/layout'
 import HeroUnit from '@/snippets/HeroUnit'
-
-function NauticIMEIModal() {
-  return (
-    <>
-      <ol>
-        <li>
-          Go to Home Screen, press button in upper right to be taken to System
-          Settings
-        </li>
-        <li>
-          At System Settings scroll the bottom bar to the left and press “Info”
-          tab. &nbsp;The “MEID” line is the IMEI.
-        </li>
-      </ol>
-      <Image
-        src="/img/insight_meid_screenshot.jpg"
-        width={429}
-        height={323}
-        alt="Insight MEID screenshot"
-      />
-    </>
-  )
-}
+import NauticIMEIModal from './NauticIMEIModal'
 
 export default function RegistrationFormPage() {
   return (
@@ -57,6 +32,14 @@ export default function RegistrationFormPage() {
           imeiContentOverride={<NauticIMEIModal />}
           defaultPlanText="Select Your Device"
           cc="nfvelado@nauticalert.com"
+          defaultFname={process.env.DEFAULT_FNAME ?? ''}
+          defaultLname={process.env.DEFAULT_LNAME ?? ''}
+          defaultMi={process.env.DEFAULT_MI ?? ''}
+          defaultEmail={process.env.DEFAULT_EMAIL ?? ''}
+          defaultIMEI={process.env.DEFAULT_IMEI ?? ''}
+          defaultCellNumber={process.env.DEFAULT_CELL_NUMBER ?? ''}
+          defaultVesselName={process.env.DEFAULT_VESSEL_NAME ?? ''}
+          defaultIccId={process.env.DEFAULT_ICCID ?? ''}
         />
       </div>
     </Layout>

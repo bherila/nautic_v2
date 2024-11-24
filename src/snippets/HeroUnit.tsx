@@ -1,4 +1,4 @@
-﻿import * as React from 'react'
+﻿'use client'
 import Image from 'next/image'
 
 export default function HeroUnit(props: {

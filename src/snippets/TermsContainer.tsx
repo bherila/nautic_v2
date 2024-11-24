@@ -8,8 +8,12 @@ export interface TermsProps {
   content: ReactNode
 }
 
-export default function TermsContainer(props: TermsProps) {
-  const [showTerms, setShowTerms] = useState(!props.isAgreed)
+export default function TermsContainer({
+  isAgreed,
+  setAgreed,
+  content,
+}: TermsProps) {
+  const [showTerms, setShowTerms] = useState(!isAgreed)
   return (
     <div style={{ textAlign: 'left' }}>
       {!showTerms ? (
@@ -21,14 +25,14 @@ export default function TermsContainer(props: TermsProps) {
           </p>
         </div>
       ) : (
-        <div>{props.content}</div>
+        <div>{content}</div>
       )}
       <label style={{ fontSize: bodySize }}>
         <input
           type="checkbox"
-          checked={props.isAgreed}
+          checked={isAgreed}
           onChange={(e) => {
-            props.setAgreed(e.currentTarget.checked)
+            setAgreed(e.currentTarget.checked)
             if (e.currentTarget.checked) {
               setShowTerms(false)
             }

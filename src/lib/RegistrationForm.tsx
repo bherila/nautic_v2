@@ -1,4 +1,5 @@
-﻿import * as React from 'react'
+﻿'use client'
+import { useState } from 'react'
 import { PlanOption } from './PlanOptions'
 import isIMEIValid from '../lib/luhn'
 import RegistrationState, {
@@ -9,6 +10,7 @@ import TermsContainer from '../snippets/TermsContainer'
 import { validateSync } from 'class-validator'
 import IMEIModal from '../snippets/IMEIModal'
 import { bodySize } from './styles'
+import YellowButtonPlaceholder from './YellowButtonPlaceholder'
 
 const getPlanOptionById: { [key: string]: PlanOption } = {}
 const wInput = 'w-input'
@@ -31,44 +33,81 @@ interface Props {
   imeiContentOverride?: React.ReactNode
   cc?: string
   defaultPlanText?: string
+  defaultFname?: string
+  defaultLname?: string
+  defaultMi?: string
+  defaultEmail?: string
+  defaultIMEI?: string
+  defaultCellNumber?: string
+  defaultVesselName?: string
+  defaultIccId?: string
 }
 
-export default class RegistrationForm extends React.Component<
-  Props,
-  RegistrationState
-> {
-  constructor(props: Props, context: any) {
-    super(props, context)
-    this.state = new ValidatingRegistrationState({ emailCC: props.cc })
-  }
+export default function RegistrationForm(props: Props) {
+  const emailCC = props.cc
+  const [ownerFname, setOwnerFname] = useState<string>(props.defaultFname ?? '')
+  const [ownerLname, setOwnerLname] = useState<string>(props.defaultLname ?? '')
+  const [ownerMi, setOwnerMi] = useState<string>(props.defaultMi ?? '')
+  const [email, setEmail] = useState<string>(props.defaultEmail ?? '')
+  const [imei, setIMEI] = useState<string>(props.defaultIMEI ?? '')
+  const [cellNumber, setCellNumber] = useState<string>(
+    props.defaultCellNumber ?? '',
+  )
+  const [vesselName, setVesselName] = useState<string>(
+    props.defaultVesselName ?? '',
+  )
+  const [iccId, setIccId] = useState<string>(props.defaultIccId ?? '')
+  const [selectedPlan, setSelectedPlan] = useState<string[]>([])
+  const [broadbandVideo, setBroadbandVideo] = useState(false)
+  const [installDate, setInstallDate] = useState<string>('')
+  const [vesselType, setVesselType] = useState<string>('')
+  const [showImeiModal, setShowImeiModal] = useState(false)
+  const [agreed, setAgreed] = useState(false)
 
-  renderPlanOptions(
+  const regState: ValidatingRegistrationState = new ValidatingRegistrationState(
+    {
+      selectedPlan: selectedPlan,
+      broadbandVideo: broadbandVideo,
+      installDate: installDate,
+      email: email,
+      imei: imei,
+      ownerFname: ownerFname,
+      ownerLname: ownerLname,
+      ownerMi: ownerMi,
+      vesselName: vesselName,
+      cellNumber: cellNumber,
+      vesselType: vesselType,
+      showImeiModal: showImeiModal,
+      agreed: agreed,
+      iccId: iccId,
+      emailCC: emailCC,
+    },
+  )
+
+  function renderPlanOptions(
     planOptions: PlanOption[],
     depth: number,
     defaultChoice: string,
   ) {
-    const selectedOption = (this.state.selectedPlan || [])[depth] || ''
+    const selectedOption = (selectedPlan || [])[depth] || ''
     console.log('selectedOption', selectedOption)
     return (
-      <React.Fragment>
+      <>
         <select
           className={wInput}
           onChange={(e) => {
-            const selectedPlan = this.state.selectedPlan.slice(0)
-            while (selectedPlan.length <= depth) selectedPlan.push('')
-            selectedPlan[depth] = e.currentTarget.value
-            this.setState({ selectedPlan })
+            const newSelectedPlan = [...selectedPlan.slice(0)]
+            while (newSelectedPlan.length <= depth) newSelectedPlan.push('')
+            newSelectedPlan[depth] = e.currentTarget.value
+            setSelectedPlan(newSelectedPlan)
           }}
+          value={selectedOption}
         >
           <option>{defaultChoice || 'Select One'}</option>
           {planOptions.map((opt, ix) => {
             getPlanOptionById[opt.checkoutId || opt.name] = opt
             return (
-              <option
-                key={`opt${ix}`}
-                value={opt.checkoutId || opt.name}
-                selected={opt.name === selectedOption}
-              >
+              <option key={`opt${ix}`} value={opt.checkoutId || opt.name}>
                 {opt.name}
                 {!!opt.price && opt.price > 0 && ' - $' + opt.price.toFixed(2)}
               </option>
@@ -82,21 +121,21 @@ export default class RegistrationForm extends React.Component<
               opt.name === selectedOption && (opt.planOptions || []).length > 0,
           )
           .map((opt) => (
-            <React.Fragment key={opt.name}>
-              {this.renderPlanOptions(
+            <div key={opt.name}>
+              {renderPlanOptions(
                 opt.planOptions || [],
                 depth + 1,
                 opt.nextDefaultChoice || '',
               )}
-            </React.Fragment>
+            </div>
           ))}
-      </React.Fragment>
+      </>
     )
   }
 
-  renderIccid() {
-    if (!this.state.broadbandVideo) {
-      const sp = this.state.selectedPlan
+  function renderIccid() {
+    if (!broadbandVideo) {
+      const sp = selectedPlan
       const plan = getPlanOptionById[sp[sp.length - 1]]
       if (!plan || !plan.enableIccId) {
         return false
@@ -110,8 +149,8 @@ export default class RegistrationForm extends React.Component<
             className={wInput}
             type="tel"
             placeholder="Enter SIM ICCID"
-            value={this.state.iccId}
-            onChange={(e) => this.setState({ iccId: e.currentTarget.value })}
+            value={iccId}
+            onChange={(e) => setIccId(e.currentTarget.value)}
             required={true}
             minLength={19}
             maxLength={20}
@@ -121,7 +160,7 @@ export default class RegistrationForm extends React.Component<
     )
   }
 
-  renderName() {
+  function renderName() {
     return (
       <div>
         <label>Device Owner’s Full Name {required}</label>
@@ -130,8 +169,8 @@ export default class RegistrationForm extends React.Component<
           type="text"
           placeholder="First Name"
           autoComplete="First"
-          value={this.state.ownerFname || ''}
-          onChange={(e) => this.setState({ ownerFname: e.currentTarget.value })}
+          value={ownerFname || ''}
+          onChange={(e) => setOwnerFname(e.currentTarget.value)}
           required={true}
           style={{ width: '60%', display: 'inline-block' }}
         />
@@ -140,49 +179,47 @@ export default class RegistrationForm extends React.Component<
           className={wInput}
           type="text"
           placeholder="MI (Optional)"
-          value={this.state.ownerMi || ''}
-          onChange={(e) => this.setState({ ownerMi: e.currentTarget.value })}
+          value={ownerMi || ''}
+          onChange={(e) => setOwnerMi(e.currentTarget.value)}
           style={{ width: '35%', display: 'inline-block' }}
         />
         <input
           className={wInput}
           type="text"
           placeholder="Last Name"
-          value={this.state.ownerLname || ''}
-          onChange={(e) => this.setState({ ownerLname: e.currentTarget.value })}
+          value={ownerLname || ''}
+          onChange={(e) => setOwnerLname(e.currentTarget.value)}
           required={true}
         />
       </div>
     )
   }
 
-  renderCol1() {
-    const { renderInstallDate, broadbandVideoAddOn, planOptions } = this.props
+  function renderCol1() {
+    const { renderInstallDate, broadbandVideoAddOn, planOptions } = props
     return (
-      <React.Fragment>
+      <>
         <div>
           <label>Plan Options {required}</label>
-          {this.renderPlanOptions(
+          {renderPlanOptions(
             planOptions,
             0,
-            this.props.defaultPlanText || 'Select Your Plan',
+            props.defaultPlanText || 'Select Your Plan',
           )}
         </div>
 
-        {!!broadbandVideoAddOn[this.getBasePlanId()] && (
-          <React.Fragment>
+        {!!broadbandVideoAddOn[getBasePlanId()] && (
+          <>
             <label>
               <input
                 type="checkbox"
                 value="true"
-                checked={this.state.broadbandVideo}
-                onChange={(e) =>
-                  this.setState({ broadbandVideo: e.currentTarget.checked })
-                }
+                checked={broadbandVideo}
+                onChange={(e) => setBroadbandVideo(e.currentTarget.checked)}
               />
               &nbsp; Add Broadband Video + $14.99
             </label>
-          </React.Fragment>
+          </>
         )}
         {renderInstallDate && (
           <div>
@@ -193,27 +230,25 @@ export default class RegistrationForm extends React.Component<
                 type="date"
                 min={new Date().toISOString() as any}
                 placeholder="Target Install Date"
-                value={this.state.installDate || ''}
-                onChange={(e) =>
-                  this.setState({ installDate: e.currentTarget.value })
-                }
+                value={installDate || ''}
+                onChange={(e) => setInstallDate(e.currentTarget.value)}
                 required={true}
               />
             </label>
           </div>
         )}
 
-        {this.renderImeiField()}
-        {this.renderIccid()}
-      </React.Fragment>
+        {renderImeiField()}
+        {renderIccid()}
+      </>
     )
   }
 
-  renderCol2() {
-    const { renderDealerFields, renderVesselType } = this.props
+  function renderCol2() {
+    const { renderVesselType } = props
     return (
-      <React.Fragment>
-        {this.renderName()}
+      <>
+        {renderName()}
 
         <div>
           <label>Name of Vessel (if Applicable)</label>
@@ -221,10 +256,8 @@ export default class RegistrationForm extends React.Component<
             className={wInput}
             type="text"
             placeholder="Vessel Name"
-            value={this.state.vesselName || ''}
-            onChange={(e) =>
-              this.setState({ vesselName: e.currentTarget.value })
-            }
+            value={vesselName || ''}
+            onChange={(e) => setVesselName(e.currentTarget.value)}
           />
         </div>
 
@@ -233,11 +266,18 @@ export default class RegistrationForm extends React.Component<
           <input
             className={wInput}
             type="tel"
-            placeholder="(xxx) xxx-xxxx"
-            value={this.state.cellNumber || ''}
-            onChange={(e) =>
-              this.setState({ cellNumber: e.currentTarget.value })
-            }
+            placeholder="xxx-xxx-xxxx"
+            value={cellNumber}
+            onChange={(e) => {
+              const val = e.currentTarget.value.replace(/\D/g, '')
+              if (val.length === 10) {
+                setCellNumber(
+                  `${val.slice(0, 3)}-${val.slice(3, 6)}-${val.slice(6)}`,
+                )
+              } else {
+                setCellNumber(val)
+              }
+            }}
             required={true}
           />
         </div>
@@ -248,8 +288,8 @@ export default class RegistrationForm extends React.Component<
             className={wInput}
             type="email"
             placeholder="yourname@domain.com"
-            value={this.state.email || ''}
-            onChange={(e) => this.setState({ email: e.currentTarget.value })}
+            value={email}
+            onChange={(e) => setEmail(e.currentTarget.value)}
             required={true}
           />
         </div>
@@ -263,10 +303,8 @@ export default class RegistrationForm extends React.Component<
                   type="radio"
                   name="vesselType"
                   value={typ}
-                  checked={typ === this.state.vesselType}
-                  onChange={(e) =>
-                    this.setState({ vesselType: e.currentTarget.value })
-                  }
+                  checked={vesselType === typ}
+                  onChange={(e) => setVesselType(e.currentTarget.value)}
                 />
                 &nbsp;
                 {typ}
@@ -274,19 +312,19 @@ export default class RegistrationForm extends React.Component<
             ))}
           </div>
         )}
-      </React.Fragment>
+      </>
     )
   }
 
-  renderImeiField() {
+  function renderImeiField() {
     return (
-      <React.Fragment>
+      <>
         <div style={{ marginTop: '25px' }}>
           <label>
             Device IMEI Number {required}
             <button
               type="button"
-              onClick={(e) => this.setState({ showImeiModal: true })}
+              onClick={() => setShowImeiModal(true)}
               style={linkStyle}
             >
               How do I find my IMEI?
@@ -297,101 +335,101 @@ export default class RegistrationForm extends React.Component<
               name="imei"
               autoComplete="off"
               placeholder="IMEI / MEID"
-              value={this.state.imei || ''}
-              onChange={(e) => this.setState({ imei: e.currentTarget.value })}
+              value={imei}
+              onChange={(e) => setIMEI(e.currentTarget.value)}
               required={true}
             />
           </label>
         </div>
-        {this.state.imei.length > 15 &&
-          !isIMEIValid(this.state.imei.split('')) && (
-            <p style={{ color: 'maroon' }}>
-              Please double check IMEI, it is likely invalid :(
-            </p>
-          )}
-      </React.Fragment>
+        {imei.length > 15 && !isIMEIValid(imei.split('')) && (
+          <p style={{ color: 'maroon' }}>
+            Please double check IMEI, it is likely invalid :(
+          </p>
+        )}
+      </>
     )
   }
 
-  render() {
-    const validationErrors = validateSync(
-      new ValidatingRegistrationState(this.state),
-    )
-    const isValid = this.state.agreed && validationErrors.length === 0
-    return (
-      <div style={{ fontSize: bodySize }}>
-        {this.state.showImeiModal && (
-          <IMEIModal
-            contentOverride={this.props.imeiContentOverride}
-            onClose={() => this.setState({ showImeiModal: false })}
-          />
-        )}
-        <div className="quote-form-wrapper new-form">
-          <div className="w-row">
-            <div className="w-col w-col-6">{this.renderCol1()}</div>
-            <div className="w-col w-col-6">{this.renderCol2()}</div>
-          </div>
-          <div className="w-row">
-            <TermsContainer
-              isAgreed={this.state.agreed}
-              setAgreed={(agreed) => this.setState({ agreed })}
-              content={this.props.termsContent}
-            />
-          </div>
+  function renderSubmit() {
+    if (!selectedPlan || selectedPlan.length === 0) {
+      return (
+        <YellowButtonPlaceholder>No plan selected!</YellowButtonPlaceholder>
+      )
+    }
 
-          {!this.state.agreed ? (
-            <div className="w-row">
-              <div className="w-col w-col-12" style={{ textAlign: 'center' }}>
-                <button
-                  type="submit"
-                  disabled={true}
-                  className={'buy-button button-icon w-button disabled'}
-                  style={{ paddingLeft: '20px', paddingRight: '20px' }}
-                >
-                  Accept Terms to Continue
-                </button>
-              </div>
-            </div>
-          ) : !isValid ? (
-            <div
-              style={{
-                border: '1px solid maroon',
-                padding: '20px',
-                margin: '15px auto',
-              }}
-            >
-              One or more inputs above isn’t filled in correctly/completely.
-              Please scroll up and make sure all required fields are filled. The
-              continue button will appear here when all required fields are
-              completed.
-              {validationErrors.length == 0 ? null : (
-                <>
-                  <p>Please correct these errors:</p>
-                  <ul>
-                    {validationErrors.map(
-                      (err, idx) =>
-                        err.constraints && (
-                          <li key={`err${idx}`}>
-                            {Object.values(err.constraints).join('. ')}
-                          </li>
-                        ),
-                    )}
-                  </ul>
-                </>
-              )}
-            </div>
-          ) : (
-            <CheckoutSubmit checkoutFormState={this.state} />
+    const validationErrors = validateSync(regState)
+    const isValid = agreed && validationErrors.length === 0
+    if (!agreed) {
+      return (
+        <YellowButtonPlaceholder>
+          Accept Terms to Continue
+        </YellowButtonPlaceholder>
+      )
+    }
+
+    if (!isValid) {
+      return (
+        <div
+          style={{
+            border: '1px solid maroon',
+            padding: '20px',
+            margin: '15px auto',
+          }}
+        >
+          One or more inputs above isn’t filled in correctly/completely. Please
+          scroll up and make sure all required fields are filled. The continue
+          button will appear here when all required fields are completed.
+          {validationErrors.length == 0 ? null : (
+            <>
+              <p>Please correct these errors:</p>
+              <ul>
+                {validationErrors.map(
+                  (err, idx) =>
+                    err.constraints && (
+                      <li key={`err${idx}`}>
+                        {Object.values(err.constraints).join('. ')}
+                      </li>
+                    ),
+                )}
+              </ul>
+            </>
           )}
         </div>
-      </div>
-    )
+      )
+    }
+
+    return <CheckoutSubmit checkoutFormState={regState} />
   }
 
-  getBasePlanId() {
-    if (!this.state.selectedPlan || !this.state.selectedPlan[0]) {
+  function getBasePlanId() {
+    if (!selectedPlan || !selectedPlan[0]) {
       return ''
     }
-    return this.state.selectedPlan.slice(-1)[0] || ''
+    return selectedPlan.slice(-1)[0] || ''
   }
+
+  return (
+    <div style={{ fontSize: bodySize }}>
+      {showImeiModal && (
+        <IMEIModal
+          contentOverride={props.imeiContentOverride}
+          onClose={() => setShowImeiModal(false)}
+        />
+      )}
+      <div className="quote-form-wrapper new-form">
+        <div className="w-row">
+          <div className="w-col w-col-6">{renderCol1()}</div>
+          <div className="w-col w-col-6">{renderCol2()}</div>
+        </div>
+        <div className="w-row">
+          <TermsContainer
+            isAgreed={agreed}
+            setAgreed={(agreed) => setAgreed(agreed)}
+            content={props.termsContent}
+          />
+        </div>
+        {renderSubmit()}
+      </div>
+    </div>
+  )
 }
