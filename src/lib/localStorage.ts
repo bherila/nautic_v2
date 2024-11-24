@@ -1,4 +1,5 @@
-﻿import RegistrationState from './RegistrationState'
+﻿'use client'
+import RegistrationState from './RegistrationState'
 
 export function saveToLocalStorage(s: RegistrationState): void {
   sessionStorage.setItem('nsnIMEI', s.imei)

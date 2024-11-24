@@ -1,4 +1,5 @@
-﻿import SMTPTransport from 'nodemailer/lib/smtp-transport'
+﻿import 'server-only'
+import SMTPTransport from 'nodemailer/lib/smtp-transport'
 import nodemailer from 'nodemailer'
 import Stripe from 'stripe'
 

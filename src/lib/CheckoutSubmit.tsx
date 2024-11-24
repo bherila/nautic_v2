@@ -10,6 +10,9 @@ import getStripe from '../lib/getStripe'
 import RegistrationState from './RegistrationState'
 import { findPlanOption, getAllPlanOptions } from './PlanOptions'
 import { fetchPostJSON } from './jsonHelpers'
+import { ApiSubscribeResponse } from '@/app/api/subscribe/ApiSubscribeResponse'
+import { PaymentIntent } from '@stripe/stripe-js/types/api'
+import YellowButtonPlaceholder from './YellowButtonPlaceholder'
 
 const CARD_OPTIONS = {
   iconStyle: 'solid' as const,
@@ -35,6 +38,15 @@ const CARD_OPTIONS = {
   },
 }
 
+export type StripePaymentStatus =
+  | 'ready'
+  | 'processing'
+  | 'requires_payment_method'
+  | 'requires_confirmation'
+  | 'requires_action'
+  | 'succeeded'
+  | 'error'
+
 interface Props {
   checkoutFormState: RegistrationState
 }
@@ -55,11 +67,15 @@ function Wrap(props: { children: ReactNode }) {
 }
 
 function CheckoutInternal(props: Props) {
-  const [payment, setPayment] = useState({ status: 'initial' })
+  const [status, setStatus] = useState<StripePaymentStatus>('ready')
+  const [subscribeApiResponse, setSubscribeApiResponse] =
+    useState<ApiSubscribeResponse | null>(null)
+  const [paymentIntent, setPaymentIntent] = useState<PaymentIntent | null>(null)
   const [errorMessage, setErrorMessage] = useState('')
   const stripe = useStripe()
   const elements = useElements()
-  const PaymentStatus = ({ status }: { status: string }) => {
+
+  const PaymentStatus = ({ status }: { status: StripePaymentStatus }) => {
     switch (status) {
       case 'processing':
       case 'requires_payment_method':
@@ -100,12 +116,11 @@ function CheckoutInternal(props: Props) {
     },
     formInputs: props.checkoutFormState,
   }
-  console.log(apiDetail)
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
     // Abort if already processing
-    if (payment.status === 'processing') {
+    if (status === 'processing') {
       return
     }
 
@@ -115,15 +130,27 @@ function CheckoutInternal(props: Props) {
     }
 
     // Prevent double submit
-    setPayment({ status: 'processing' })
+    setStatus('processing')
 
     // Create a PaymentIntent with the specified amount.
-    const response = await fetchPostJSON('/api/subscribe', apiDetail)
-    setPayment(response)
+    let response: ApiSubscribeResponse | null = null
+    try {
+      response = await fetchPostJSON('/api/subscribe', apiDetail)
+      setSubscribeApiResponse(response)
+    } catch (err: any) {
+      setSubscribeApiResponse(null)
+      setStatus('error')
+      setErrorMessage(err?.message ?? 'An unknown error occured')
+      return
+    }
 
-    if (response.statusCode === 500) {
-      setPayment({ status: 'error' })
-      setErrorMessage(response.message)
+    if (response == null) {
+      return
+    }
+
+    if (!response.clientSecret) {
+      console.error('Missing client secret')
+      setStatus('error')
       return
     }
 
@@ -144,12 +171,32 @@ function CheckoutInternal(props: Props) {
     )
 
     if (error) {
-      setPayment({ status: 'error' })
+      setSubscribeApiResponse(null)
+      setStatus('error')
       setErrorMessage(error.message ?? 'An unknown error occured')
     } else if (paymentIntent) {
-      setPayment(paymentIntent)
+      setPaymentIntent(paymentIntent)
       location.href = '/thanks'
     }
+  }
+
+  function CheckoutButton() {
+    if (status === 'processing') {
+      return (
+        <Wrap>
+          <YellowButtonPlaceholder>Processing...</YellowButtonPlaceholder>
+        </Wrap>
+      )
+    }
+    return (
+      <button
+        type="submit"
+        className={'buy-button button-icon w-button'}
+        style={{ marginTop: '20px' }}
+      >
+        Checkout
+      </button>
+    )
   }
 
   return finalPrice <= 0 ? null : (
@@ -176,22 +223,13 @@ function CheckoutInternal(props: Props) {
             options={CARD_OPTIONS}
             onChange={(e) => {
               if (e.error) {
-                setPayment({ status: 'error' })
+                setStatus('error')
                 setErrorMessage(e.error.message ?? 'An unknown error occured')
               }
             }}
           />
         </div>
-        <button
-          type="submit"
-          className={
-            'buy-button button-icon w-button' +
-            (payment.status === 'processing' ? ' disabled' : '')
-          }
-          style={{ marginTop: '20px' }}
-        >
-          Checkout
-        </button>
+        <CheckoutButton />
 
         <p style={{ marginTop: '20px' }}>
           Nearshorenetworks will not share your information with others. All

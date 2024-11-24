@@ -2,9 +2,7 @@
 import { useState } from 'react'
 import { PlanOption } from './PlanOptions'
 import isIMEIValid from '../lib/luhn'
-import RegistrationState, {
-  ValidatingRegistrationState,
-} from '../lib/RegistrationState'
+import { ValidatingRegistrationState } from '../lib/RegistrationState'
 import CheckoutSubmit from './CheckoutSubmit'
 import TermsContainer from '../snippets/TermsContainer'
 import { validateSync } from 'class-validator'

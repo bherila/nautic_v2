@@ -189,10 +189,5 @@ export async function POST(request: NextRequest) {
     subscriptionId: subscription.id,
     invoiceId: invoice.id,
     clientSecret: payment_intent?.client_secret || '',
-  } as SubscribeResponse)
-}
-
-export interface SubscribeResponse {
-  subscriptionId: string
-  clientSecret: string
+  })
 }

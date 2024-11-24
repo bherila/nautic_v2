@@ -1,0 +1,15 @@
+.reg-container {
+  padding-top: 200px;
+  padding-bottom: 100px;
+}
+
+.reg-success-message {
+  text-align: center;
+  font-size: 20pt;
+}
+
+.reg-additional-info {
+  padding-top: 10px;
+  text-align: center;
+  font-size: 12pt;
+}
