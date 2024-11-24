@@ -10,7 +10,7 @@
       </a>
       .&nbsp;
     </b>
-  );
+  )
 }
 
 export function CoverageMapTerm({}) {
@@ -19,5 +19,5 @@ export function CoverageMapTerm({}) {
       Coverage maps are an indicator and not a guarantee of coverage or network
       access.
     </>
-  );
+  )
 }

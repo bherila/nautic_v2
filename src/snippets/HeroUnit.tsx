@@ -1,12 +1,12 @@
-﻿import * as React from "react";
-import Image from "next/image";
+﻿import * as React from 'react'
+import Image from 'next/image'
 
 export default function HeroUnit(props: {
-  title: string;
-  children: any;
-  img: any;
+  title: string
+  children: any
+  img: any
 }) {
-  const { title, children, img } = props;
+  const { title, children, img } = props
   return (
     <div className="page-header-container page-industries-header-container w-container">
       <div className="page-header-container header-image">
@@ -25,10 +25,10 @@ export default function HeroUnit(props: {
         <div className="page-header-connector-block page-header-connector">
           <div
             className="grow-right-animation"
-            style={{ width: "100%", height: "22px" }}
+            style={{ width: '100%', height: '22px' }}
           >
             <Image
-              src={require("../images/page-header-connector.svg")}
+              src={require('../images/page-header-connector.svg')}
               loading="lazy"
               alt=""
               className="image"
@@ -38,5 +38,5 @@ export default function HeroUnit(props: {
         <p className="header-content-subtitle">{children}</p>
       </div>
     </div>
-  );
+  )
 }

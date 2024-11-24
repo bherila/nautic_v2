@@ -1,13 +1,13 @@
-import * as React from "react";
-import { bodySize, headingSize } from "../lib/styles";
-import { CSSProperties } from "react";
+import * as React from 'react'
+import { bodySize, headingSize } from '../lib/styles'
+import { CSSProperties } from 'react'
 
 export default function IMEIModal({
   onClose,
   contentOverride,
 }: {
-  onClose: () => void;
-  contentOverride?: React.ReactNode;
+  onClose: () => void
+  contentOverride?: React.ReactNode
 }) {
   return (
     <div id="modal-nautic-imei" className="modal" style={modalStyle}>
@@ -39,24 +39,24 @@ export default function IMEIModal({
         </>
       )}
     </div>
-  );
+  )
 }
 
 const modalStyle: CSSProperties = {
-  display: "block",
-  position: "fixed",
-  boxShadow: "-3px 2px 3px 7px #ccc",
-  top: "20%",
-  left: "30%",
-  right: "30%",
+  display: 'block',
+  position: 'fixed',
+  boxShadow: '-3px 2px 3px 7px #ccc',
+  top: '20%',
+  left: '30%',
+  right: '30%',
   zIndex: 1000,
-  background: "#fff",
-  padding: "4rem",
-  fontSize: "10pt",
-};
+  background: '#fff',
+  padding: '4rem',
+  fontSize: '10pt',
+}
 
 const closeButtonStyle: CSSProperties = {
-  float: "right",
-  fontWeight: "bold",
+  float: 'right',
+  fontWeight: 'bold',
   fontSize: headingSize,
-};
+}

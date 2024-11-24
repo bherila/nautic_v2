@@ -1,5 +1,4 @@
-﻿
-import Image from "next/image";
+﻿import Image from 'next/image'
 
 export default function Footer() {
   return (
@@ -153,11 +152,11 @@ export default function Footer() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
 function EmailSubscribeForm({}) {
-  return null;
+  return null
   // return <>
   //     <div className="footer-form w-form">
   //         <form id="wf-form-Footer-Form" name="wf-form-Footer-Form" data-name="Footer Form"

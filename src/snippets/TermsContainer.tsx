@@ -1,17 +1,17 @@
-"use client";
-import { ReactNode, useState } from "react";
-import { bodySize } from "@/lib/styles";
+'use client'
+import { ReactNode, useState } from 'react'
+import { bodySize } from '@/lib/styles'
 
 export interface TermsProps {
-  isAgreed: boolean;
-  setAgreed: (isAgreed: boolean) => void;
-  content: ReactNode;
+  isAgreed: boolean
+  setAgreed: (isAgreed: boolean) => void
+  content: ReactNode
 }
 
 export default function TermsContainer(props: TermsProps) {
-  const [showTerms, setShowTerms] = useState(!props.isAgreed);
+  const [showTerms, setShowTerms] = useState(!props.isAgreed)
   return (
-    <div style={{ textAlign: "left" }}>
+    <div style={{ textAlign: 'left' }}>
       {!showTerms ? (
         <div>
           <p>
@@ -28,14 +28,14 @@ export default function TermsContainer(props: TermsProps) {
           type="checkbox"
           checked={props.isAgreed}
           onChange={(e) => {
-            props.setAgreed(e.currentTarget.checked);
+            props.setAgreed(e.currentTarget.checked)
             if (e.currentTarget.checked) {
-              setShowTerms(false);
+              setShowTerms(false)
             }
           }}
         />
         &nbsp;I agree to the Terms of Service
       </label>
     </div>
-  );
+  )
 }

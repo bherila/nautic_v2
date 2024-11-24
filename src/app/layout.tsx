@@ -1,36 +1,36 @@
-import type { Metadata } from "next";
-import { Open_Sans } from "next/font/google";
+import type { Metadata } from 'next'
+import { Open_Sans } from 'next/font/google'
 
-import "../styles/normalize.css";
-import "../styles/components.css";
-import "../styles/nearshorenetworks.css";
-import "@fontsource/open-sans/300.css";
-import "@fontsource/open-sans/400.css";
-import "@fontsource/open-sans/500.css";
-import "@fontsource/open-sans/600.css";
-import "@fontsource/open-sans/700.css";
-import "@fontsource/open-sans/800.css";
-import "@fontsource/roboto";
-import Script from "next/script";
+import '../styles/normalize.css'
+import '../styles/components.css'
+import '../styles/nearshorenetworks.css'
+import '@fontsource/open-sans/300.css'
+import '@fontsource/open-sans/400.css'
+import '@fontsource/open-sans/500.css'
+import '@fontsource/open-sans/600.css'
+import '@fontsource/open-sans/700.css'
+import '@fontsource/open-sans/800.css'
+import '@fontsource/roboto'
+import Script from 'next/script'
 
-const inter = Open_Sans({ subsets: ["latin"] });
+const inter = Open_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: "Nearshore Networks",
+  title: 'Nearshore Networks',
   // description: '',
-  viewport: "width=device-width, initial-scale=1",
+  viewport: 'width=device-width, initial-scale=1',
   verification: {
-    google: "4S_29TZmGdAwjBsw_FZ-JD20hrZdMoOyoWFEvRSLito",
+    google: '4S_29TZmGdAwjBsw_FZ-JD20hrZdMoOyoWFEvRSLito',
   },
-};
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning={true}>
       <Script
         src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=63154f3300bbd06788d75ff9"
         type="text/javascript"
@@ -49,5 +49,5 @@ export default function RootLayout({
       />
       <body className={inter.className}>{children}</body>
     </html>
-  );
+  )
 }

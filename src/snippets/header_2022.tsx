@@ -1,12 +1,12 @@
-﻿import Image from "next/image";
+﻿import Image from 'next/image'
 
-const prefix = "https://www.nearshorenetworks.com/";
+const prefix = 'https://www.nearshorenetworks.com/'
 
 function route(str: string): string {
-  if (str.startsWith("http")) {
-    return str;
+  if (str.startsWith('http')) {
+    return str
   }
-  return (prefix + str).replace(".html", "");
+  return (prefix + str).replace('.html', '')
 }
 
 export default function Header() {
@@ -16,10 +16,10 @@ export default function Header() {
         <div className="section-top-menu wf-section">
           <div className="navigation-top-menu-container w-container">
             <div className="navigation-top-menu-3">
-              <a href={route("resources.html")} className="top-menu-link-2">
+              <a href={route('resources.html')} className="top-menu-link-2">
                 Resources
               </a>
-              <a href={route("careers.html")} className="top-menu-link-2">
+              <a href={route('careers.html')} className="top-menu-link-2">
                 Careers
               </a>
               <form action="/search" className="search w-form">
@@ -44,7 +44,7 @@ export default function Header() {
         <div className="navbar__container-2">
           <div className="navbar__mobile-overlay-2"></div>
           <a
-            href={route("https://www.nearshorenetworks.com")}
+            href={route('https://www.nearshorenetworks.com')}
             className="brand w-nav-brand"
           >
             <img
@@ -101,7 +101,7 @@ export default function Header() {
                             >
                               <li className="navmenu__dropdown-section-2">
                                 <a
-                                  href={route("about-us.html")}
+                                  href={route('about-us.html')}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
                                   <img
@@ -125,7 +125,7 @@ export default function Header() {
                               </li>
                               <li className="navmenu__dropdown-section-2">
                                 <a
-                                  href={route("leadership.html")}
+                                  href={route('leadership.html')}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
                                   <img
@@ -177,7 +177,7 @@ export default function Header() {
                             >
                               <li className="navmenu__dropdown-section-2">
                                 <a
-                                  href={route("industries/energy.html")}
+                                  href={route('industries/energy.html')}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
                                   <div className="navmenu_dropdown-section-icon-block">
@@ -204,7 +204,7 @@ export default function Header() {
                               </li>
                               <li className="navmenu__dropdown-section-2">
                                 <a
-                                  href={route("industries/shipping.html")}
+                                  href={route('industries/shipping.html')}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
                                   <div className="navmenu_dropdown-section-icon-block">
@@ -232,7 +232,7 @@ export default function Header() {
                               <li className="navmenu__dropdown-section-2">
                                 <a
                                   href={route(
-                                    "industries/cruise-and-ferries.html",
+                                    'industries/cruise-and-ferries.html',
                                   )}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
@@ -260,7 +260,7 @@ export default function Header() {
                               </li>
                               <li className="navmenu__dropdown-section-2">
                                 <a
-                                  href={route("industries/crew-welfare.html")}
+                                  href={route('industries/crew-welfare.html')}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
                                   <div className="navmenu_dropdown-section-icon-block">
@@ -293,7 +293,7 @@ export default function Header() {
                               <li className="navmenu__dropdown-section-2">
                                 <a
                                   href={route(
-                                    "industries/leisure-vessels.html",
+                                    'industries/leisure-vessels.html',
                                   )}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
@@ -322,7 +322,7 @@ export default function Header() {
                               <li className="navmenu__dropdown-section-2">
                                 <a
                                   href={route(
-                                    "industries/fishing-vessels.html",
+                                    'industries/fishing-vessels.html',
                                   )}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
@@ -349,7 +349,7 @@ export default function Header() {
                               </li>
                               <li className="navmenu__dropdown-section-2">
                                 <a
-                                  href={route("industries/aquaculture.html")}
+                                  href={route('industries/aquaculture.html')}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
                                   <div className="navmenu_dropdown-section-icon-block">
@@ -404,7 +404,7 @@ export default function Header() {
                               <li className="navmenu__dropdown-section-2">
                                 <a
                                   href={route(
-                                    "solutions/solutions-nearshore-vsat.html",
+                                    'solutions/solutions-nearshore-vsat.html',
                                   )}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
@@ -431,7 +431,7 @@ export default function Header() {
                               </li>
                               <li className="navmenu__dropdown-section-2">
                                 <a
-                                  href={route("solutions/nearshore-5g.html")}
+                                  href={route('solutions/nearshore-5g.html')}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
                                   <div className="navmenu_dropdown-section-icon-block">
@@ -457,7 +457,7 @@ export default function Header() {
                               <li className="navmenu__dropdown-section-2">
                                 <a
                                   href={route(
-                                    "solutions/offshore-internet.html",
+                                    'solutions/offshore-internet.html',
                                   )}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
@@ -485,7 +485,7 @@ export default function Header() {
                               </li>
                               <li className="navmenu__dropdown-section-2">
                                 <a
-                                  href={route("solutions/wifi-hotspots.html")}
+                                  href={route('solutions/wifi-hotspots.html')}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
                                   <div className="navmenu_dropdown-section-icon-block">
@@ -511,7 +511,7 @@ export default function Header() {
                               </li>
                               <li className="navmenu__dropdown-section-2">
                                 <a
-                                  href={route("solutions/voice-over-ip.html")}
+                                  href={route('solutions/voice-over-ip.html')}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
                                   <div className="navmenu_dropdown-section-icon-block">
@@ -545,7 +545,7 @@ export default function Header() {
                               <li className="navmenu__dropdown-section-2">
                                 <a
                                   href={route(
-                                    "solutions/out-of-band-management.html",
+                                    'solutions/out-of-band-management.html',
                                   )}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
@@ -572,7 +572,7 @@ export default function Header() {
                               </li>
                               <li className="navmenu__dropdown-section-2">
                                 <a
-                                  href={route("solutions/marine-ip-tv.html")}
+                                  href={route('solutions/marine-ip-tv.html')}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
                                   <div className="navmenu_dropdown-section-icon-block">
@@ -598,7 +598,7 @@ export default function Header() {
                               </li>
                               <li className="navmenu__dropdown-section-2">
                                 <a
-                                  href={route("solutions/day-rate-term.html")}
+                                  href={route('solutions/day-rate-term.html')}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
                                   <div className="navmenu_dropdown-section-icon-block">
@@ -626,7 +626,7 @@ export default function Header() {
                               <li className="navmenu__dropdown-section-2">
                                 <a
                                   href={route(
-                                    "solutions/vessel-and-asset-monitoring.html",
+                                    'solutions/vessel-and-asset-monitoring.html',
                                   )}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
@@ -654,7 +654,7 @@ export default function Header() {
                               </li>
                               <li className="navmenu__dropdown-section-2">
                                 <a
-                                  href={route("solutions/athena-security.html")}
+                                  href={route('solutions/athena-security.html')}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
                                   <div className="navmenu_dropdown-section-icon-block">
@@ -688,7 +688,7 @@ export default function Header() {
                               <li className="navmenu__dropdown-section-2">
                                 <a
                                   href={route(
-                                    "solutions/energy-production-and-pipeline.html",
+                                    'solutions/energy-production-and-pipeline.html',
                                   )}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
@@ -717,7 +717,7 @@ export default function Header() {
                               </li>
                               <li className="navmenu__dropdown-section-2">
                                 <a
-                                  href={route("solutions/adaptive-video.html")}
+                                  href={route('solutions/adaptive-video.html')}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
                                   <div className="navmenu_dropdown-section-icon-block">
@@ -744,7 +744,7 @@ export default function Header() {
                               <li className="navmenu__dropdown-section-2">
                                 <a
                                   href={route(
-                                    "solutions/asset-tracking-and-monitoring.html",
+                                    'solutions/asset-tracking-and-monitoring.html',
                                   )}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
@@ -772,7 +772,7 @@ export default function Header() {
                               <li className="navmenu__dropdown-section-2">
                                 <a
                                   href={route(
-                                    "solutions/weather-forecasting.html",
+                                    'solutions/weather-forecasting.html',
                                   )}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
@@ -800,7 +800,7 @@ export default function Header() {
                               <li className="navmenu__dropdown-section-2">
                                 <a
                                   href={route(
-                                    "solutions/surface-buoy-monitoring.html",
+                                    'solutions/surface-buoy-monitoring.html',
                                   )}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
@@ -855,7 +855,7 @@ export default function Header() {
                               <li className="navmenu__dropdown-section-2">
                                 <a
                                   href={route(
-                                    "activate-services/adaptive-services-satellite.html",
+                                    'activate-services/adaptive-services-satellite.html',
                                   )}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
@@ -883,7 +883,7 @@ export default function Header() {
                               <li className="navmenu__dropdown-section-2">
                                 <a
                                   href={route(
-                                    "https://nauticalert-activate.nearshorenetworks.com/activate/cellular",
+                                    'https://nauticalert-activate.nearshorenetworks.com/activate/cellular',
                                   )}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
@@ -910,7 +910,7 @@ export default function Header() {
                               <li className="navmenu__dropdown-section-2">
                                 <a
                                   href={route(
-                                    "https://nauticalert-activate.nearshorenetworks.com/activate/nautic-alert",
+                                    'https://nauticalert-activate.nearshorenetworks.com/activate/nautic-alert',
                                   )}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
@@ -944,7 +944,7 @@ export default function Header() {
                 </li>
                 <li className="link-list__list-item-3">
                   <a
-                    href={route("news.html")}
+                    href={route('news.html')}
                     className="link-list__link-2 w-inline-block"
                   >
                     <div>News</div>
@@ -952,21 +952,21 @@ export default function Header() {
                 </li>
                 <li className="link-list__list-item-3 link-list__list-item-resources">
                   <a
-                    href={route("resources.html")}
+                    href={route('resources.html')}
                     className="link-list__link-2"
                   >
                     Resources
                   </a>
                 </li>
                 <li className="link-list__list-item-3 link-list__list-item-careers">
-                  <a href={route("careers.html")} className="link-list__link-2">
+                  <a href={route('careers.html')} className="link-list__link-2">
                     Careers
                   </a>
                 </li>
               </ul>
               <div className="navmenu__cta-wrapper-2">
                 <a
-                  href={route("contact-us.html")}
+                  href={route('contact-us.html')}
                   aria-current="page"
                   className="btn-2 btn-cta-mobile w-button w--current"
                 >
@@ -979,5 +979,5 @@ export default function Header() {
         </div>
       </div>
     </nav>
-  );
+  )
 }

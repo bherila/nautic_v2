@@ -1,18 +1,18 @@
-import { NextRequest, NextResponse } from "next/server";
-import Stripe from "stripe";
-import confirmationEmail from "@/lib/confirmationEmail";
-import getServerSideStripe from "@/lib/getServerSideStripe";
-const stripe = getServerSideStripe();
+import { NextRequest, NextResponse } from 'next/server'
+import Stripe from 'stripe'
+import confirmationEmail from '@/lib/confirmationEmail'
+import getServerSideStripe from '@/lib/getServerSideStripe'
+const stripe = getServerSideStripe()
 
 async function handleAsSubscription(
   dataObject: Stripe.Subscription,
 ): Promise<string> {
-  const subscription_id = dataObject.id;
+  const subscription_id = dataObject.id
   const customer = await stripe.customers?.retrieve(
     dataObject.customer as string,
-  );
+  )
   if (!customer) {
-    return "no customer";
+    return 'no customer'
   }
 
   // Retrieve the payment intent used to pay the subscription
@@ -28,14 +28,14 @@ async function handleAsSubscription(
   const cards = (
     await stripe.paymentMethods?.list({
       customer: dataObject.customer as string,
-      type: "card",
+      type: 'card',
     })
-  ).data;
+  ).data
 
   const subscription = await stripe.subscriptions.update(subscription_id, {
     default_payment_method: cards[0].id,
-  });
-  console.info(`Updated subscription ${subscription_id}`);
+  })
+  console.info(`Updated subscription ${subscription_id}`)
 
   // const invoice = await stripe.invoices?.pay(
   //   subscription.latest_invoice as string,
@@ -47,7 +47,7 @@ async function handleAsSubscription(
   //     ", new status = " +
   //     invoice.status
   // );
-  return await confirmationEmail(subscription, cards[0].id);
+  return await confirmationEmail(subscription, cards[0].id)
 
   // // Handle the event
   // // Review important events for Billing webhooks
@@ -80,23 +80,23 @@ async function handleAsSubscription(
 }
 
 export async function POST(req: NextRequest) {
-  let event: Stripe.Event = await req.json();
+  let event: Stripe.Event = await req.json()
 
   // Extract the object from the event.
-  if (event.type === "customer.subscription.created") {
+  if (event.type === 'customer.subscription.created') {
     try {
       const result = await handleAsSubscription(
         event.data.object as Stripe.Subscription,
-      );
+      )
       return NextResponse.json({
-        result: "Handled as subscription created, result = " + result,
-      });
+        result: 'Handled as subscription created, result = ' + result,
+      })
     } catch (err) {
       return NextResponse.json(
         { err: (err as Error).toString() },
         { status: 500 },
-      );
+      )
     }
   }
-  return NextResponse.json({ result: "No-op" });
+  return NextResponse.json({ result: 'No-op' })
 }

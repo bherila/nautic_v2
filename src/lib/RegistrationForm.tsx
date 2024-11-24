@@ -1,36 +1,36 @@
-﻿import * as React from "react";
-import { PlanOption } from "./PlanOptions";
-import isIMEIValid from "../lib/luhn";
+﻿import * as React from 'react'
+import { PlanOption } from './PlanOptions'
+import isIMEIValid from '../lib/luhn'
 import RegistrationState, {
   ValidatingRegistrationState,
-} from "../lib/RegistrationState";
-import CheckoutSubmit from "./CheckoutSubmit";
-import TermsContainer from "../snippets/TermsContainer";
-import { validateSync } from "class-validator";
-import IMEIModal from "../snippets/IMEIModal";
-import { bodySize } from "./styles";
+} from '../lib/RegistrationState'
+import CheckoutSubmit from './CheckoutSubmit'
+import TermsContainer from '../snippets/TermsContainer'
+import { validateSync } from 'class-validator'
+import IMEIModal from '../snippets/IMEIModal'
+import { bodySize } from './styles'
 
-const getPlanOptionById: { [key: string]: PlanOption } = {};
-const wInput = "w-input";
+const getPlanOptionById: { [key: string]: PlanOption } = {}
+const wInput = 'w-input'
 
-const required = <span style={{ color: "red" }}>*</span>;
+const required = <span style={{ color: 'red' }}>*</span>
 
 const linkStyle = {
-  color: "blue",
-  textDecoration: "underline",
-  background: "transparent",
-};
+  color: 'blue',
+  textDecoration: 'underline',
+  background: 'transparent',
+}
 
 interface Props {
-  renderInstallDate: boolean;
-  renderDealerFields: boolean;
-  renderVesselType: boolean;
-  broadbandVideoAddOn: any;
-  planOptions: PlanOption[];
-  termsContent: React.ReactNode;
-  imeiContentOverride?: React.ReactNode;
-  cc?: string;
-  defaultPlanText?: string;
+  renderInstallDate: boolean
+  renderDealerFields: boolean
+  renderVesselType: boolean
+  broadbandVideoAddOn: any
+  planOptions: PlanOption[]
+  termsContent: React.ReactNode
+  imeiContentOverride?: React.ReactNode
+  cc?: string
+  defaultPlanText?: string
 }
 
 export default class RegistrationForm extends React.Component<
@@ -38,8 +38,8 @@ export default class RegistrationForm extends React.Component<
   RegistrationState
 > {
   constructor(props: Props, context: any) {
-    super(props, context);
-    this.state = new ValidatingRegistrationState({ emailCC: props.cc });
+    super(props, context)
+    this.state = new ValidatingRegistrationState({ emailCC: props.cc })
   }
 
   renderPlanOptions(
@@ -47,22 +47,22 @@ export default class RegistrationForm extends React.Component<
     depth: number,
     defaultChoice: string,
   ) {
-    const selectedOption = (this.state.selectedPlan || [])[depth] || "";
-    console.log("selectedOption", selectedOption);
+    const selectedOption = (this.state.selectedPlan || [])[depth] || ''
+    console.log('selectedOption', selectedOption)
     return (
       <React.Fragment>
         <select
           className={wInput}
           onChange={(e) => {
-            const selectedPlan = this.state.selectedPlan.slice(0);
-            while (selectedPlan.length <= depth) selectedPlan.push("");
-            selectedPlan[depth] = e.currentTarget.value;
-            this.setState({ selectedPlan });
+            const selectedPlan = this.state.selectedPlan.slice(0)
+            while (selectedPlan.length <= depth) selectedPlan.push('')
+            selectedPlan[depth] = e.currentTarget.value
+            this.setState({ selectedPlan })
           }}
         >
-          <option>{defaultChoice || "Select One"}</option>
+          <option>{defaultChoice || 'Select One'}</option>
           {planOptions.map((opt, ix) => {
-            getPlanOptionById[opt.checkoutId || opt.name] = opt;
+            getPlanOptionById[opt.checkoutId || opt.name] = opt
             return (
               <option
                 key={`opt${ix}`}
@@ -70,9 +70,9 @@ export default class RegistrationForm extends React.Component<
                 selected={opt.name === selectedOption}
               >
                 {opt.name}
-                {!!opt.price && opt.price > 0 && " - $" + opt.price.toFixed(2)}
+                {!!opt.price && opt.price > 0 && ' - $' + opt.price.toFixed(2)}
               </option>
-            );
+            )
           })}
         </select>
         {/*Render sub-options*/}
@@ -81,23 +81,25 @@ export default class RegistrationForm extends React.Component<
             (opt) =>
               opt.name === selectedOption && (opt.planOptions || []).length > 0,
           )
-          .map((opt) =>
-            this.renderPlanOptions(
-              opt.planOptions || [],
-              depth + 1,
-              opt.nextDefaultChoice || "",
-            ),
-          )}
+          .map((opt) => (
+            <React.Fragment key={opt.name}>
+              {this.renderPlanOptions(
+                opt.planOptions || [],
+                depth + 1,
+                opt.nextDefaultChoice || '',
+              )}
+            </React.Fragment>
+          ))}
       </React.Fragment>
-    );
+    )
   }
 
   renderIccid() {
     if (!this.state.broadbandVideo) {
-      const sp = this.state.selectedPlan;
-      const plan = getPlanOptionById[sp[sp.length - 1]];
+      const sp = this.state.selectedPlan
+      const plan = getPlanOptionById[sp[sp.length - 1]]
       if (!plan || !plan.enableIccId) {
-        return false;
+        return false
       }
     }
     return (
@@ -116,7 +118,7 @@ export default class RegistrationForm extends React.Component<
           />
         </label>
       </div>
-    );
+    )
   }
 
   renderName() {
@@ -128,34 +130,34 @@ export default class RegistrationForm extends React.Component<
           type="text"
           placeholder="First Name"
           autoComplete="First"
-          value={this.state.ownerFname || ""}
+          value={this.state.ownerFname || ''}
           onChange={(e) => this.setState({ ownerFname: e.currentTarget.value })}
           required={true}
-          style={{ width: "60%", display: "inline-block" }}
+          style={{ width: '60%', display: 'inline-block' }}
         />
         &nbsp;
         <input
           className={wInput}
           type="text"
           placeholder="MI (Optional)"
-          value={this.state.ownerMi || ""}
+          value={this.state.ownerMi || ''}
           onChange={(e) => this.setState({ ownerMi: e.currentTarget.value })}
-          style={{ width: "35%", display: "inline-block" }}
+          style={{ width: '35%', display: 'inline-block' }}
         />
         <input
           className={wInput}
           type="text"
           placeholder="Last Name"
-          value={this.state.ownerLname || ""}
+          value={this.state.ownerLname || ''}
           onChange={(e) => this.setState({ ownerLname: e.currentTarget.value })}
           required={true}
         />
       </div>
-    );
+    )
   }
 
   renderCol1() {
-    const { renderInstallDate, broadbandVideoAddOn, planOptions } = this.props;
+    const { renderInstallDate, broadbandVideoAddOn, planOptions } = this.props
     return (
       <React.Fragment>
         <div>
@@ -163,7 +165,7 @@ export default class RegistrationForm extends React.Component<
           {this.renderPlanOptions(
             planOptions,
             0,
-            this.props.defaultPlanText || "Select Your Plan",
+            this.props.defaultPlanText || 'Select Your Plan',
           )}
         </div>
 
@@ -191,7 +193,7 @@ export default class RegistrationForm extends React.Component<
                 type="date"
                 min={new Date().toISOString() as any}
                 placeholder="Target Install Date"
-                value={this.state.installDate || ""}
+                value={this.state.installDate || ''}
                 onChange={(e) =>
                   this.setState({ installDate: e.currentTarget.value })
                 }
@@ -204,11 +206,11 @@ export default class RegistrationForm extends React.Component<
         {this.renderImeiField()}
         {this.renderIccid()}
       </React.Fragment>
-    );
+    )
   }
 
   renderCol2() {
-    const { renderDealerFields, renderVesselType } = this.props;
+    const { renderDealerFields, renderVesselType } = this.props
     return (
       <React.Fragment>
         {this.renderName()}
@@ -219,7 +221,7 @@ export default class RegistrationForm extends React.Component<
             className={wInput}
             type="text"
             placeholder="Vessel Name"
-            value={this.state.vesselName || ""}
+            value={this.state.vesselName || ''}
             onChange={(e) =>
               this.setState({ vesselName: e.currentTarget.value })
             }
@@ -232,7 +234,7 @@ export default class RegistrationForm extends React.Component<
             className={wInput}
             type="tel"
             placeholder="(xxx) xxx-xxxx"
-            value={this.state.cellNumber || ""}
+            value={this.state.cellNumber || ''}
             onChange={(e) =>
               this.setState({ cellNumber: e.currentTarget.value })
             }
@@ -246,7 +248,7 @@ export default class RegistrationForm extends React.Component<
             className={wInput}
             type="email"
             placeholder="yourname@domain.com"
-            value={this.state.email || ""}
+            value={this.state.email || ''}
             onChange={(e) => this.setState({ email: e.currentTarget.value })}
             required={true}
           />
@@ -255,7 +257,7 @@ export default class RegistrationForm extends React.Component<
         {renderVesselType && (
           <div>
             <label>Vessel Type</label>
-            {["Sail", "Powered", "N/A"].map((typ, ix) => (
+            {['Sail', 'Powered', 'N/A'].map((typ, ix) => (
               <label key={`lbl${ix}`}>
                 <input
                   type="radio"
@@ -273,13 +275,13 @@ export default class RegistrationForm extends React.Component<
           </div>
         )}
       </React.Fragment>
-    );
+    )
   }
 
   renderImeiField() {
     return (
       <React.Fragment>
-        <div style={{ marginTop: "25px" }}>
+        <div style={{ marginTop: '25px' }}>
           <label>
             Device IMEI Number {required}
             <button
@@ -295,27 +297,27 @@ export default class RegistrationForm extends React.Component<
               name="imei"
               autoComplete="off"
               placeholder="IMEI / MEID"
-              value={this.state.imei || ""}
+              value={this.state.imei || ''}
               onChange={(e) => this.setState({ imei: e.currentTarget.value })}
               required={true}
             />
           </label>
         </div>
         {this.state.imei.length > 15 &&
-          !isIMEIValid(this.state.imei.split("")) && (
-            <p style={{ color: "maroon" }}>
+          !isIMEIValid(this.state.imei.split('')) && (
+            <p style={{ color: 'maroon' }}>
               Please double check IMEI, it is likely invalid :(
             </p>
           )}
       </React.Fragment>
-    );
+    )
   }
 
   render() {
     const validationErrors = validateSync(
       new ValidatingRegistrationState(this.state),
-    );
-    const isValid = this.state.agreed && validationErrors.length === 0;
+    )
+    const isValid = this.state.agreed && validationErrors.length === 0
     return (
       <div style={{ fontSize: bodySize }}>
         {this.state.showImeiModal && (
@@ -339,12 +341,12 @@ export default class RegistrationForm extends React.Component<
 
           {!this.state.agreed ? (
             <div className="w-row">
-              <div className="w-col w-col-12" style={{ textAlign: "center" }}>
+              <div className="w-col w-col-12" style={{ textAlign: 'center' }}>
                 <button
                   type="submit"
                   disabled={true}
-                  className={"buy-button button-icon w-button disabled"}
-                  style={{ paddingLeft: "20px", paddingRight: "20px" }}
+                  className={'buy-button button-icon w-button disabled'}
+                  style={{ paddingLeft: '20px', paddingRight: '20px' }}
                 >
                   Accept Terms to Continue
                 </button>
@@ -353,9 +355,9 @@ export default class RegistrationForm extends React.Component<
           ) : !isValid ? (
             <div
               style={{
-                border: "1px solid maroon",
-                padding: "20px",
-                margin: "15px auto",
+                border: '1px solid maroon',
+                padding: '20px',
+                margin: '15px auto',
               }}
             >
               One or more inputs above isn’t filled in correctly/completely.
@@ -370,7 +372,7 @@ export default class RegistrationForm extends React.Component<
                       (err, idx) =>
                         err.constraints && (
                           <li key={`err${idx}`}>
-                            {Object.values(err.constraints).join(". ")}
+                            {Object.values(err.constraints).join('. ')}
                           </li>
                         ),
                     )}
@@ -383,13 +385,13 @@ export default class RegistrationForm extends React.Component<
           )}
         </div>
       </div>
-    );
+    )
   }
 
   getBasePlanId() {
     if (!this.state.selectedPlan || !this.state.selectedPlan[0]) {
-      return "";
+      return ''
     }
-    return this.state.selectedPlan.slice(-1)[0] || "";
+    return this.state.selectedPlan.slice(-1)[0] || ''
   }
 }

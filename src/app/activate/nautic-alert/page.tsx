@@ -1,14 +1,14 @@
-﻿"use client";
+﻿'use client'
 
 import {
   nauticAlertPlanOptions,
   nauticAlertBroadbandVideo,
-} from "@/lib/PlanOptions";
-import RegistrationForm from "@/lib/RegistrationForm";
-import TermsContentNautic from "@/snippets/TermsContentNautic";
-import Image from "next/image";
-import Layout from "@/lib/layout";
-import HeroUnit from "@/snippets/HeroUnit";
+} from '@/lib/PlanOptions'
+import RegistrationForm from '@/lib/RegistrationForm'
+import TermsContentNautic from '@/snippets/TermsContentNautic'
+import Image from 'next/image'
+import Layout from '@/lib/layout'
+import HeroUnit from '@/snippets/HeroUnit'
 
 function NauticIMEIModal() {
   return (
@@ -30,7 +30,7 @@ function NauticIMEIModal() {
         alt="Insight MEID screenshot"
       />
     </>
-  );
+  )
 }
 
 export default function RegistrationFormPage() {
@@ -60,5 +60,5 @@ export default function RegistrationFormPage() {
         />
       </div>
     </Layout>
-  );
+  )
 }
