@@ -47,6 +47,7 @@ export default function RootLayout({
         type="text/javascript"
         crossOrigin="anonymous"
       />
+      <Script src="/js/webflow.js" type="text/javascript" />
       <body className={inter.className}>{children}</body>
     </html>
   )
