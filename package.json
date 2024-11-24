@@ -6,21 +6,28 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "type-check": "tsc --pretty --noEmit",
+    "format": "prettier --write \"src/**/*.{js,ts,tsx}\"",
     "lint": "next lint"
+  },
+  "lint-staged": {
+    "*.@(ts|tsx)": [
+      "yarn lint",
+      "yarn format"
+    ]
   },
   "dependencies": {
     "@apollo/server": "^4.9.5",
     "@as-integrations/next": "^3.0.0",
     "@fontsource/open-sans": "^5.0.20",
     "@fontsource/roboto": "^5.0.8",
-    "@sentry/nextjs": "^7.91.0",
     "@stripe/react-stripe-js": "^2.4.0",
     "@stripe/stripe-js": "^2.2.2",
     "class-validator": "^0.14.0",
     "cors": "^2.8.5",
     "graphql": "^16.8.1",
     "graphql-scalars": "^1.22.4",
-    "next": "14.0.4",
+    "next": "^15.0.3",
     "nodemailer": "^6.9.8",
     "react": "^18",
     "react-dom": "^18",
@@ -35,8 +42,8 @@
     "@types/nodemailer": "^6.4.14",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "eslint": "^8",
+    "eslint": "^8.48.0",
     "eslint-config-next": "14.0.4",
-    "typescript": "^5"
+    "typescript": "^5.6.3"
   }
 }
