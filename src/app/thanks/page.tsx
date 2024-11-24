@@ -1,4 +1,4 @@
-import React from "react";
+
 import Layout from "@/lib/layout";
 
 export default function ThanksPage({}) {

@@ -1,5 +1,4 @@
-﻿import React from "react";
-import Image from "next/image";
+﻿import Image from "next/image";
 
 const prefix = "https://www.nearshorenetworks.com/";
 
@@ -8,28 +7,6 @@ function route(str: string): string {
     return str;
   }
   return (prefix + str).replace(".html", "");
-}
-
-function SearchBox({}) {
-  return null;
-  // return (
-  //     <form action="/search" className="search w-form">
-  //       <input
-  //           type="search"
-  //           className="search-input w-input"
-  //           maxLength={256}
-  //           name="query"
-  //           placeholder="Search…"
-  //           id="search"
-  //           required
-  //       />
-  //       <input
-  //           type="submit"
-  //           value=""
-  //           className="btn-btn-search w-button"
-  //       />
-  //     </form>
-  // )
 }
 
 export default function Header() {

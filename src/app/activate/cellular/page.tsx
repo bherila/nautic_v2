@@ -1,5 +1,5 @@
 ﻿"use client";
-import React from "react";
+
 import { cellPlanOptions } from "@/lib/PlanOptions";
 import RegistrationForm from "@/lib/RegistrationForm";
 import { CellularTerms } from "@/snippets/TermsContentCellular";

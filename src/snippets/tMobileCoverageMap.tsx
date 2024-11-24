@@ -1,5 +1,4 @@
-﻿import React from "react";
-export function TMobileCoverageMap({}): JSX.Element {
+﻿export function TMobileCoverageMap({}): JSX.Element {
   return (
     <b>
       <a
@@ -16,9 +15,9 @@ export function TMobileCoverageMap({}): JSX.Element {
 
 export function CoverageMapTerm({}) {
   return (
-    <React.Fragment>
+    <>
       Coverage maps are an indicator and not a guarantee of coverage or network
       access.
-    </React.Fragment>
+    </>
   );
 }

@@ -1,11 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import { ReactNode, useState } from "react";
 import { bodySize } from "@/lib/styles";
 
 export interface TermsProps {
   isAgreed: boolean;
   setAgreed: (isAgreed: boolean) => void;
-  content: React.ReactNode;
+  content: ReactNode;
 }
 
 export default function TermsContainer(props: TermsProps) {

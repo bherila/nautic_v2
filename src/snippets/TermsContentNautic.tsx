@@ -1,6 +1,5 @@
 import { bodySize, headingSize } from "../lib/styles";
 import { CoverageMapTerm } from "./tMobileCoverageMap";
-import React from "react";
 
 export default function TermsContentNautic() {
   return (

@@ -1,5 +1,5 @@
 ﻿"use client";
-import React from "react";
+
 import { maretronOptions } from "@/lib/PlanOptions";
 import RegistrationForm from "@/lib/RegistrationForm";
 import TermsContentMaretron from "@/snippets/TermsContentMaretron";
