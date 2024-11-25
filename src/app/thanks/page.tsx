@@ -14,6 +14,18 @@ export default function ThanksPage({}) {
         <div className="reg-additional-info">
           Thanks for choosing Nearshore Networks!
         </div>
+        <div className="reg-additional-info">
+          <hr />
+        </div>
+        <div className="reg-success-message">IMPORTANT NOTICE</div>
+        <div className="reg-additional-info">
+          PLEASE RESTART THE UNIT 24 HOURS AFTER SUBSCRIPTION CONFIRMATION IS
+          RECEIVED.
+        </div>
+        <div className="reg-additional-info">
+          NEW SERVICE NETWORK ACTIVATION MAY REQUIRE MORE THAN ONE RESTART OF
+          THE UNIT.
+        </div>
       </div>
     </Layout>
   )
