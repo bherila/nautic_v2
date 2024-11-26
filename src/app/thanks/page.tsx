@@ -6,25 +6,19 @@ export default function ThanksPage({}) {
     <Layout>
       <div className="w-container reg-container">
         <div className="reg-success-message">
-          Thank you! Your information has been received!
+          Thank you! Your transaction has been processed!
         </div>
         <div className="reg-additional-info">
-          We will be in touch with you soon to assist with your plan activation.
+          Please allow up to 24 hours for your activation to be completed. Your
+          receipt will be emailed.
         </div>
         <div className="reg-additional-info">
-          Thanks for choosing Nearshore Networks!
+          Please restart the unit 24 hours after activation confirmation is
+          received. New service network activation may require more than one
+          restart of the unit.
         </div>
         <div className="reg-additional-info">
-          <hr />
-        </div>
-        <div className="reg-success-message">IMPORTANT NOTICE</div>
-        <div className="reg-additional-info">
-          PLEASE RESTART THE UNIT 24 HOURS AFTER SUBSCRIPTION CONFIRMATION IS
-          RECEIVED.
-        </div>
-        <div className="reg-additional-info">
-          NEW SERVICE NETWORK ACTIVATION MAY REQUIRE MORE THAN ONE RESTART OF
-          THE UNIT.
+          Thank you for choosing Nearshore Networks!
         </div>
       </div>
     </Layout>
