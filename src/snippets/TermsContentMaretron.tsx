@@ -4,7 +4,7 @@ export default function TermsContentMaretron() {
       <h1>Terms and Conditions of Subscription</h1>
       <ul>
         {[
-          'Cellular Service requires 24 hours following request to activate, Monday-Friday. Activation requests received on Friday will result in Activation on Monday.',
+          'SMS Service requires 24 hours following request to activate, Monday-Friday. Activation requests received on Friday will result in Activation on Monday.',
           'Activation Fee is $14.95',
           'First charge will be the Activation Fee plus the first month on a 3 month minimum subscription.',
           'Subsequent months are charged automatically and require a 30 day notification to terminate a subscription.',
