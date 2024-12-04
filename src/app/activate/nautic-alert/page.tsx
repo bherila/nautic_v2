@@ -12,17 +12,19 @@ export default function RegistrationFormPage() {
   return (
     <Layout>
       <div className="page-header page-adaptive wf-section">
-        <HeroUnit
+        {/* <HeroUnit
           title="Nautic Alert"
           img="/images/5a-Activate-Services---nautic-alert.jpg"
         >
           Enable security onboard wherever you travel. NEARSHORE’s 99.5%
           guaranteed uptime connection and affordable rates are perfect for your
           travels.
-        </HeroUnit>
+        </HeroUnit> */}
       </div>
       <div className="w-container">
-        <RegistrationForm
+        <h1>Not available</h1>
+        <p>We're sorry, this service is no longer available.</p>
+        {/* <RegistrationForm
           broadbandVideoAddOn={nauticAlertBroadbandVideo}
           renderInstallDate={false}
           renderDealerFields={true}
@@ -40,7 +42,7 @@ export default function RegistrationFormPage() {
           defaultCellNumber={process.env.DEFAULT_CELL_NUMBER ?? ''}
           defaultVesselName={process.env.DEFAULT_VESSEL_NAME ?? ''}
           defaultIccId={process.env.DEFAULT_ICCID ?? ''}
-        />
+        /> */}
       </div>
     </Layout>
   )
