@@ -1,11 +1,9 @@
-﻿'use client'
-
-import Image from 'next/image'
+﻿import Image from 'next/image'
 
 const prefix = 'https://www.nearshorenetworks.com/'
 
 function route(str: string): string {
-  if (str.startsWith('http')) {
+  if (str.startsWith('http') || str.startsWith('/')) {
     return str
   }
   return (prefix + str).replace('.html', '')
@@ -884,9 +882,7 @@ export default function Header() {
                               </li>
                               <li className="navmenu__dropdown-section-2">
                                 <a
-                                  href={route(
-                                    'https://nauticalert-activate.nearshorenetworks.com/activate/cellular',
-                                  )}
+                                  href={route('/activate/cellular')}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
                                   <div className="navmenu_dropdown-section-icon-block">
@@ -911,9 +907,7 @@ export default function Header() {
                               </li>
                               <li className="navmenu__dropdown-section-2">
                                 <a
-                                  href={route(
-                                    'https://nauticalert-activate.nearshorenetworks.com/activate/nautic-alert',
-                                  )}
+                                  href={route('/activate/maretron')}
                                   className="navmenu_dropdown-section-link-2 w-inline-block"
                                 >
                                   <div className="navmenu_dropdown-section-icon-block">
@@ -928,11 +922,11 @@ export default function Header() {
                                   </div>
                                   <div className="navmenu_dropdown-section-content">
                                     <div className="navmenu__dropdown-section-heading">
-                                      Nautic Alert Activation
+                                      Maretron SMS200 Activation
                                     </div>
                                     <p className="navmenu_dropdown-section-description">
-                                      Advanced boat and yacht security, <br />
-                                      GPS at affordable rates
+                                      Let us empower your voyage with
+                                      Cutting-Edge Marine Technology
                                     </p>
                                   </div>
                                 </a>
