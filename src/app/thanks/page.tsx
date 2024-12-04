@@ -18,7 +18,7 @@ export default function ThanksPage({}) {
           restart of the unit.
         </div>
         <div className="reg-additional-info">
-          Thank you for choosing Nearshore Networks!
+          Thank you for choosing NEARSHORE!
         </div>
       </div>
     </Layout>
