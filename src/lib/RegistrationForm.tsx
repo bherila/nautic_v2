@@ -1,5 +1,5 @@
 ﻿'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { PlanOption } from './PlanOptions'
 import isIMEIValid from '../lib/luhn'
 import { ValidatingRegistrationState } from '../lib/RegistrationState'
@@ -81,6 +81,18 @@ export default function RegistrationForm(props: Props) {
       emailCC: emailCC,
     },
   )
+
+  // Auto-select the only plan option if there is just one and nothing is selected
+  useEffect(() => {
+    if (
+      props.planOptions &&
+      props.planOptions.length === 1 &&
+      (!selectedPlan || selectedPlan.length === 0 || !selectedPlan[0])
+    ) {
+      const onlyOption = props.planOptions[0]
+      setSelectedPlan([onlyOption.checkoutId || onlyOption.name])
+    }
+  }, [props.planOptions, selectedPlan])
 
   function renderPlanOptions(
     planOptions: PlanOption[],
