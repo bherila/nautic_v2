@@ -51,7 +51,7 @@ export default function MaretronPage() {
           broadbandVideoAddOn={[]}
           renderInstallDate={false}
           renderDealerFields={true}
-          renderVesselType={true}
+          renderVesselType={false}
           planOptions={maretronOptions}
           termsContent={<TermsContentMaretron />}
         />

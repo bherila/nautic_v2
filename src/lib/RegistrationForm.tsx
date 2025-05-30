@@ -161,7 +161,7 @@ export default function RegistrationForm(props: Props) {
   function renderName() {
     return (
       <div>
-        <label>Device Owner’s Full Name {required}</label>
+        <label>Credit Card Owner’s Name {required}</label>
         <input
           className={wInput}
           type="text"
@@ -249,7 +249,7 @@ export default function RegistrationForm(props: Props) {
         {renderName()}
 
         <div>
-          <label>Name of Vessel (if Applicable)</label>
+          <label>Name of Vessel</label>
           <input
             className={wInput}
             type="text"
@@ -260,7 +260,7 @@ export default function RegistrationForm(props: Props) {
         </div>
 
         <div>
-          <label>Device Owner’s Cell Phone Number {required}</label>
+          <label>Phone Number {required}</label>
           <input
             className={wInput}
             type="tel"
@@ -281,7 +281,7 @@ export default function RegistrationForm(props: Props) {
         </div>
 
         <div>
-          <label>Device Owner’s Email {required}</label>
+          <label>Billing Receipt Email {required}</label>
           <input
             className={wInput}
             type="email"
