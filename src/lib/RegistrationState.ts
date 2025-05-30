@@ -119,19 +119,19 @@ export class ValidatingRegistrationState implements RegistrationState {
   @MaxLength(19, { message: 'IMEI is the wrong length' })
   imei: string
 
-  @IsString({ message: 'Owner first name is required' })
-  @MinLength(2, { message: 'Owner first name must be at least 2 characters' })
+  @IsString({ message: 'First name is required' })
+  @MinLength(2, { message: 'First name must be at least 2 characters' })
   ownerFname: string
 
-  @IsString({ message: 'Owner last name is required' })
-  @MinLength(2, { message: 'Owner last name must be at least 2 characters' })
+  @IsString({ message: 'Last name is required' })
+  @MinLength(2, { message: 'Last name must be at least 2 characters' })
   ownerLname: string
 
   @IsOptional() ownerMi: string
 
   @IsOptional() vesselName: string
 
-  @IsPhoneNumber('US', { message: 'Owner cell phone is required' })
+  @IsPhoneNumber('US', { message: 'Phone number is required' })
   cellNumber: string
 
   @IsOptional() vesselType: string
