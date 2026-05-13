@@ -4,10 +4,10 @@
 # -----------------------------------------------
 
 type Query {
-  defaultRegistration: rA!
+  defaultRegistration: cP!
 }
 
-type rA {
+type cP {
   selectedPlan: [String!]!
   broadbandVideo: Boolean!
   installDate: String!
@@ -28,5 +28,5 @@ type rA {
 
 type Mutation {
   """Creates the subscription and registers the subscriber."""
-  submitRegistration: rA!
+  submitRegistration: cP!
 }
