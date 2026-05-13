@@ -4,7 +4,7 @@ import { IsEmail } from 'class-validator'
 
 const nonnull = { nullable: false }
 
-@ObjectType()
+@ObjectType('RegistrationGraphType')
 export class RegistrationGraphType implements RegistrationState {
   @Field(() => [String], nonnull)
   selectedPlan!: string[]

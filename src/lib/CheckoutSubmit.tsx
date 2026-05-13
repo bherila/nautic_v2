@@ -11,7 +11,6 @@ import RegistrationState from './RegistrationState'
 import { findPlanOption, getAllPlanOptions } from './PlanOptions'
 import { fetchPostJSON } from './jsonHelpers'
 import { ApiSubscribeResponse } from '@/app/api/subscribe/ApiSubscribeResponse'
-import { PaymentIntent } from '@stripe/stripe-js/types/api'
 import YellowButtonPlaceholder from './YellowButtonPlaceholder'
 
 const CARD_OPTIONS = {
@@ -70,7 +69,6 @@ function CheckoutInternal(props: Props) {
   const [status, setStatus] = useState<StripePaymentStatus>('ready')
   const [subscribeApiResponse, setSubscribeApiResponse] =
     useState<ApiSubscribeResponse | null>(null)
-  const [paymentIntent, setPaymentIntent] = useState<PaymentIntent | null>(null)
   const [errorMessage, setErrorMessage] = useState('')
   const stripe = useStripe()
   const elements = useElements()
@@ -175,7 +173,6 @@ function CheckoutInternal(props: Props) {
       setStatus('error')
       setErrorMessage(error.message ?? 'An unknown error occured')
     } else if (paymentIntent) {
-      setPaymentIntent(paymentIntent)
       location.href = '/thanks'
     }
   }

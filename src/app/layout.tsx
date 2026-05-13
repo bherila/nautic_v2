@@ -10,7 +10,7 @@ import '@fontsource/open-sans/500.css'
 import '@fontsource/open-sans/600.css'
 import '@fontsource/open-sans/700.css'
 import '@fontsource/open-sans/800.css'
-import '@fontsource/roboto'
+import '@fontsource/roboto/400.css'
 import Script from 'next/script'
 
 const inter = Open_Sans({ subsets: ['latin'] })

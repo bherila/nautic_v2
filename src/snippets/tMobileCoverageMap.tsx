@@ -1,4 +1,4 @@
-﻿export function TMobileCoverageMap({}): JSX.Element {
+export function TMobileCoverageMap({}) {
   return (
     <b>
       <a

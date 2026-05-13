@@ -140,7 +140,7 @@ export async function POST(request: NextRequest) {
   // the pending invoice items for the customer will be added to the first payment
   const invoiceItem = await stripe.invoiceItems.create({
     currency: 'usd',
-    unit_amount: activationFeeCents,
+    amount: activationFeeCents,
     description: 'Activation fee',
     customer: customer.id,
   })
@@ -156,7 +156,7 @@ export async function POST(request: NextRequest) {
     customer: customer.id,
     items: [{ price: price.id }],
     payment_behavior: 'default_incomplete',
-    expand: ['latest_invoice.payment_intent'],
+    expand: ['latest_invoice'],
     metadata: {
       emailCC: formInputs.emailCC || '',
       plan_name: planDetails.name,
@@ -179,15 +179,27 @@ export async function POST(request: NextRequest) {
     },
   })
 
-  // We have to do these casts because of the 'expand' just above.
-  const invoice = subscription.latest_invoice as Stripe.Invoice
-  const payment_intent = invoice.payment_intent as Stripe.PaymentIntent
+  const invoice = subscription.latest_invoice
+  if (!invoice || typeof invoice === 'string') {
+    return NextResponse.json(
+      { err: 'failed to get subscription invoice' },
+      { status: 500 },
+    )
+  }
+
+  const clientSecret = invoice.confirmation_secret?.client_secret
+  if (!clientSecret) {
+    return NextResponse.json(
+      { err: 'failed to get invoice client secret' },
+      { status: 500 },
+    )
+  }
 
   // Return non-secret values to the client.
   console.info(invoice)
   return NextResponse.json({
     subscriptionId: subscription.id,
     invoiceId: invoice.id,
-    clientSecret: payment_intent?.client_secret || '',
+    clientSecret,
   })
 }

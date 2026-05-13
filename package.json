@@ -8,7 +8,7 @@
     "start": "next start",
     "type-check": "tsc --pretty --noEmit",
     "format": "prettier --write \"src/**/*.{js,ts,tsx}\"",
-    "lint": "next lint"
+    "lint": "eslint ."
   },
   "lint-staged": {
     "*.@(ts|tsx)": [
@@ -17,34 +17,34 @@
     ]
   },
   "dependencies": {
-    "@apollo/server": "^4.13.0",
-    "@as-integrations/next": "^3.2.0",
+    "@apollo/server": "^5.5.1",
+    "@as-integrations/next": "^4.1.0",
     "@fontsource/open-sans": "^5.2.7",
     "@fontsource/roboto": "^5.2.10",
-    "@stripe/react-stripe-js": "^2.9.0",
-    "@stripe/stripe-js": "^2.4.0",
+    "@stripe/react-stripe-js": "^6.3.0",
+    "@stripe/stripe-js": "^9.5.0",
     "class-validator": "^0.15.1",
     "cors": "^2.8.6",
     "graphql": "^16.14.0",
     "graphql-scalars": "^1.25.0",
-    "next": "15.5.18",
-    "nodemailer": "^6.10.1",
-    "react": "^18",
-    "react-dom": "^18",
+    "next": "16.2.6",
+    "nodemailer": "^8.0.7",
+    "react": "^19",
+    "react-dom": "^19",
     "reflect-metadata": "^0.2.2",
     "server-only": "^0.0.1",
-    "stripe": "^14.25.0",
+    "stripe": "^22.1.1",
     "type-graphql": "^2.0.0-rc.4"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
-    "@types/node": "^20",
-    "@types/nodemailer": "^6.4.23",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "eslint": "^8.57.1",
-    "eslint-config-next": "14.2.35",
+    "@types/node": "^25",
+    "@types/nodemailer": "^8.0.0",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^10.3.0",
+    "eslint-config-next": "16.2.6",
     "prettier": "^3.8.3",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.3"
   }
 }
