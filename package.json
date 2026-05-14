@@ -17,34 +17,29 @@
     ]
   },
   "dependencies": {
-    "@apollo/server": "^5.5.1",
-    "@as-integrations/next": "^4.1.0",
     "@fontsource/open-sans": "^5.2.7",
     "@fontsource/roboto": "^5.2.10",
     "@stripe/react-stripe-js": "^6.3.0",
     "@stripe/stripe-js": "^9.5.0",
     "class-validator": "^0.15.1",
     "cors": "^2.8.6",
-    "graphql": "^16.14.0",
-    "graphql-scalars": "^1.25.0",
     "next": "16.2.6",
     "nodemailer": "^8.0.7",
     "react": "^19",
     "react-dom": "^19",
-    "reflect-metadata": "^0.2.2",
     "server-only": "^0.0.1",
-    "stripe": "^22.1.1",
-    "type-graphql": "^2.0.0-rc.4"
+    "stripe": "^22.1.1"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "16.2.6",
     "@types/cors": "^2.8.19",
     "@types/node": "^25",
     "@types/nodemailer": "^8.0.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^10.3.0",
-    "eslint-config-next": "16.2.6",
     "prettier": "^3.8.3",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "typescript-eslint": "8.59.3"
   }
 }
